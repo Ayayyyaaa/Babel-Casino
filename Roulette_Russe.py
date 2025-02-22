@@ -20,6 +20,7 @@ class RouletteRusse:
         self.sprites_def.append(charger_et_agrandir('pistolet_blanc/vide.png'))
         self.tir_joue = False
         self.tir_blanc_joue = False
+        self.actif = False
         i = 0
         for i in range(3):
             self.sprites_vict.append(charger_et_agrandir('pistolet/pf-1.png.png'))
@@ -113,6 +114,7 @@ class RouletteRusse:
                 joueur.modifier_cagnotte((joueur.get_cagnotte()//2)*joueur.get_gains()['Roulette'])
                 joueur.set_gains('Roulette',1.0)
                 self.tourne_animation_vict = False
+                self.actif = False
             self.image = self.sprites_vict[int(self.actuel_sprite)]
         
 
@@ -132,6 +134,7 @@ class RouletteRusse:
                 self.tir_blanc_joue = False
                 joueur.set_cagnotte(0)
                 self.tourne_animation_def = False
+                self.actif = False
             self.image = self.sprites_def[int(self.actuel_sprite) % len(self.sprites_def)]
 
 
@@ -139,6 +142,10 @@ class RouletteRusse:
         return self.image
     def get_pos(self):
         return(self.pos_x,self.pos_y)
+    def get_actif(self):
+        return self.actif
+    def set_actif(self,actif):
+        self.actif = actif
 
 pistolet = RouletteRusse(220, 240, tire_balle,tire_balle_blanc)
 

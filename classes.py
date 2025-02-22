@@ -143,7 +143,7 @@ class Button:
         self.rect = self.image2.get_rect(topleft=(x, y))  # Rectangle pour la position
         self.mask = pygame.mask.from_surface(self.image2)  # Masque pour les collisions 
 
-    def collision(self, souris_pos:tuple):
+    def collision(self, souris_pos:tuple) -> tuple:
         '''Permet de vérifier si le clic est dans la zone du bouton'''
         # Convertir la position du clic dans le référentiel de l'image du bouton
         x = souris_pos[0] - self.rect.x

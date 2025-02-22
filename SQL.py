@@ -362,6 +362,7 @@ def ajouter_objet_inventaire(quantite_objet:int, id_compte:int, nom_objet:str):
             # Sinon, on insere la nouvelle valeur
             cursor.execute("INSERT INTO inventaire (id_compte, nom_objet, quantite_objet) VALUES (?, ?, ?)", 
                            (id_compte, nom_objet, quantite_objet))
+        print("ajoute")
     conn.commit()
     conn.close()
 

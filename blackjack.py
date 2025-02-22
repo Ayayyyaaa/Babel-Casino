@@ -54,6 +54,7 @@ class Blackjack:
             self.c_block = True
             #tirer une carte
             val_j = randint(1, 10)
+            fenetre.blit(souris, pygame.mouse.get_pos())
             #vérification si la carte tirée est un joker
             if val_j == 1:
                 # créer le bouton pour mettre la valeur de la carte à 11
@@ -91,6 +92,7 @@ class Blackjack:
             self.valeur_joueur += val_j
             #on enlève les boutons du joker
             self.nettoyer_ecran()
+            fenetre.blit(souris, pygame.mouse.get_pos())
             # montrer la carte en fonction de sa valeur
             if val_j >= 2 and val_j <= 10:
                 self.img_carte = charger_et_agrandir(self.img[randint(0,3)][val_j - 2])

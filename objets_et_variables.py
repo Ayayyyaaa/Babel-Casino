@@ -61,7 +61,6 @@ btn_inventaire = Button(backpack2, backpack1, 20, 640)
 btn_valider = Button(valider2, valider1, 304, 660)
 btn_select = Button(select2, select1, 304, 660)
 btn_flecheretour = Button(flecheretour2, flecheretour1, 720, 120)
-btn_babelrace = Button(babelrace2, babelrace1, 20, 300)
 
 biere = Biere()
 whisky = Whisky()

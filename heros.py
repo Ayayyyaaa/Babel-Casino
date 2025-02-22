@@ -2008,7 +2008,7 @@ class Suzumebachi:
         self.atk2 = False
         self.dgt1 = False
         self.dgt2 = False
-        self.coups = 0
+        self.coups = 1
 
     def attaque(self,speed:float,sens:str,j2,multis:float):
         '''Permet de jouer l'animation d'attaque du héros.
@@ -2024,13 +2024,13 @@ class Suzumebachi:
             if self.hero.get_collison() and int(self.frame) == 3 and not j2.boss.get_block():
                 if not self.dgt1:
                     aie_boss.play()
-                    j2.boss.modif_pv(-3.5*multis*joueur1.get_multis_jeu_combat()*self.coups*1.5)
+                    j2.boss.modif_pv(-3.5*multis*joueur1.get_multis_jeu_combat()-self.coups*1.5)
                     self.dgt1 = True
                     self.coups += 1
             elif self.hero.get_collison() and int(self.frame) == 23 and not j2.boss.get_block():
                 if not self.dgt2:
                     aie_boss.play()
-                    j2.boss.modif_pv(-15*multis*joueur1.get_multis_jeu_combat()*self.coups*2.5)
+                    j2.boss.modif_pv(-15*multis*joueur1.get_multis_jeu_combat()-self.coups*2.5)
                     self.dgt2 = True
                     self.coups +=1
             if self.frame >= len(self.atk1_d)-1:

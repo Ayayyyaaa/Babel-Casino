@@ -8,7 +8,6 @@ from PileouFace import pileouface
 from sons import *
 from SQL import *
 from fonctions import achat
-from Jeu_platforme import *
 
 afficher_ecran_chargement(chargement[6])
 print("Chargement des Ecrans...")
@@ -107,7 +106,7 @@ class Ecran2:
         self.ecran = Ecran()
         self.fond = pygame.image.load('images/Fonds d\'ecran/casino.png').convert()
         self.musique = False
-        self.btns = [btn_boutique, btn_retour, btn_roulette, btn_pile_ou_face, btn_machine_a_sous, btn_blackjack, btn_jeu_combat, btn_inventaire, btn_babelrace]  # Boutons à afficher
+        self.btns = [btn_boutique, btn_retour, btn_roulette, btn_pile_ou_face, btn_machine_a_sous, btn_blackjack, btn_jeu_combat, btn_inventaire]  # Boutons à afficher
         self.choix_fait = False     # Pour le Babel Face
         self.btn_classement = [f'images/Bouton Classement/_a_frm{i},40.png' for i in range(18)]  # Animatin de bouton
         self.btn = pygame.image.load(self.btn_classement[0]).convert_alpha()     # Image du bouton
@@ -161,6 +160,7 @@ class Ecran2:
         # Si on clique sur le bouton pour lancer la roulette russe
         elif btn_roulette.collision(clic.get_clic()):
             click.play()
+            pistolet.set_actif(True)
             joueur1.set_roulette_active(True)
             pileouface.set_actif(False)
             pistolet.rouletterusse(joueur1)
@@ -176,7 +176,7 @@ class Ecran2:
         elif btn_blackjack.collision(clic.get_clic()):
             click.play()
             clic.set_clic((0,0))
-            ecran2.ecran.set_actif(False), ecran_black.ecran.set_actif(True)
+            Chakkram.ecran.set_actif(True),ecran2.ecran.set_actif(False)
         # Si on clique sur le bouton pour retourner à l'écran de connexion
         elif btn_retour.collision(clic.get_clic()):
             click.play()
@@ -191,14 +191,9 @@ class Ecran2:
         # Si on ouvre le classement
         elif btn_classement.collision(clic.get_clic()):   
             print("aled")
-            ecran2.ecran.set_actif(False),classement.ecran.set_actif(True)  # On définit l'écran du classement comme ecran actif
+            Archon.ecran.set_actif(True), ecran2.ecran.set_actif(False)
             classement.actualiser_classement()  
             clic.set_clic((0,0))
-        elif btn_babelrace.collision(clic.get_clic()):
-            click.play()
-            clic.set_clic((0,0))
-            babelrace.actif(True)
-            babelrace.lancer()
         elif pileouface.get_actif():
             # Pari sur le côté Face de la piece
             if btn_face.collision(clic.get_clic()):
@@ -325,11 +320,11 @@ class EcranBoutique:
             clic.set_clic((0,0))
         # Bouton pour la page d'achat des héros
         elif btn_hero.collision(clic.get_clic()):
-            ecran_boutique.ecran.set_actif(False),hero.ecran.set_actif(True)
+            ecran_boutique.ecran.set_actif(False),SunForge.ecran.set_actif(True)
             clic.set_clic((0,0))
         # Bouton pour la page d'achat des alcools
         elif btn_alcool.collision(clic.get_clic()):
-            ecran_boutique.ecran.set_actif(False),alcool.ecran.set_actif(True)
+            ecran_boutique.ecran.set_actif(False),Rook.ecran.set_actif(True)
             clic.set_clic((0,0))
         # Animation du bouton des héros
         elif btn_hero.collision(pygame.mouse.get_pos()):
@@ -355,7 +350,7 @@ class EcranClassement:
         self.frame = 0
         self.sprites = agrandir_liste_images([f'images/Fonds d\'ecran/Demon_classement/_a_{i},80.png' for i in range(14)])
         self.gens = []
-        self.cartouche0 = Button(cartouche_classement2, cartouche_classement, 20, 150)
+        self.cartouche0 = Button(cartouche_classement2, (cartouche_classement), 20, 150)
         self.cartouche1 = Button(cartouche_classement2, cartouche_classement, 20, 230)
         self.cartouche2 = Button(cartouche_classement2, cartouche_classement, 20, 310)
         self.cartouche3 = Button(cartouche_classement2, cartouche_classement, 20, 390)
@@ -442,8 +437,7 @@ class EcranAlcool:
             alcool.ecran.set_actif(False),ecran_boutique.ecran.set_actif(True)
         # Si on clique sur un bouton d'achat de la vodka, on lance le gif de Poutine
         elif btn_vodka.collision(clic.get_clic()):
-            alcool.ecran.set_actif(False),vodka.ecran.set_actif(True)
-            pygame.mixer.music.unload()
+            print("L'alcool est à consommer avec modération. Ne vous faites pas avoir pas des prix alléchants, ne tombez pas dans l'alcoolisme héros !")
         # Si on clique sur un alcool, on lance l'achat
         elif btn_biere.collision(clic.get_clic()):
             achat('Biere')
@@ -515,29 +509,6 @@ class EcranSelection:
         return self.hero
         
 
-
-class EcranVodka:
-    def __init__(self):
-        self.ecran = Ecran()
-        self.frames = agrandir_liste_images([f'Vodkaa/_a_frm{i},70.png' for i in range(140)])
-        self.frame = 'Vodkaa/_a_frm0,70.png'
-        self.num_frame = 0
-        self.musique_de_fond = vodkaaa
-    def affiche(self,speed:float):
-        '''Permet d'afficher l'écran de Poutine.'''
-        self.num_frame += speed
-        self.frame = self.frames[int(self.num_frame)]
-        # Si toutes les images ont été jouées :
-        if int(self.num_frame) == len(self.frames)-1:
-            # On remet tout à 0
-            self.num_frame = 0
-        fenetre.blit(self.frame,(-170,0))
-        # On lance la musique associée au gif
-        if not pygame.mixer.music.get_busy():
-            pygame.mixer.music.load(self.musique_de_fond)
-            pygame.mixer.music.set_volume(0.3)  # Volume pour la musique de fond générale
-            pygame.mixer.music.play(-1)
-
 class EcranRR:
     def __init__(self) -> 'EcranRR':
         self.ecran = Ecran()
@@ -555,13 +526,6 @@ class EcranRR:
             # On remet tout à 0
             self.num_frame = 0
         fenetre.blit(self.frame,(0,0)) # Affiche l'image
-
-
-class EcranNiveaux:
-    def __init__(self):
-        self.ecran = Ecran()
-    def affiche(self):
-        fenetre.blit(voiture.get_sprites()[voiture.get_frame()],(voiture.get_x(),voiture.get_y()))
 
 class EcranChargement:
     def __init__(self):
@@ -701,8 +665,6 @@ class CoffreFort:
         return combi
     def affiche(self):
         fenetre.blit(self.fond, (0, 0))
-        if not self.trouve:
-            print(self.code_a_trouver)
         btn_fleche.draw(fenetre, pygame.mouse.get_pos())  # Affichage du bouton 
         # Bouton retour
         if btn_fleche.collision(clic.get_clic()):
@@ -722,12 +684,15 @@ class CoffreFort:
                         self.trouve = True
                         self.combinaison = ""
                         self.code_a_trouver = self.definir_code()
+                        print(self.code_a_trouver)
                     else:
                         self.combinaison = ""
                 elif bouton == btneffacer:
-                    self.combinaison = self.combinaison[:-1]
+                    self.combinaison = ""
                 else:
                     self.combinaison += self.chiffres[bouton]
+    def get_code(self):
+        return self.code_a_trouver
 
 
 
@@ -739,14 +704,12 @@ ecran2 = Ecran2()
 inventaire = EcranInventaire()
 classement = EcranClassement()
 ecran_boutique = EcranBoutique()
-vodka = EcranVodka()
 ecran_mort = EcranMort()
 ecran_victoire = EcranVictoire()
 ecran_black = EcranBlack()
 rr = EcranRR()
 digicode = CoffreFort()
 alcool = EcranAlcool()
-niveaux = EcranNiveaux()
 klaxon = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
                         agrandir_liste_images([f'images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]),
                         ('Klaxon', 35000), 180, 224)
@@ -834,16 +797,90 @@ class EcranHeros:
                 ecran.ecran.set_actif(True),self.ecran.set_actif(False)   # On affiche l'écran du héros
 
 class EcranPnj:
-    def __init__(self, img_pnj:list, dialogue:str, boutons_dialogue:list, boutons:list, pos:tuple):
+    def __init__(self, img_pnj:list, dialogue:str, boutons_dialogue:list, boutons:list, pos:tuple, jeu, salle, nom:str, fond='images/Fonds d\'ecran/casino.png'):
+        '''Paramètres :
+            - img_pnj : une liste de pygame.images du pnj à afficher
+            - dialogue : le texte de base du personnage non joueur
+            - boutons_dialogue : Une liste de tuples contenant les boutons à afficher (bouton:'Button', texte_btn:str, reponse_pnj:str)
+            - boutons : Une liste de boutons contenant les boutons d'action à afficher : bouton retour, etc...
+            - pos : La position du personnage non joueur sur l'écran
+            - jeu : l'ecran à lancer si le joueur veut y acceder
+            - salle : La salle dans laquelle se trouve le pnj (pour la remettre quand le joueur met fin au dialogue)
+            - nom : Le nom du pnj
+            - fond : L'image du fond de salle à utiliser'''
         self.ecran = Ecran()
+        self.fond = pygame.image.load(fond).convert()
         self.img_pnj = img_pnj # Les images du png à afficher
         self.dialogue = dialogue # Le texte de base du personnage non joueur
         self.boutons_dialogue = boutons_dialogue # Une liste de tuples contenant les boutons à afficher (bouton:'Button', texte_btn:str, reponse_pnj:str)
         self.boutons = boutons # Une liste de boutons contenant les boutons d'action à afficher : bouton retour, etc...
         self.pos = pos # La position du personnage non joueur sur l'écran
+        self.frame = 0
+        self.police = pygame.font.Font('babelcasino.ttf', 16)
+        self.police2 = pygame.font.Font('babelcasino.ttf', 24)
+        self.txt = ""
+        self.indice = 0
+        self.txt_a_afficher = self.dialogue
+        self.jeu = jeu
+        self.nom = nom
+        self.salle = salle
     def affiche(self):
         '''Permet d'afficher l'écran du personnage non joueur, avec les dialogues et les boutons d'actions.'''
-        fenetre.blit(self.img_pnj[0],self.pos)
+        fenetre.blit(self.fond, (0,0))
+        if self.frame < len(self.img_pnj)-1:
+            self.frame += 0.15
+        else:
+            self.frame = 0
+        if self.indice < len(self.txt_a_afficher):
+            self.indice += 1
+        fenetre.blit(fond_dialogues, (50,50))
+        fenetre.blit(self.img_pnj[int(self.frame)],(self.pos))
+        self.txt = self.txt_a_afficher[:int(self.indice)]  # Affichage lettre par lettre
+        # Utilisation de textwrap pour gérer les retours à la ligne
+        lignes = self.txt.splitlines()  # Diviser le texte par les retours à la ligne
+        # Affichage ligne par ligne avec un décalage vertical
+        y_offset = 70  # Position de départ pour afficher le texte (au pixel y=70)
+        for ligne in lignes:
+            fenetre.blit(self.police.render(ligne, True, blanc), (346, y_offset))
+            y_offset += 25  # Augmenter le décalage vertical pour la prochaine ligne
+        # Boutons de dialogue
+        for bouton in self.boutons_dialogue:
+            bouton[0].draw(fenetre, pygame.mouse.get_pos())
+            # Texte du bouton
+            texte_surface = self.police.render(bouton[1], True, blanc)
+            texte_rect = texte_surface.get_rect(center=(bouton[0].get_pos()[0] + 187.5, bouton[0].get_pos()[1] + 15))
+            fenetre.blit(texte_surface, texte_rect)
+            # Si le bouton est cliqué, on change le dialogue et on reset le compteur d'indice
+            if bouton[0].collision(clic.get_clic()):
+                clic.set_clic((0,0))
+                self.txt_a_afficher = bouton[2]
+                self.indice = 0
+        # Boutons d'interaction
+        for bouton in self.boutons:
+            bouton[0].draw(fenetre, pygame.mouse.get_pos())
+            # Texte du bouton
+            texte_surface = self.police.render(bouton[1], True, blanc)
+            texte_rect = texte_surface.get_rect(center=(bouton[0].get_pos()[0] + 187.5, bouton[0].get_pos()[1] + 15))
+            fenetre.blit(texte_surface, texte_rect)
+            # Si le bouton est cliqué reset le compteur d'indice   
+            if bouton[0].collision(clic.get_clic()):
+                clic.set_clic((0,0))
+                self.txt_a_afficher = self.dialogue
+                self.indice = 0
+                # Si le joueur met fin au dialogue, on remet tout comme avant en mettant l'écran du pnj a False
+                if bouton[1] == 'Au revoir':
+                    self.ecran.set_actif(False),self.salle.ecran.set_actif(True)
+                # Si le joueur veut jouer, on lui donne accès à l'écran
+                elif bouton[1] == 'Je veux jouer' or bouton[1] == 'Je veux y acceder':
+                    self.ecran.set_actif(False), self.jeu.ecran.set_actif(True)
+        # On affiche le nom du pnj
+        nom_surface = self.police2.render(self.nom, True, blanc)
+        nom_rect = nom_surface.get_rect(center=(200, 82))
+        fenetre.blit(nom_surface, nom_rect)
+    def get_boutons(self) -> list:
+        return self.boutons
+
+
 
 hero = EcranHeros({
             btn_fleche : ecran_boutique,
@@ -868,5 +905,43 @@ hero2 = EcranHeros({btn_fleche : ecran_boutique,
                     btn_dusk : dusk,
                     btn_yggdra : yggdra
                     })
+
+Chakkram = EcranPnj([pygame.image.load(f'images/Pnj/Chakkram/_a_{i},100.png') for i in range(22)], 
+"Bonsoir bonsoir cher joueur ! \nUne petite partie de Babel Jack ?", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), 'Comment jouer ?', 'Ici vous jouerez au légendaire Babel \nJack ! Affrontez le croupier du Babel \nCasino et ne dépassez pas le score \nde 21.'), 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), 'J\'ai entendu un cri...', 'Oh, ne vous en souciez pas, ce doit juste \nêtre quelque joueur qui a cru pouvoir \nduper le casino. Quelle erreur. \nUne partie ?')], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 330), 'Je veux jouer'),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Au revoir')], (0,50),ecran_black,ecran2,"Chakkram")
+
+Archon = EcranPnj([pygame.image.load(f'images/Pnj/Archon/_a_frm{i},100.png') for i in range(11)], 
+"Bonjour voyageur ! Comment puis-je \nt'aider ? Ici, tu retrouveras le \nclassement des joueurs du Babel \nCasino, qui possèdent le plus de Babel \nCoins.", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), 'Quelque chose à partager ?', 'Vous savez voyageur, je vois passer \nnombre de joueurs ici...j\'entends \nhistoires, mystères et rumeurs...Nombre\nsont ceux qui sont à la recherche\nd\'une salle secrète qui serait cachée\n dans le casino...On raconte qu\'il faudrait\n murmurer le nom du casino suivi d\'une\n formule magique...Je n\'en sais pas plus.'), 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), 'Parle de la Meaurylle', 'Haha, vous vous interessez à lui à ce \nque je vois...C\'était un grand et puissant \nguerrier, craint et respecté de tous. \nNul ne sait ce qu\'il est devenu, mais \non raconte que ses légendaires \ncrampons seraient encore cachés \ndans le casino...')], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 330), 'Je veux y acceder'),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Au revoir')], (10,60),classement,ecran2,"Archon")
+
+Excelsious = EcranPnj([pygame.image.load(f'images/Pnj/Excelsious/_a_{i},80.png') for i in range(13)], 
+"Bonjour héros...Préparez-vous... \nIci, vous combattrez au péril de votre \nvie de redoutables démons...\nne faillissez pas...\nBonne chance, combattant.", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 330), 'Comment jouer ?', 'Chaque héros possède des \ncaractéristiques uniques :\n- Flèche droite/gauche : déplacements \n-Touche 0 : attaque normale \n-Touche 1 : capacité secondaire \n(si le héros en possède une)\nDe plus, certains héros possèdent des \npassifs uniques.'), 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), 'Quelle est votre plus grande peur ?', 'Pff. Quelle question. Un guerrier ne \ncraint pas la peur. Il ne la connait pas.\nIl ne la cotoie jamais. Cependant...\nméfiez-vous du diable Maurice...'),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), 'Les crampons dorés ?', 'Pauvre fou ! Perdus que vous êtes ! \nAbandonnez toute recherche si vous \ntenez à votre vie. Maintenant, partez !')], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 280), 'Je veux jouer'),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Au revoir')], (10,80),ecran2,ecran2,"Excelsious")
+
+SunForge = EcranPnj([pygame.image.load(f'images/Pnj/SunForge/_a_frm{i},100.png') for i in range(14)], 
+"Un grand combattant sait en reconnaitre \nun autre quand il en voit un ! Que venez\nvous faire ici héros ?", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 330), "Je veux engager des héros", "Bien sur ! Ici vous pourrez engager \ncombattants et voyageurs, en échange\n d\'une somme d\'argent. \nChoisissez bien !"), 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je cherche des informations", "Oh, vous savez, je ne sors pas \nbeaucoup d\'ici moi...je crains de n\'avoir \npas grand chose à vous raconter...en \nrevanche, si un problème peut être\n résolu par la force,\n n\'hésitez pas !"),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "La salle secrète ?", f"Vous la cherchez ? Cela me rappelle \nma jeunesse...c\'est peine perdue : pour \nma part, j\'ai abandonné...Si cela vous \ntient à coeur, j\'avais entendu dire que \nle second chiffre serait {digicode.get_code()[1]}")], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 280), "Je veux y acceder"),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Au revoir')], (10,80),hero,ecran_boutique,"Sun Forge",'images/Fonds d\'ecran/Boutique.png')
+
+Rook = EcranPnj([pygame.image.load(f'images/Pnj/Rook/_a_frm{i},100.png') for i in range(14)], 
+"Hahaha ! Qu'est-ce qui vous amène, l'ami ? \nAllons, venez prendre un verre !", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 330), "Que vend-on ici ?", "Bienvenue au bar du Babel Casino l'ami !\nVenez donc vous reposer et vous \ndésaltérer ici. Allons nous raconter \nquelques histoires haha ! N'hésite pas à \npasser !"), 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je cherche des informations", f"Je ne sais pas grand chose, à part\nles dires de quelques ivrognes...\nQuoique,je crois me souvenir d'avoir \nentendu que le premier chiffre était {digicode.get_code()[0]}. \nCependant, aucune idée de ce que ça \nvoulait dire."),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Qui êtes-vous ?", "Comment, vous ne me connaissez pas ?\nVoyons, je suis Rook, le célèbre \nvainqueur incontesté de la Babel Arena ! \nJ'ai même battu le terrible démon \nNoshRak...Un conseil : si vous devez le combattre\n dans l'arene, fuiyez.")], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 280), "Je veux y acceder"),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Au revoir')], (10,80),alcool,ecran_boutique,"Rook",'images/Fonds d\'ecran/Boutique.png')
 
 #https://create.kahoot.it/share/kahoot-de-la-saint-valentin/4c40967a-24dd-492c-b28a-c0a9bd0376b7

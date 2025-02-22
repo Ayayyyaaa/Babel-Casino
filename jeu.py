@@ -15,7 +15,6 @@ import time
 import os
 from random import choice
 from classes import *
-from Jeu_platforme import *
 
 # https://babelcasino.fandom.com/fr/wiki/Wiki_Babel-Casino
 
@@ -44,7 +43,7 @@ class Jeu():
         - self.hero : hero sélectionné par la joueur pour le jeu de combat
         - self.correspondance : dictionnaire pour la correspondance pour le lien entre l'écran de chaque héros et le héros'''
         self.run = True
-        self.ecrans = [ecran_machine_a_sous,ecran_mort,ecran_victoire,ecran_boutique,alcool,hero,hero2,niveaux,inventaire,classement,lore,digicode]
+        self.ecrans = [ecran_machine_a_sous,ecran_mort,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,Chakkram,Archon,Excelsious,SunForge,Rook]
         self.champ_joueur = pygame.Rect(220, 420, 380, 64)
         self.code_cb = pygame.Rect(260, 650, 280, 64)
         self.nb_cb = pygame.Rect(200, 550, 400, 64)
@@ -123,6 +122,7 @@ class Jeu():
                                yggdra:self.yggdra,
                                dusk:self.dusk}
         self.nom_boss = {self.m : 'Michel', self.tb : 'TankBoss', self.c : 'Cindera', self.dl : 'DarkLord', self.astral : 'Astral (il est nul)', self.ep : 'EternityPainter', self.shidai : 'Shidai', self.solfist : 'Solfist', self.embla : 'Embla', self.lilithe : 'Lilithe', self.elyx : 'Elyx', self.sun : 'Sun', self.skurge : 'Skurge', self.noshrak : 'Noshrak', self.golem : 'Golem', self.purgatos : 'Purgatos', self.ciphyron : 'Ciphyron', self.soji : 'Soji', self.prophet : 'Prophet'}
+        self.pnj = [Chakkram,Archon,Excelsious,SunForge,Rook]
     def running(self):
         son_joue = False
         dernier_son = time.time()
@@ -135,7 +135,7 @@ class Jeu():
                 # Fermer la fenêtre
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
-                        if not vodka.ecran.get_actif() and not rr.ecran.get_actif() and not ecran_mort.ecran.get_actif():
+                        if not rr.ecran.get_actif() and not ecran_mort.ecran.get_actif():
                             self.run = False
                         else:
                             #while True:
@@ -193,6 +193,9 @@ class Jeu():
                                 clic.set_clic((0,0))
                                 ecran2.ecran.set_actif(False), ecran_machine_a_sous.ecran.set_actif(True)
                             elif btn_jeu_combat.collision(clic.get_clic()):
+                                Excelsious.ecran.set_actif(True),ecran2.ecran.set_actif(False)
+                            elif Excelsious.get_boutons()[0][0].collision(clic.get_clic()):
+                                Excelsious.ecran.set_actif(False)
                                 click.play()
                                 clic.set_clic((0,0))
                                 pygame.mixer.music.unload()
@@ -274,14 +277,11 @@ class Jeu():
                                 self.txt_codee_cb += event.unicode
                         # Combinaison pour lancer le jeu de voiture (Temporaire le temps d'avoir des boutons)
                         else:
-                            if event.unicode == 'v':
-                                ecran2.ecran.set_actif(False), niveaux.ecran.set_actif(True)
-                            else:
-                                self.mdp_acces_digicode += event.unicode
-                                print(self.mdp_acces_digicode)
-                                if event.unicode == '0':
-                                    self.mdp_acces_digicode = ""
-                            if self.mdp_acces_digicode == "666":
+                            self.mdp_acces_digicode += event.unicode
+                            print(self.mdp_acces_digicode)
+                            if event.unicode == '0':
+                                self.mdp_acces_digicode = ""
+                            if self.mdp_acces_digicode == "Babel Casino ouvre toi":
                                 ecran2.ecran.set_actif(False), digicode.ecran.set_actif(True)
                 # Permet de gérer la passage du 1er onglet au 2e pour l'écran d'achat de héros dans la boutique
                 if hero.ecran.get_actif():
@@ -319,7 +319,6 @@ class Jeu():
                 if ecran_black.ecran.get_actif():
                     pygame.mouse.set_visible(True)
                     ecran_black.affiche(blackjack)
-
                 # Supprimer le pile ou face au changement d'ecran
                 if not ecran2.ecran.get_actif():
                     pileouface.set_actif(False)
@@ -335,9 +334,6 @@ class Jeu():
                 elif ecran2.ecran.get_actif():
                     son_joue = False
                     ecran2.affiche()
-                # Affichage du gif de la * vodka *
-                elif vodka.ecran.get_actif():
-                    vodka.affiche(0.3)
                 # Affichage du gif du Rick Roll
                 elif rr.ecran.get_actif():
                     rr.affiche(0.45)
