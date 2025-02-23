@@ -15,6 +15,7 @@ import time
 import os
 from random import choice
 from classes import *
+from babel_invader import *
 
 # https://babelcasino.fandom.com/fr/wiki/Wiki_Babel-Casino
 
@@ -194,7 +195,8 @@ class Jeu():
                                 ecran2.ecran.set_actif(False), ecran_machine_a_sous.ecran.set_actif(True)
                             elif btn_jeu_combat.collision(clic.get_clic()):
                                 Excelsious.ecran.set_actif(True),ecran2.ecran.set_actif(False)
-                            elif Excelsious.get_boutons()[0][0].collision(clic.get_clic()):
+                        elif Excelsious.ecran.get_actif():
+                            if Excelsious.get_boutons()[0][0].collision(clic.get_clic()):
                                 Excelsious.ecran.set_actif(False)
                                 click.play()
                                 clic.set_clic((0,0))
@@ -281,7 +283,10 @@ class Jeu():
                             print(self.mdp_acces_digicode)
                             if event.unicode == '0':
                                 self.mdp_acces_digicode = ""
+                            if self.mdp_acces_digicode == "BabelInvader":
+                                self.mdp_acces_digicode = ""
                             if self.mdp_acces_digicode == "Babel Casino ouvre toi":
+                                self.mdp_acces_digicode = ""
                                 ecran2.ecran.set_actif(False), digicode.ecran.set_actif(True)
                 # Permet de gérer la passage du 1er onglet au 2e pour l'écran d'achat de héros dans la boutique
                 if hero.ecran.get_actif():

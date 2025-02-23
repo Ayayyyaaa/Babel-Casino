@@ -17,13 +17,7 @@ curseur_selection = Curseur()
 boutique = {'Biere' : 40000, 'Whisky' : 35000, 'Mojito' : 42000}
 btn_entrer = Button(entrer2, entrer, 216, 480)
 btn_retour = Button(retour2, retour, 216, 480)
-btn_boutique = Button(boutique2, boutique1, 20, 130)
 btn_fleche = Button(fleche_retour2, fleche_retour, 680, 50)
-btn_roulette = Button(roulette2, roulette, 640, 40)
-btn_pile_ou_face = Button(imgpof2, imgpof, 640, 180)
-btn_machine_a_sous = Button(machine_a_sous2, machine_a_sous1, 640, 320)
-btn_blackjack = Button(blackjack2, blackjack1, 640, 460)
-btn_jeu_combat = Button(jeucombat2, jeucombat1, 640, 600)
 btn_face = Button(face2, face2, 250, 460)
 btn_pile = Button(pile2, pile2, 460, 460)
 btn_whisky = Button(whisky2, whisky1, 360, 320)   
@@ -67,6 +61,16 @@ whisky = Whisky()
 mojito = Mojito()
 crampons = Crampons()
 
+# Boutons jeux
+btn_roulette = Button(roulette2, roulette, 640, 40)
+btn_pile_ou_face = Button(imgpof2, imgpof, 640, 180)
+btn_machine_a_sous = Button(machine_a_sous2, machine_a_sous1, 640, 320)
+btn_blackjack = Button(blackjack2, blackjack1, 640, 460)
+btn_jeu_combat = Button(jeucombat2, jeucombat1, 640, 600)
+btn_boutique = Button(boutique2, boutique1, 20, 130)
+btn_babel_invader = Button(babelinvader2, babelinvader, 20, 270)
+
+# Coffre Fort
 btn1 = Button(img1, img1, 150, 130)
 btn2 = Button(img2, img2, 350, 130)
 btn3 = Button(img3, img3, 550, 130)
@@ -79,6 +83,18 @@ btn9 = Button(img9, img9, 550, 390)
 btn0 = Button(img0, img0, 350, 520)
 btnvalider = Button(imgvalider, imgvalider, 550, 520)
 btneffacer = Button(imgeffacer, imgeffacer, 150, 520)
+
+# Babel Invader
+tir2 = Button(t2,t2,70,100)
+tir3 = Button(t3,t3,70,100)
+tir4 = Button(t4,t4,70,100)
+tirs = [tir2,tir3,tir4]
+pieces_bouton = Button(pieces_btn, pieces_btn, 70, 200)
+vitesse_proj_bouton = Button(vitesse_proj_btn, vitesse_proj_btn, 70, 300)
+vitesse_bouton = Button(vitesse_btn, vitesse_btn, 70, 400)
+cd_bouton = Button(cd_btn, cd_btn, 70, 500)
+heal_bouton = Button(heal_btn, heal_btn, 70, 600)
+max_hp_bouton = Button(max_hp_btn, max_hp_btn, 70, 700)
 
 
 coin = Coin(240, -14)

@@ -8,6 +8,7 @@ from PileouFace import pileouface
 from sons import *
 from SQL import *
 from fonctions import achat
+from babel_invader import *
 
 afficher_ecran_chargement(chargement[6])
 print("Chargement des Ecrans...")
@@ -106,7 +107,7 @@ class Ecran2:
         self.ecran = Ecran()
         self.fond = pygame.image.load('images/Fonds d\'ecran/casino.png').convert()
         self.musique = False
-        self.btns = [btn_boutique, btn_retour, btn_roulette, btn_pile_ou_face, btn_machine_a_sous, btn_blackjack, btn_jeu_combat, btn_inventaire]  # Boutons à afficher
+        self.btns = [btn_boutique, btn_retour, btn_roulette, btn_pile_ou_face, btn_machine_a_sous, btn_blackjack, btn_jeu_combat, btn_inventaire, btn_babel_invader]  # Boutons à afficher
         self.choix_fait = False     # Pour le Babel Face
         self.btn_classement = [f'images/Bouton Classement/_a_frm{i},40.png' for i in range(18)]  # Animatin de bouton
         self.btn = pygame.image.load(self.btn_classement[0]).convert_alpha()     # Image du bouton
@@ -177,6 +178,11 @@ class Ecran2:
             click.play()
             clic.set_clic((0,0))
             Chakkram.ecran.set_actif(True),ecran2.ecran.set_actif(False)
+        elif btn_babel_invader.collision(clic.get_clic()):
+            click.play()
+            clic.set_clic((0,0))
+            self.babelinvader = BabelInvader() 
+            self.babelinvader.jouer()
         # Si on clique sur le bouton pour retourner à l'écran de connexion
         elif btn_retour.collision(clic.get_clic()):
             click.play()
@@ -693,8 +699,7 @@ class CoffreFort:
                     self.combinaison += self.chiffres[bouton]
     def get_code(self):
         return self.code_a_trouver
-
-
+    
 
 
 ecran0 = EcranChargement()
@@ -940,7 +945,7 @@ Rook = EcranPnj([pygame.image.load(f'images/Pnj/Rook/_a_frm{i},100.png') for i i
 "Hahaha ! Qu'est-ce qui vous amène, l'ami ? \nAllons, venez prendre un verre !", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 330), "Que vend-on ici ?", "Bienvenue au bar du Babel Casino l'ami !\nVenez donc vous reposer et vous \ndésaltérer ici. Allons nous raconter \nquelques histoires haha ! N'hésite pas à \npasser !"), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je cherche des informations", f"Je ne sais pas grand chose, à part\nles dires de quelques ivrognes...\nQuoique,je crois me souvenir d'avoir \nentendu que le premier chiffre était {digicode.get_code()[0]}. \nCependant, aucune idée de ce que ça \nvoulait dire."),
-(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Qui êtes-vous ?", "Comment, vous ne me connaissez pas ?\nVoyons, je suis Rook, le célèbre \nvainqueur incontesté de la Babel Arena ! \nJ'ai même battu le terrible démon \nNoshRak...Un conseil : si vous devez le combattre\n dans l'arene, fuiyez.")], 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Qui êtes-vous ?", "Comment, vous ne me connaissez pas ?\nVoyons, je suis Rook, le célèbre \nvainqueur incontesté de la Babel Arena ! \nJ'ai même battu le terrible démon \nNoshRak...Un conseil : si vous devez le combattre\n dans l'arene, fuyez.")], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 280), "Je veux y acceder"),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Au revoir')], (10,80),alcool,ecran_boutique,"Rook",'images/Fonds d\'ecran/Boutique.png')
 
