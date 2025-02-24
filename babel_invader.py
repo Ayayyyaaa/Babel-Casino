@@ -142,6 +142,7 @@ class Vaisseau:
         self.vitesse_projectile = 5
         self.cd = 0.5
         self.vitesse = 3
+        self.police = pygame.font.Font('babelcasino.ttf', 16)
         self.frames = [pygame.image.load("Babel Invader/vaisseau1.png").convert_alpha(),
                       pygame.image.load("Babel Invader/vaisseau2.png").convert_alpha(),
                       pygame.image.load("Babel Invader/vaisseau3.png").convert_alpha(),
@@ -250,10 +251,9 @@ class Vaisseau:
         fenetre.blit(self.frame, (self.x, self.y))
         
         # Affichage du score et de la vie
-        font = pygame.font.Font(None, 24)
-        score_text = font.render(f'Score: {self.score}', True, (255, 255, 255))
-        vie_text = font.render(f'Vie: {int(self.vie)}', True, (255, 255, 255))
-        pieces_text = font.render(f'Pieces: {int(self.pieces)}', True, (255, 255, 255))
+        score_text = self.police.render(f'Score: {self.score}', True, (255, 255, 255))
+        vie_text = self.police.render(f'Vie: {int(self.vie)}', True, (255, 255, 255))
+        pieces_text = self.police.render(f'Pieces: {int(self.pieces)}', True, (255, 255, 255))
         fenetre.blit(score_text, (30, 15))
         fenetre.blit(vie_text, (30, 45))
         fenetre.blit(pieces_text, (30,75))
@@ -271,6 +271,8 @@ class BabelInvader:
         self.explosion_frames = [pygame.image.load('Babel Invader/explosion0.png').convert_alpha(),pygame.image.load('Babel Invader/explosion1.png').convert_alpha(), pygame.image.load('Babel Invader/explosion2.png').convert_alpha(),pygame.image.load('Babel Invader/explosion1.png').convert_alpha()]
         self.achats = {}
         self.achat_tir = tir2
+        self.police = pygame.font.Font('babelcasino.ttf', 16)
+        self.police2 = pygame.font.Font('babelcasino.ttf', 32)
         self.ennemi_faible = lambda x: Ennemi(x, 3, [pygame.image.load("Babel Invader/ennemi.png").convert_alpha(), 
                                                     pygame.image.load("Babel Invader/ennemi2.png").convert_alpha()], 1, -5, 10)
         self.ennemi_moyen = lambda x: Ennemi(x, 2.5, [pygame.image.load("Babel Invader/ennemi3.png").convert_alpha(), 
@@ -281,8 +283,8 @@ class BabelInvader:
                                                      pygame.image.load("Babel Invader/ennemi8.png").convert_alpha()], 7, -18, 25)
         self.ennemi_attaquant = lambda x: Ennemi(x, 3.5, [pygame.image.load("Babel Invader/ennemi9.png").convert_alpha(), 
                                                      pygame.image.load("Babel Invader/ennemi10.png").convert_alpha()], 6, -20, 30)
-        self.ennemi_boss = lambda x: Ennemi(x, 2.8, [pygame.image.load("Babel Invader/ennemi11.png").convert_alpha(), 
-                                                     pygame.image.load("Babel Invader/ennemi11.png").convert_alpha()], 50, -50, 100)
+        self.ennemi_boss = lambda x: Ennemi(x, 1, [pygame.image.load("Babel Invader/ennemi11.png").convert_alpha(), 
+                                                     pygame.image.load("Babel Invader/ennemi11.png").convert_alpha()], 40, -50, 100)
         self.ennemi_moyen2 = lambda x: Ennemi(x, 2.8, [pygame.image.load("Babel Invader/ennemi12.png").convert_alpha(), 
                                                      pygame.image.load("Babel Invader/ennemi13.png").convert_alpha()], 4, -8, 20)
         self.ennemi_tank2 = lambda x: Ennemi(x, 1.5, [pygame.image.load("Babel Invader/ennemi14.png").convert_alpha(), 
@@ -458,18 +460,16 @@ class BabelInvader:
             
             for achat, prix in self.achats.items():
                 achat.draw(fenetre, pygame.mouse.get_pos())
-                font = pygame.font.Font(None, 24)
-                prix_text = font.render(f"{int(prix)} pièces", True, (255, 255, 255))
-                fenetre.blit(prix_text, (achat.rect.x, achat.rect.y + 40))
+                prix_text = self.police.render(f"{int(prix)} pièces", True, (255, 255, 255))
+                fenetre.blit(prix_text, (achat.rect.x-20, achat.rect.y + 60))
             
             self.vaisseau.jouer(fenetre, self.ennemis)
             fenetre.blit(souris, pygame.mouse.get_pos())
             pygame.display.flip()
             clock.tick(60)
         
-        font = pygame.font.Font(None, 74)
-        game_over_text = font.render('Perdu', True, (255, 0, 0))
-        score_text = font.render(f'Score final: {self.vaisseau.score}', True, (255, 255, 255))
+        game_over_text = self.police2.render('Perdu', True, (255, 0, 0))
+        score_text = self.police2.render(f'Score final: {self.vaisseau.score}', True, (255, 255, 255))
         fenetre.blit(game_over_text, (largeur//2 - 150, hauteur//2 - 50))
         fenetre.blit(score_text, (largeur//2 - 150, hauteur//2 + 50))
         pygame.display.flip()
@@ -477,6 +477,6 @@ class BabelInvader:
         if self.vaisseau.get_score() < 3500:
             joueur1.modifier_cagnotte(-joueur1.get_cagnotte()//8 - 1000)
         else:
-            joueur1.modifier_cagnotte(self.vaisseau.get_score() + 2500 + joueur1.get_cagnotte()//12)
+            joueur1.modifier_cagnotte(self.vaisseau.get_score() + 2500 + joueur1.get_cagnotte()//10)
         
         self.run = False

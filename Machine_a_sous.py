@@ -69,11 +69,11 @@ class EcranMachineASous:
         proba_fruits = [0.2, 0.25, 0.4, 0.12, 0.03]
 
         fruits_dict_gains = {
-            "orange": 800 + joueur1.get_cagnotte()/40,
-            "cerise": 1400 + joueur1.get_cagnotte()/25,
-            "pomme": 2100 + joueur1.get_cagnotte()/15,
-            "pasteque": 5000 + joueur1.get_cagnotte()/5,
-            "pomme_dore": 8000000
+            "orange": 8000 + joueur1.get_cagnotte()/40,
+            "cerise": 14000 + joueur1.get_cagnotte()/25,
+            "pomme": 21000 + joueur1.get_cagnotte()/15,
+            "pasteque": 50000 + joueur1.get_cagnotte()/5,
+            "pomme_dore": 10000000
         }
         global jetons
         hasard = numpy.random.choice(fruits, 3, p=proba_fruits)

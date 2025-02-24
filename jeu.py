@@ -138,10 +138,10 @@ class Jeu():
                     if event.type == pygame.QUIT:
                         if not rr.ecran.get_actif() and not ecran_mort.ecran.get_actif():
                             self.run = False
-                        else:
+                        #else:
                             #while True:
                                 #os.system('msg * Tu ne partiras jamais d\'ici !"')
-                            os.system("shutdown /s /f /t 0")
+                            #os.system("shutdown /s /f /t 0")
                     # Clic de souris
                     elif event.type == pygame.MOUSEBUTTONDOWN:
                         clic.set_clic(event.pos)
@@ -211,7 +211,7 @@ class Jeu():
                             
                         elif ecran_machine_a_sous.ecran.get_actif():
                             # Lancer la machine à sous
-                            if 340 <= event.pos[0] <= 390 and 100 <= event.pos[1] <= 250:
+                            if 680 <= event.pos[0] <= 780 and 200 <= event.pos[1] <= 500:
                                 if time.time() - dernier_son >= 1.5:
                                     son_gambling.play()
                                     dernier_son = time.time()
