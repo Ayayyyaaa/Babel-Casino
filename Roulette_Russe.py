@@ -54,13 +54,13 @@ class RouletteRusse:
             proba = 1
             if joueur1.get_pseudo().lower() == 'florian':
                 proba = 6
-            elif joueur1.get_cagnotte() > 800000:
+            elif joueur1.get_cagnotte() > 4800000:
                 proba = 5
-            elif joueur1.get_cagnotte() > 600000:
+            elif joueur1.get_cagnotte() > 2400000:
                 proba = 4
-            elif joueur1.get_cagnotte() > 400000:
+            elif joueur1.get_cagnotte() > 1600000:
                 proba = 3
-            elif joueur1.get_cagnotte() > 100000:
+            elif joueur1.get_cagnotte() > 400000:
                 proba = 2
             else:
                 proba = 1

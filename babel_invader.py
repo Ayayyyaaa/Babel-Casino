@@ -28,7 +28,8 @@ class Explosion:
         if temps_actuel - self.temps_derniere_frame > self.delai_animation: # Temps entre les frames
             self.frame_actuelle += 1    # On fait progresser l'animation
             if self.frame_actuelle >= len(self.frames): # Fin de l'animation
-                self.actif = False  # Fin de l'esxplosion
+                self.actif = False # Fin de l'explosion
+                self.frame_actuelle = 0 
             self.img = self.frames[self.frame_actuelle] # Met a jour l'image
             self.temps_derniere_frame = temps_actuel    # Met a jour le temps pour le cd entre les images
     
@@ -446,7 +447,7 @@ class BabelInvader:
                                 self.vaisseau.set_lvl('Vitesse',1)
                             elif achat == cd_bouton:
                                 self.vaisseau.set_lvl('Couldown',1)
-                                self.vaisseau.set_cd(-0.08)
+                                self.vaisseau.set_cd(-0.1)
                             elif achat == heal_bouton:
                                 self.vaisseau.set_lvl('Vie',1)
                                 self.vaisseau.set_vie(25)

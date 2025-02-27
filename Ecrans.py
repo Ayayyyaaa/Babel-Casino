@@ -164,19 +164,15 @@ class Ecran2:
         # Si on clique sur le bouton pour lancer la roulette russe
         elif btn_roulette.collision(clic.get_clic()):
             click.play()
-            pistolet.set_actif(True)
-            joueur1.set_roulette_active(True)
-            pileouface.set_actif(False)
-            pistolet.rouletterusse(joueur1)
-            joueur1.set_roulette_active(False)
             clic.set_clic((0,0))
+            self.ecran.set_actif(False), Hideatsu.ecran.set_actif(True)
         # Si on clique sur le bouton pour lancer la pile ou face
         elif btn_pile_ou_face.collision(clic.get_clic()):
             click.play()
             clic.set_clic((0,0))
-            pileouface.set_actif(not pileouface.get_actif())
-            pileouface.set_cote(None)
-        # Si on clique sur le bouton pour lancer le blackjack de mort d'abel plus jamais je touche à ça vraiment c'est une horreur en plus la doc est inexistante c'est juste des commentaires et des commentaires vraiment je suis traumatisé aled
+            Seer.ecran.set_actif(True),self.ecran.set_actif(False)
+            pileouface.set_actif(False)
+        # Si on clique sur le bouton pour lancer le blackjack 
         elif btn_blackjack.collision(clic.get_clic()):
             click.play()
             clic.set_clic((0,0))
@@ -184,8 +180,7 @@ class Ecran2:
         elif btn_babel_invader.collision(clic.get_clic()):
             click.play()
             clic.set_clic((0,0))
-            self.babelinvader = BabelInvader() 
-            self.babelinvader.jouer()
+            TheScientist.ecran.set_actif(True), ecran2.ecran.set_actif(False)
         # Si on clique sur le bouton pour retourner à l'écran de connexion
         elif btn_retour.collision(clic.get_clic()):
             click.play()
@@ -196,7 +191,7 @@ class Ecran2:
         elif btn_inventaire.collision(clic.get_clic()):
             click.play()
             clic.set_clic((0,0))
-            ecran2.ecran.set_actif(False), inventaire.ecran.set_actif(True) # On définit l'inventaire comme ecran actif
+            ecran2.ecran.set_actif(False), Amu.ecran.set_actif(True) # On définit l'ecran d'Amu (qui donne accès à l'écran de l'inventaire) actif
         # Si on ouvre le classement
         elif btn_classement.collision(clic.get_clic()):   
             print("aled")
@@ -703,6 +698,27 @@ class CoffreFort:
     def get_code(self):
         return self.code_a_trouver
     
+class EcranPileOuFace:
+    def __init__(self):
+        self.ecran = Ecran()
+    def affiche(self):
+        '''Permet d'afficher l'écran de la pile ou face'''
+        pileouface.set_actif(True)
+        pileouface.set_cote(None)
+        self.ecran.set_actif(False)
+        ecran2.ecran.set_actif(True)
+
+class EcranRoulette:
+    def __init__(self):
+        self.ecran = Ecran()
+    def affiche(self):
+        pistolet.set_actif(True)
+        joueur1.set_roulette_active(True)
+        pistolet.rouletterusse(joueur1)
+        joueur1.set_roulette_active(False)
+        ecran2.ecran.set_actif(True),self.ecran.set_actif(False)
+
+    
 
 
 ecran0 = EcranChargement()
@@ -718,6 +734,8 @@ ecran_black = EcranBlack()
 rr = EcranRR()
 digicode = CoffreFort()
 alcool = EcranAlcool()
+PileOuFace = EcranPileOuFace()
+babelRoulette = EcranRoulette()
 klaxon = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
                         agrandir_liste_images([f'images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]),
                         ('Klaxon', 35000), 180, 224)
@@ -928,9 +946,17 @@ Rook = EcranPnj([pygame.image.load(f'images/Pnj/Rook/_a_frm{i},100.png') for i i
 "Hahaha ! Qu'est-ce qui vous amène, l'ami ? \nAllons, venez prendre un verre !", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Que vend-on ici ?", "Bienvenue au bar du Babel Casino l'ami !\nVenez donc vous reposer et vous \ndésaltérer ici. Allons nous raconter \nquelques histoires haha ! N'hésite pas à \npasser !"), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 480), "Je cherche des informations", f"Je ne sais pas grand chose, à part\nles dires de quelques ivrognes...\nQuoique,je crois me souvenir d'avoir \nentendu que le premier chiffre était {digicode.get_code()[0]}. \nCependant, aucune idée de ce que ça \nvoulait dire."),
-(Button(boutons_dialogue2, boutons_dialogue1, 350, 530), "Qui êtes-vous ?", "Comment, vous ne me connaissez pas ?\nVoyons, je suis Rook, le célèbre \nvainqueur incontesté de la Babel Arena ! \nJ'ai même battu le terrible démon \nNoshRak...Un conseil : si vous devez le combattre\n dans l'arene, fuyez.")], 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 530), "Qui êtes-vous ?", "Comment, vous ne me connaissez pas ?\nVoyons, je suis Rook, le célèbre \nvainqueur incontesté de la Babel Arena ! \nJ'ai même battu le terrible démon \nNoshRak...Un conseil : si vous devez le \ncombattre dans l'arene, fuyez.")], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je veux y acceder"),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),alcool,ecran_boutique,"Rook",'images/Fonds d\'ecran/Boutique.png')
+
+TheScientist = EcranPnj([pygame.image.load(f'images/Pnj/TheScientist/_a_{i},100.png') for i in range(16)], 
+"Ah... un voyageur égaré dans le flot du \ntemps. Peu osent s'aventurer si près de \nl'inconnu...Je perçois en toi une \nlueur vacillante, une étincelle \nprête à être consumée...ou transcendée. \nDis-moi, mortel... cherches-tu des \nréponses, ou préfères-tu ignorer \nl'appel du destin ?", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Comment jouer ?", "Les ténèbres de l'espace ne pardonnent \npas. Les envahisseurs sont là, \nimplacables, prêts à détruire tout sur \nleur passage. Ton vaisseau est ta seule \narme. Tu devras les affronter, \nsurvivre, et évoluer. Tu pourras \naméliorer ton vaisseau. Plus de \npuissance, plus de vitesse, plus de \nrésistance. Alors, que feras-tu ? \nLutteras-tu pour devenir plus fort...\nou te perdras-tu dans l'oubli du vide ?"), 
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 480), "L'espace temps ?", f"L'espace-temps, un tissu complexe tissé \nd'instants et d'échos... chaque \nseconde perdue peut changer le cours \nd'un destin. Mais toi, voyageur, tu \nsembles prêt à percer ses mystères. \nL'espace, une pulsation en {digicode.get_code()[2]} temps...\nCe doit être l'élément manquant \npour tout compléter, le 3ème..."),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 530), "Comment sortir d'ici ?", "Je suis au courant de ta mission, \nvoyageur. Mais je ne n'interviendrai \npas. L'espace-temps ne s'immisce \npas dans les affaires des hommes. Je \nne suis qu'un témoin, un observateur \ndes choix et des conséquences. Alors, \ninutile de mentir sur tes intentions. \nA moins que, bien sur, tu ne sois déjà \nterrorisé par l'aura de ces lieux... \nMais j'ose espérer que ce ne soit \npas le cas, car il est déjà trop tard \npour reculer.")], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je veux jouer"),
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),ecran2,ecran2,"The Scientist")
 
 PnjWhistler = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]),  
 "Bonjour, mortel. Que viens-tu chercher \nauprès des flammes ?", 
@@ -963,8 +989,67 @@ PnjPureblade = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Pureblade/
   "Ne foncez pas tête baissée. L'impatience \nest l'alliée de la défaite. Observez, \nattendez...Puis frappez là où \nl'adversaire s'y attend le moins. Une \nbonne lame ne sert pas qu'à trancher, \nelle sert aussi à faire douter.")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux te recruter"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
-(-60,-40),pureblade,hero2,"Pureblade",'images/Fonds d\'ecran/Boutique.png')
+(-80,-60),pureblade,hero2,"Pureblade",'images/Fonds d\'ecran/Boutique.png')
 
+PnjMaehv = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Maehv/Droite/Inaction/_a_{i},80.png' for i in range(14)]),  
+"Hors de mon chemin, mortel. Cessez de \nm'importuner... Très bien. Vous l'aurez \nvoulu. Préparez-vous à mourir.", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Qui es-tu ?", 
+  "Tu n'as jamais entendu mon nom ? Tsss...\nSoit tu es trop jeune, soit tu as eu la \nchance de vivre loin des cris et \ndes flammes. Je suis Maehv, l'ombre des \nbatailles passées, le brasier qui ne \ns'éteint jamais. Jadis, mon nom suffisait à \nfaire trembler les royaumes. Maintenant, \nhors de mon chemin, si tu tiens à la vie."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Quelque chose à partager ?", 
+  "Hah ! Tu crois que je vais t'offrir des \nsecrets sur un plateau d'argent ? Je ne \nsuis pas une conteuse de légendes, \nmortel. Mais tiens...Un conseil : le feu \nn'a que faire de ses cendres, il n'a que \nfaire de ses victimes. Il brule sans \ndistinctions, c'est le plus juste des \néléments. Que tu sois un roi ou un \nmendiant, si tu m'importunes, tu \nfiniras de la même façon...réduit en \npoussière."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Le néant ?", 
+  "Le 0...Retiens mortel, tout commence par \nlui, et tout finit en lui. Quand une \nchose ne fonctionne plus, quand elle \ns'effondre sous son propre poids, il n'y \na qu'une seule issue : tout réduire en \ncendres. Effacer chaque trace, briser \nchaque chaine, détruire chaque \nparcelle de ce qui a été fait... Le néant \nn'est pas une fin...c'est la seule \nmanière de renaitre. Tout recommencer. \nTout reconstruire. Mais d'abord...tout \ndétruire.")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux te recruter"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
+(-70,-50),maehv,hero,"Maehv",'images/Fonds d\'ecran/Boutique.png')
+
+PnjTwilight = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Twilight/Droite/Inaction/_a_{i},80.png' for i in range(14)]),  
+"Voyageurs de la forêt...êtes-vous des \namis de ces lieux, ou bien de nouveaux \nennemis à occire de mes flammes...?", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 475), "Qui es-tu ?", 
+  "Je suis Twilight, divinité du feu. Je suis\nla flamme qui subsiste dans l'obscurité, \nl'ame de la foret...Jadis, on murmurait \nmon nom avec respect...aujourd'hui, \nil ne reste que l'écho d'un temps \noublié. Mais qu'importe que les hommes \noublient...la forêt, elle, se souvient."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 515), "Quelque chose à partager ?", 
+  "Les civilisations humaines sont \néphémères, mortel...elles sont voués à \ns'éteindre, emportant tout ce qu'elles \nont bati avec elles. Seuls les dieux \ndemeurent, bien qu'ils sombrent dans \nl'oubli. Le Royaume n'a pas toujours \nété là, et il disparaitra, remplacé par un \nautre. Car, toi qui es là pour détruire le \nBabel Casino...Crois-tu que le Royaume \nest exempt de tout reproche ? Crois-tu \nqu'il n'a causé aucune guerre, qu'il n'a \ncommis aucun massacre pour \ns'emparer de ce qui est aujourd'hui \nsien ?"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 555), "Les anciens dieux ?", 
+  "Nous étions sept. Chacun lié à une force \nprimordiale, chacun portant le poids \nd'un monde qui n'existe plus. Mais les \nhommes n'ont plus besoin de nous...ou \npeut-être pensent-ils ne plus avoir \nbesoin. L'oubli est une prison dont il est \ndifficile de s'échapper. Pourtant, nous \nveillons...et quand le vent portera \nde nouveau nos noms, nous \nrépondrons.")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 435), "Je veux te recruter"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 595), 'Au revoir')], 
+(-70,-50),twilight,hero2,"Twilight",'images/Fonds d\'ecran/Boutique.png')
+
+Seer = EcranPnj([pygame.image.load(f'images/Pnj/Seer/_a_frm{i},100.png') for i in range(12)], 
+"Ohoho ! Un petit jeu, ça te tente ? \nPile ou face ? Gagne, et tu repars avec \nun cadeau...Perds, et hihihi...on verra \nbien ce que je prends en échange !", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
+  "Rien de plus simple ! Je lance la \npièce, tu choisis : clique sur le bouton \npile ou dur le bouton face. Si t'as raison, \nbravo ! Sinon...eh bien, c'est moi qui \ndécide de ton sort, hihihi !"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Un trésor ?", 
+  f"Ohoho ! Un trésor, dis-tu ? Oui, oui, \nje peux te révéler un secret...Pour \nouvrir le coffre, il te faut un code ! \n3 chiffres ! Le premier chiffre est un {randint(0,9)}, \net le deuxième ? Hmmm...je ne \nte le donne pas ! Il faut bien que tu \ncherches quand même ! Maintenant, que \nvas-tu faire avec ça, hihihi ?"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "C'est pas truqué hein ?", 
+  "Ohoho ! Pas truqué, non, non ! Juste \nun petit jeu de chance, comme un lutin \nqui aime s'amuser ! Mais attention, les \nsurprises peuvent parfois être...\ninattendues ! Hihihi ! Alors, prêt à \ntenter ta chance ?")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux jouer"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
+(10,80),PileOuFace,ecran2,"Seer")
+
+Hideatsu = EcranPnj([pygame.image.load(f'images/Pnj/Hideatsu/_a_{i},80.png') for i in range(8)], # Ki jsp quoi
+"Ah, un intrépide aventurier se présente. \nQue dirais-tu de tester ta bravoure \navec un jeu des plus audacieux ? \nLa Babel Roulette. Tourne le barillet, \nprends un souffle profond, et appuie \nsur la détente. Le frisson de la mort,\nou l'extase de la survie...\nQue choisiras-tu ? Oses-tu défier le \ndestin ?", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
+  "Ah, cher aventurier...dans les sombres \nméandres du Babel Casino, chaque \npièce d'or que tu accumules attire \nl'attention du diable Maurice. Plus ta \nbourse se remplit, plus le barillet \nse remplit de balles. Chaque gain, un pas \nvers la fortune...mais aussi vers le \ndanger. La Babel Roulette, un jeu où la \nfortune et la fatalité dansent ensemble. \nSeras-tu audacieux ? Le choix, o noble \nâme, est entre tes mains."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Le diable Maurice ?", 
+  "Ah, le diable Maurice...Un nom qui fait \nfrémir même les coeurs les plus \nvaillants. C'est le maitre des lieux, \nl'ame la plus maléfique du Babel Casino. \nSes yeux, sombres comme les abimes, \nscrutent chaque mouvement. Il n'est pas \nun être que l'on souhaite avoir \npour adversaire. Mieux vaut éviter de se \nretrouver en sa présence, car il a le \ndon de transformer les rêves en \ncauchemars. Reste à l'écart, si tu aimes \nla vie ou du moins la liberté."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Qui es-tu ?", 
+  "Je suis Hideatsu, un mage déchu, \nautrefois puissant, maintenant réduit à \nservir le diable Maurice. J'ai été sauvé \ndu châtiment éternel par ses sombres \ndesseins, et en échange, je suis \nlié à son établissement maléfique, le \nBabel Casino. Ici, j'exerce mes arts \ndans l'ombre, envoutant les âmes pour le \nmaitre de ces lieux. Un pacte scellé par \nle désespoir, car me voici à sa merci.")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux jouer"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
+(10,80),babelRoulette,ecran2,"Hideatsu")
+
+Amu = EcranPnj([pygame.image.load(f'images/Pnj/Amu/_a_{i},100.png') for i in range(14)], 
+"Attends, attends, tu veux voir ton \ninventaire ? Laisse-moi faire, je \nvais t'aider ! Pouf Et voilà, tout ce \nque tu as sur toi s'affiche ici ! Pas mal, \nhein ? J'suis peut-être qu'un petit \nfantome, mais je sais être utile, \nhihihi !", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
+  "Pour utiliser un objet, c'est super \nsimple ! Tous tes trésors sont listés \nici avec leur quantité. Il te suffit \nde cliquer sur l'image de l'objet qui \nt'intéresse, puis d'appuyer sur \n'Utiliser'...et hop, son effet s'active ! \nFacile, non ? Fais juste attention à \nne pas gaspiller tes précieuses \nressources, hihihi !"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Le diable Maurice ?", 
+  "Tu veux des objets ? Hé hé, y'a deux \nfaçons d'en obtenir ! D'abord, tu peux \nles acheter dans la boutique du Babel \nCasino...mais attention, tout a un \nprix, et ici, rien n'est jamais \nvraiment gratuit, hihihi...Sinon, si t'as \nl'esprit affuté, tu peux aussi en \ngagner en résolvant des énigmes ! \nRéfléchis bien, et qui sait, une belle \nrécompense t'attend peut-être !"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Qui es-tu ?", 
+  "Un conseil ? Fais attention à ce qu'on \nte dit ici...surtout venant de Seer \net Death Knell. Ils aiment jouer avec \nles esprits, ils te souffleront des \nindices...toujours un peu faux, juste \nassez pour te perdre. Si tu les écoutes, \nsois prêt à en payer le prix, hihi...")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux y acceder"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
+(10,80),inventaire,ecran2,"Amu")
 
 hero = EcranHeros({
             btn_fleche : ecran_boutique,
@@ -975,7 +1060,7 @@ hero = EcranHeros({
             btn_windcliffe : windcliffe,
             btn_zukong : zukong,
             btn_zendo : zendo,
-            btn_maehv : maehv,
+            btn_maehv : PnjMaehv,
             btn_hsuku : hsuku,
             btn_sanguinar : sanguinar,
             btn_whistler : PnjWhistler,
@@ -983,7 +1068,7 @@ hero = EcranHeros({
 
 hero2 = EcranHeros({btn_fleche : ecran_boutique,
                     btn_aether : PnjAether,
-                    btn_twilight : twilight,
+                    btn_twilight : PnjTwilight,
                     btn_pureblade : PnjPureblade,
                     btn_suzumebachi : suzumebachi,
                     btn_dusk : dusk,
@@ -995,5 +1080,5 @@ PnjWhistler.set_salle(hero)
 PnjAether.set_salle(hero2)
 PnjWhistler.set_salle(hero2)
 PnjPureblade.set_salle(hero2)
-
-#https://create.kahoot.it/share/kahoot-de-la-saint-valentin/4c40967a-24dd-492c-b28a-c0a9bd0376b7
+PnjMaehv.set_salle(hero)
+PnjTwilight.set_salle(hero2)

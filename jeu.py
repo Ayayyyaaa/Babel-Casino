@@ -44,7 +44,8 @@ class Jeu():
         - self.hero : hero sélectionné par la joueur pour le jeu de combat
         - self.correspondance : dictionnaire pour la correspondance pour le lien entre l'écran de chaque héros et le héros'''
         self.run = True
-        self.ecrans = [ecran_machine_a_sous,ecran_mort,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,Chakkram,Archon,Excelsious,SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade]
+        self.ecrans = [ecran_machine_a_sous,ecran_mort,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,Chakkram,Archon,Excelsious,
+                       SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade,TheScientist,PnjMaehv,PnjTwilight,Seer,PileOuFace,babelRoulette,Hideatsu,Amu]
         self.champ_joueur = pygame.Rect(220, 420, 380, 64)
         self.code_cb = pygame.Rect(260, 650, 280, 64)
         self.nb_cb = pygame.Rect(200, 550, 400, 64)
@@ -123,7 +124,6 @@ class Jeu():
                                yggdra:self.yggdra,
                                dusk:self.dusk}
         self.nom_boss = {self.m : 'Michel', self.tb : 'TankBoss', self.c : 'Cindera', self.dl : 'DarkLord', self.astral : 'Astral (il est nul)', self.ep : 'EternityPainter', self.shidai : 'Shidai', self.solfist : 'Solfist', self.embla : 'Embla', self.lilithe : 'Lilithe', self.elyx : 'Elyx', self.sun : 'Sun', self.skurge : 'Skurge', self.noshrak : 'Noshrak', self.golem : 'Golem', self.purgatos : 'Purgatos', self.ciphyron : 'Ciphyron', self.soji : 'Soji', self.prophet : 'Prophet'}
-        self.pnj = [Chakkram,Archon,Excelsious,SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade]
     def running(self):
         son_joue = False
         dernier_son = time.time()
@@ -206,10 +206,17 @@ class Jeu():
                                 pygame.mixer.music.set_volume(0.3)
                                 pygame.mixer.music.play(-1)
                                 self.bosss = choice(list(self.nom_boss.keys()))
-                                self.combat = JeuCombat(self.hero,self.bosss,self.nom_boss[self.bosss]) #choice(self.boss)
+                                self.combat = JeuCombat(self.hero,self.bosss,self.nom_boss[self.bosss]) 
                                 self.combat.actif(True)
                                 self.combat.lancer()
-                            
+                        elif TheScientist.ecran.get_actif():
+                            if TheScientist.get_boutons()[0][0].collision(clic.get_clic()):
+                                TheScientist.ecran.set_actif(False)
+                                ecran2.ecran.set_actif(True)
+                                click.play()
+                                clic.set_clic((0,0))
+                                self.babelinvader = BabelInvader() 
+                                self.babelinvader.jouer()
                         elif ecran_machine_a_sous.ecran.get_actif():
                             # Lancer la machine à sous
                             if 680 <= event.pos[0] <= 780 and 200 <= event.pos[1] <= 500:
