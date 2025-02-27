@@ -45,7 +45,7 @@ class Jeu():
         - self.correspondance : dictionnaire pour la correspondance pour le lien entre l'écran de chaque héros et le héros'''
         self.run = True
         self.ecrans = [ecran_machine_a_sous,ecran_mort,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,Chakkram,Archon,Excelsious,
-                       SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade,TheScientist,PnjMaehv,PnjTwilight,Seer,PileOuFace,babelRoulette,Hideatsu,Amu]
+                       SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade,TheScientist,PnjMaehv,PnjTwilight,Seer,PileOuFace,babelRoulette,Hideatsu,Amu,NightWatcher]
         self.champ_joueur = pygame.Rect(220, 420, 380, 64)
         self.code_cb = pygame.Rect(260, 650, 280, 64)
         self.nb_cb = pygame.Rect(200, 550, 400, 64)
@@ -288,12 +288,11 @@ class Jeu():
                         # Combinaison pour lancer le jeu de voiture (Temporaire le temps d'avoir des boutons)
                         else:
                             self.mdp_acces_digicode += event.unicode
-                            print(self.mdp_acces_digicode)
                             if event.unicode == '0':
                                 self.mdp_acces_digicode = ""
                             if self.mdp_acces_digicode == "Babel Casino ouvre toi":
                                 self.mdp_acces_digicode = ""
-                                ecran2.ecran.set_actif(False), digicode.ecran.set_actif(True)
+                                ecran2.ecran.set_actif(False), NightWatcher.ecran.set_actif(True)
                 # Permet de gérer la passage du 1er onglet au 2e pour l'écran d'achat de héros dans la boutique
                 if hero.ecran.get_actif():
                     if btn_suivant.collision(clic.get_clic()):

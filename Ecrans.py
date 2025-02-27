@@ -1043,13 +1043,25 @@ Amu = EcranPnj([pygame.image.load(f'images/Pnj/Amu/_a_{i},100.png') for i in ran
 "Attends, attends, tu veux voir ton \ninventaire ? Laisse-moi faire, je \nvais t'aider ! Pouf Et voilà, tout ce \nque tu as sur toi s'affiche ici ! Pas mal, \nhein ? J'suis peut-être qu'un petit \nfantome, mais je sais être utile, \nhihihi !", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
   "Pour utiliser un objet, c'est super \nsimple ! Tous tes trésors sont listés \nici avec leur quantité. Il te suffit \nde cliquer sur l'image de l'objet qui \nt'intéresse, puis d'appuyer sur \n'Utiliser'...et hop, son effet s'active ! \nFacile, non ? Fais juste attention à \nne pas gaspiller tes précieuses \nressources, hihihi !"),
- (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Le diable Maurice ?", 
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Comment obtenir des objets ?", 
   "Tu veux des objets ? Hé hé, y'a deux \nfaçons d'en obtenir ! D'abord, tu peux \nles acheter dans la boutique du Babel \nCasino...mais attention, tout a un \nprix, et ici, rien n'est jamais \nvraiment gratuit, hihihi...Sinon, si t'as \nl'esprit affuté, tu peux aussi en \ngagner en résolvant des énigmes ! \nRéfléchis bien, et qui sait, une belle \nrécompense t'attend peut-être !"),
- (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Qui es-tu ?", 
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Un conseil ?", 
   "Un conseil ? Fais attention à ce qu'on \nte dit ici...surtout venant de Seer \net Death Knell. Ils aiment jouer avec \nles esprits, ils te souffleront des \nindices...toujours un peu faux, juste \nassez pour te perdre. Si tu les écoutes, \nsois prêt à en payer le prix, hihi...")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux y acceder"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
 (10,80),inventaire,ecran2,"Amu")
+
+NightWatcher = EcranPnj([pygame.image.load(f'images/Pnj/NightWatcher/_a_frm{i},80.png') for i in range(11)], 
+"Intrus...Tu n'as rien à faire ici. Tu \nmarches sur un territoire interdit, un \npas de plus et tu froles l'oubli. Si \nje le pouvais, je t'arracherais de \ncet endroit sur-le-champ. Mais les \nrègles m'en empêchent...Alors, profite de \ncette liberté éphémère...mais sache \nque le Babel Casino reprend \ntoujours ce qui lui appartient. Tot \nou tard, tu paieras le prix de \nton audace.", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Quel est cet endroit ?", 
+  "Tu es devant le coffre du Babel Casino...\nLà où reposent les richesses que \npeu ont osé convoiter, et encore moins \nont pu emporter. Ces armes ne sont pas \nfaites pour des mains comme les tiennes. \nElles consument, elles corrompent...\net elles réclament un tribut que tu n'es \npas prêt à payer. Tu crois pouvoir \nt'en emparer ? Pauvre fou...Elles te \nbriseront avant même que tu ne \ncomprennes ton erreur. Et moi, je \nsavourerai le spectacle quand elles te \nconsumeront jusqu'au dernier soupir."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Qui es-tu ?", 
+  "Qui je suis ? Hmph...Misérable insecte, \nton ignorance est presque insultante. \nJe suis le NightWatcher, le gardien \nde ce coffre interdit. Ma seule \nexistence est une menace, mon regard \nun avertissement. Je veille, immobile, \ninsensible au temps...et ceux qui osent \ns'approcher trop près regrettent \nd'avoir seulement posé les yeux sur moi. \nTu n'as aucun droit d'être ici. Et si les \nchaines qui me retiennent n'existaient \npas...tu ne serais déjà plus qu'un \nsouvenir effacé dans l'oubli."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Pourquoi es-tu enchainé ?", 
+  "J'étais une terreur sans nom, démon \ntraqué à travers tout le Royaume. Rois, \nmages et héros se sont unis pour me \nfaire tomber...mais aucun n'a réussi. \nAucun, sauf le Diable Maurice. Il m'a \ncapturé. Aujourd'hui, je suis son \ngardien. Une arme sous clé, une menace \nsuspendue au-dessus du royaume. \nMais ces chaines me lient, m'interdisant \nde déchirer les misérables joueurs \nqui osent s'aventurer ici. Ne t'y trompe \npas...Si je le pouvais, tu serais déjà \nréduit en poussière.")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux y acceder"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
+(-10,80),digicode,ecran2,"Night Watcher")
 
 hero = EcranHeros({
             btn_fleche : ecran_boutique,
