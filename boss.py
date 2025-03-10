@@ -151,11 +151,8 @@ class Michel:
         # Si toutes les images ont été jouées :
         if self.frame >= len(self.images_attaque1)-1:
             if -160 < distance(j1,self) < 50 and not j1.hero.get_block():
-                # Le héros perd 20 Pv
                 j1.hero.modif_pv(-20)
                 aie_hero.play()
-                # Image des dégâts subis
-                self.cd_dgt20 = time.time()
                 print(f'Attaque2 : Pv hero : {j1.hero.get_pv()}')
             # On remet tout à 0
             self.boss_sprite_attaque1 = 0
@@ -170,8 +167,6 @@ class Michel:
                 print(f'Attaque : Pv hero {j1.hero.get_pv()}')
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -311,8 +306,6 @@ class TankBoss:
             self.frames_degats = {}
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -437,11 +430,8 @@ class Cindera:
         # Si toutes les images ont été jouées :
         if self.frame >= len(self.images_attaque1)-1:
             if self.boss.get_collison() and not j1.hero.get_block():
-                # Le héros perd 20 Pv
                 j1.hero.modif_pv(-90)
                 aie_hero.play()
-                # Image des dégâts subis
-                self.cd_dgt20 = time.time()
                 print(f'Attaque2 : Pv hero : {j1.hero.get_pv()}')
             # On remet tout à 0
             self.boss_sprite_attaque1 = 0
@@ -461,8 +451,6 @@ class Cindera:
                 j1.hero.set_speed(j1.hero.get_speed()/0.6)
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -718,8 +706,6 @@ class Astral:
         if self.boss.get_collison() and not j1.hero.get_block() and 16 <= self.frame <= 25:
                 j1.hero.modif_pv(-1.5)
                 aie_hero.play()
-                # Image des dégâts subis
-                self.cd_dgt20 = time.time()
                 print(f'Attaque2 : Pv hero : {j1.hero.get_pv()}')
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
@@ -872,8 +858,6 @@ class EternityPainter:
             self.dgt3 = False
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -1028,8 +1012,6 @@ class Shidai:
             self.bonus = 0
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -1247,8 +1229,6 @@ class Lilithe:
             self.bonus = 0
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -1440,8 +1420,6 @@ class Solfist:
             self.dgt2 = False
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -1577,8 +1555,6 @@ class Elyx:
             self.dgt2 = False
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -1743,8 +1719,6 @@ class Embla:
             self.dgt3 = False
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -1889,8 +1863,6 @@ class Sun:
             self.dgt2 = False
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -2199,8 +2171,6 @@ class NoshRak:
             j1.hero.set_stun(False)
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -2342,8 +2312,6 @@ class Purgatos:
             j1.hero.set_stun(False)
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -2504,8 +2472,6 @@ class Ciphyron:
             j1.hero.set_stun(False)
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -2663,8 +2629,6 @@ class Golem:
             
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
             
         # Faire progresser les images pour l'animation
@@ -2817,8 +2781,6 @@ class Soji:
             self.dgt2 = False
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -2865,8 +2827,6 @@ class Soji:
             self.bonus = 0
         # Si le héros a bloqué l'attaque :
         if j1.hero.get_block():
-            # Image du block
-            j1.cd_block_img = time.time()
             print("Bloqué !")
         # Faire progresser les images pour l'animation
         self.frame += speed        
@@ -3181,7 +3141,6 @@ class Prophet:
         if int(self.frame) == 15 and not self.dgt1:
             self.compteur += 1
             if self.boss.get_collison() and not j1.hero.get_block():
-                # Le héros perd 20 Pv
                 j1.hero.set_poison(True)
                 j1.hero.modif_pv(-10)
                 aie_hero.play()
@@ -3297,11 +3256,8 @@ class Pandora:
         # Si toutes les images ont été jouées :
         if int(self.frame) == 15 and not self.dgt1:
             if self.boss.get_collison() and not j1.hero.get_block():
-                # Le héros perd 20 Pv
                 j1.hero.modif_pv(-20)
                 aie_hero.play()
-                # Image des dégâts subis
-                self.cd_dgt20 = time.time()
                 print(f'Attaque : Pv hero : {j1.hero.get_pv()}')
             if not self.minion:
                 self.minion = choice([Minion('Envy'),Minion('Fear')])

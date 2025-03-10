@@ -736,15 +736,15 @@ digicode = CoffreFort()
 alcool = EcranAlcool()
 PileOuFace = EcranPileOuFace()
 babelRoulette = EcranRoulette()
-klaxon = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
+klaxon = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Cryoblade.png'),
                         agrandir_liste_images([f'images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]),
                         ('Klaxon', 35000), 180, 224)
 
-cryoblade = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
+cryoblade = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Cryoblade.png'),
                            agrandir_liste_images([f'images/Jeu de combat/Cryoblade/Droite/Inaction/_a_{i},80.png' for i in range(16)]),
                            ('Cryoblade', 35000), 160, 210)
 
-reeju = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
+reeju = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Reeju.png'),
                        agrandir_liste_images([f'images/Jeu de combat/Reeju/Droite/Inaction/_a_{i},100.png' for i in range(14)]),
                        ('Reeju', 40000), 50, 100)
 
@@ -760,7 +760,7 @@ zendo = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Zendo.png
                        agrandir_liste_images([f'images/Jeu de combat/Zendo/Droite/Inaction/_a_frm{i},60.png' for i in range(14)]),
                        ('Zendo', 200000), 10)
 
-zukong = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/NightHero.png'),
+zukong = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Zukong.png'),
                         agrandir_liste_images([f'images/Jeu de combat/Zukong/Droite/Inaction/_a_frm{i},80.png' for i in range(14)]),
                         ('Zukong', 45000), 112, 150)
 
@@ -772,7 +772,7 @@ hsuku = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Hsuku.png
                        agrandir_liste_images([f'images/Jeu de combat/Hsuku/Droite/Inaction/_a_{i},80.png' for i in range(28)]),
                        ('Hsuku', 300000), 20)
 
-sanguinar = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/NightHero.png'),
+sanguinar = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Sanguinar.png'),
                            agrandir_liste_images([f'images/Jeu de combat/Sanguinar/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
                            ('Sanguinar', 400000), 20)
 
@@ -800,11 +800,11 @@ suzumebachi = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Suz
                              agrandir_liste_images([f'images/Jeu de combat/Suzumebachi/Droite/Inaction/_a_{i},80.png' for i in range(32)]),
                              ('Suzumebachi', 150000), 40)
 
-dusk = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Suzumebachi.png'),
+dusk = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Dusk.png'),
                       agrandir_liste_images([f'images/Jeu de combat/Dusk/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
                       ('Dusk', 200000), 40)
 
-yggdra = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Suzumebachi.png'),
+yggdra = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Yggdra.png'),
                         agrandir_liste_images([f'images/Jeu de combat/Yggdra/Droite/Inaction/_a_{i},80.png' for i in range(7)]),
                         ('Yggdra', 450000), 140, 140)
 class EcranHeros:

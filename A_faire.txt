@@ -1,0 +1,11 @@
+- Pnj de la machine à sous (écran et dialogues)
+- Écrans d'infos pour les héros :
+    - Klaxon
+    - Windcliffe
+    - Tethermancer
+- SQL : Faire sauvegarde nbr parties/meilleur score Babel Invader
+- Faire sons (Surtout pour le coffre fort !) + sons jeu de combat
+- Refaire l'écran de chargement
+- Annoncer le prochain boss combattu dans la Babel Arena (par le pnj de la Babel Arena par exemple)
+- Facultatif : 
+    - Pnj héros
