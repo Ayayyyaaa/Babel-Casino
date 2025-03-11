@@ -38,8 +38,7 @@ class Jeu():
         - self.nighthero à self.prophet : objets du jeu de combat pour les heros et boss
         - self.maskotte : booléen pour la souris Maskottchen
         - self.curseurabel : booléen pour la souris Princesse
-        - self.boss : boss du jeu de combat
-        - self.bosss : choix possibles de boss pour le jeu de combat
+        - self.boss : choix possibles de boss pour le jeu de combat
         - self.combat : objet du jeu de combat pour le hero et le boss
         - self.hero : hero sélectionné par la joueur pour le jeu de combat
         - self.correspondance : dictionnaire pour la correspondance pour le lien entre l'écran de chaque héros et le héros'''
@@ -104,7 +103,6 @@ class Jeu():
         self.combat = JeuCombat(self.nighthero,self.m, 'Michel')
         self.hero = self.nighthero
         self.heros = [maehv,zendo,zukong,nighthero,hsuku,whistler,sanguinar,tethermancer,pureblade,aether,twilight,suzumebachi,yggdra,dusk,klaxon,cryoblade,reeju,windcliffe] # Ecrans
-        self.bosss = self.prophet
         self.correspondance = {nighthero:self.nighthero,
                                klaxon:self.klaxon, 
                                cryoblade:self.cryoblade,
@@ -124,13 +122,21 @@ class Jeu():
                                yggdra:self.yggdra,
                                dusk:self.dusk}
         self.nom_boss = {self.m : 'Michel', self.tb : 'TankBoss', self.c : 'Cindera', self.dl : 'DarkLord', self.astral : 'Astral (il est nul)', self.ep : 'EternityPainter', self.shidai : 'Shidai', self.solfist : 'Solfist', self.embla : 'Embla', self.lilithe : 'Lilithe', self.elyx : 'Elyx', self.sun : 'Sun', self.skurge : 'Skurge', self.noshrak : 'Noshrak', self.golem : 'Golem', self.purgatos : 'Purgatos', self.ciphyron : 'Ciphyron', self.soji : 'Soji', self.prophet : 'Prophet'}
+        self.boss  = choice(list(self.nom_boss.keys()))
     def running(self):
         son_joue = False
         dernier_son = time.time()
         id_compte = det_id_compte(joueur1.get_pseudo(),self.mdp)
         ajouter_connexion(id_compte)
         joueur1.set_cagnotte(2000000)
-        while self.run:
+        Excelsious.modif_dialogue((Button(boutons_dialogue2, boutons_dialogue1, 350, 430), 'Comment jouer ?', 
+         lambda: f"Votre prochain adversaire est \n{self.nom_boss[self.boss]} !\n" # On modifie le dialogue de Excelsious pour qu'il puisse annoncer à l'avance les poss combattus par le joueur
+                 "Chaque héros possède des \ncaractéristiques uniques :\n"
+                 "- Flèche droite/gauche : déplacements \n"
+                 "- Touche 0 : attaque normale \n"
+                 "- Touche 1 : capacité secondaire \n(si le héros en possède une)\n"
+                 "De plus, certains héros possèdent des \npassifs uniques."),0)
+        while self.run: # Condition de jeu
             clic.set_clic((0,0))
             if not self.combat.get_actif():
                 # Fermer la fenêtre
@@ -197,16 +203,15 @@ class Jeu():
                                 Excelsious.ecran.set_actif(True),ecran2.ecran.set_actif(False)
                         elif Excelsious.ecran.get_actif():
                             if Excelsious.get_boutons()[0][0].collision(clic.get_clic()):
-                                Excelsious.ecran.set_actif(False)
-                                ecran2.ecran.set_actif(True)
+                                Excelsious.ecran.set_actif(False),ecran2.ecran.set_actif(True)
                                 click.play()
                                 clic.set_clic((0,0))
                                 pygame.mixer.music.unload()
                                 pygame.mixer.music.load(musique_combat)
                                 pygame.mixer.music.set_volume(0.3)
                                 pygame.mixer.music.play(-1)
-                                self.bosss = choice(list(self.nom_boss.keys()))
-                                self.combat = JeuCombat(self.hero,self.bosss,self.nom_boss[self.bosss]) 
+                                self.combat = JeuCombat(self.hero,self.boss,self.nom_boss[self.boss]) 
+                                self.boss = choice(list(self.nom_boss.keys())) # Prochain boss
                                 self.combat.actif(True)
                                 self.combat.lancer()
                         elif TheScientist.ecran.get_actif():

@@ -850,8 +850,16 @@ class EcranPnj:
         self.jeu = jeu
         self.nom = nom
         self.salle = salle
+    def modif_dialogue(self,dialogue:tuple,indice:int):
+        """Permet de modifier les dialogues d'un pnj.
+        Paramètres : 
+            - dialogue : tuple contenant le bouton du dialogue, son texte et le texte du dialogue associé
+            - indice : l'indice du dialogue à modifier"""
+        self. boutons_dialogue[indice] = dialogue
     def affiche(self):
         '''Permet d'afficher l'écran du personnage non joueur, avec les dialogues et les boutons d'actions.'''
+        if callable(self.txt_a_afficher):  # Cas des fonctions dynamiques avec lambda
+            self.txt_a_afficher = self.txt_a_afficher()  # Exécute la fonction si nécessaire
         fenetre.blit(self.fond, (0,0))
         if self.frame < len(self.img_pnj)-1:
             self.frame += 0.15
