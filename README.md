@@ -10,12 +10,15 @@ Jouez, pariez, faîtes preuve de chance et d'habilité, investiguez, résolvez d
 Alors, n'attendez plus, héros ! Le sort du monde est entre vos mains !
 
 
+## Notre wiki
+N'hésitez pas à visiter notre [wiki](https://babelcasino.fandom.com/fr/wiki/Wiki_Babel-Casino) pour obtenir plus d'informations sur notre jeu, sur son univers et son fonctionnement !
+
 ## Droits d'auteurs
 Tous les graphismes du jeu (personnages, fonds d'écrans...) ne nous appartiennent pas.
-1. Les spritesheets pour les personnages sont libres de droit et sont issues du jeu [Duelyst](https://github.com/open-duelyst/duelyst)
+1. Les sprites pour les personnages sont libres de droit et sont issus du jeu [Duelyst](https://github.com/open-duelyst/duelyst)
 2. Les images des boutons et des fonds d'écrans non-animés sont générés par Intelligence Artificielle
 3. Les fonds d'écrans animés du jeu de combat son issus du site [Imgur](https://imgur.com/a/fighting-gifs-GPlx4)
-4. Les images du héros Night Hero sont issues d'un asset pack gratuit de CreativeKind [Night Hero](https://creativekind.itch.io/nightborne-warrior)
+4. Les sprites du héros Night Hero sont issues d'un asset pack gratuit de CreativeKind [Night Hero](https://creativekind.itch.io/nightborne-warrior)
    
  
 Le bon fonctionnement du projet repose sur plusieurs modules qui ne nous appartiennent pas tels que:
