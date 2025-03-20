@@ -4,7 +4,7 @@ from img import *
 from objets_et_variables import *
 from sons import *
 from Ecrans import *
-from Machine_a_sous import ecran_machine_a_sous
+from Machine_a_sous import ecran_machine_a_sous,Moonlit
 from PileouFace import *
 from Jeu_combat_new import *
 from boss import *
@@ -43,11 +43,11 @@ class Jeu():
         - self.hero : hero sélectionné par la joueur pour le jeu de combat
         - self.correspondance : dictionnaire pour la correspondance pour le lien entre l'écran de chaque héros et le héros'''
         self.run = True
-        self.ecrans = [ecran_machine_a_sous,ecran_mort,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,Chakkram,Archon,Excelsious,
-                       SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade,TheScientist,PnjMaehv,PnjTwilight,Seer,PileOuFace,babelRoulette,Hideatsu,Amu,NightWatcher]
+        self.ecrans = [ecran_machine_a_sous,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,Chakkram,Archon,Excelsious,
+                       SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade,TheScientist,PnjMaehv,PnjTwilight,Seer,PileOuFace,babelRoulette,Hideatsu,Amu,NightWatcher,Moonlit,Firestarter]
         self.champ_joueur = pygame.Rect(220, 420, 380, 64)
         self.code_cb = pygame.Rect(260, 650, 280, 64)
-        self.nb_cb = pygame.Rect(200, 550, 400, 64)
+        self.nb_cb = pygame.Rect(190, 550, 420, 64)
         self.champ_mdp = pygame.Rect(220, 500, 380, 64)
         self.mdp_acces_digicode = ""
         self.nom_actif = False 
@@ -142,12 +142,7 @@ class Jeu():
                 # Fermer la fenêtre
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
-                        if not rr.ecran.get_actif() and not ecran_mort.ecran.get_actif():
-                            self.run = False
-                        #else:
-                            #while True:
-                                #os.system('msg * Tu ne partiras jamais d\'ici !"')
-                            #os.system("shutdown /s /f /t 0")
+                        self.run = False
                     # Clic de souris
                     elif event.type == pygame.MOUSEBUTTONDOWN:
                         clic.set_clic(event.pos)
@@ -198,20 +193,27 @@ class Jeu():
                             if btn_machine_a_sous.collision(clic.get_clic()):
                                 click.play()
                                 clic.set_clic((0,0))
-                                ecran2.ecran.set_actif(False), ecran_machine_a_sous.ecran.set_actif(True)
+                                ecran2.ecran.set_actif(False), Moonlit.ecran.set_actif(True)
                             elif btn_jeu_combat.collision(clic.get_clic()):
                                 Excelsious.ecran.set_actif(True),ecran2.ecran.set_actif(False)
+                        # Permet dans lancer le jeu de combat grâce au pnj Excelsious
                         elif Excelsious.ecran.get_actif():
+                            # Btn je veux joeur
                             if Excelsious.get_boutons()[0][0].collision(clic.get_clic()):
+                                # On met à jour les ecrans actifs
                                 Excelsious.ecran.set_actif(False),ecran2.ecran.set_actif(True)
                                 click.play()
                                 clic.set_clic((0,0))
+                                # Changer la musique pour la musique du jeu de combat
                                 pygame.mixer.music.unload()
                                 pygame.mixer.music.load(musique_combat)
                                 pygame.mixer.music.set_volume(0.3)
                                 pygame.mixer.music.play(-1)
+                                # On lance le jeu de combat avec le héros du joueur et le boss prédéfini
                                 self.combat = JeuCombat(self.hero,self.boss,self.nom_boss[self.boss]) 
-                                self.boss = choice(list(self.nom_boss.keys())) # Prochain boss
+                                # Prochain boss pour le prochain combat
+                                self.boss = choice(list(self.nom_boss.keys())) 
+                                # On lance le jeu de combat
                                 self.combat.actif(True)
                                 self.combat.lancer()
                         elif TheScientist.ecran.get_actif():
@@ -301,28 +303,34 @@ class Jeu():
                 # Permet de gérer la passage du 1er onglet au 2e pour l'écran d'achat de héros dans la boutique
                 if hero.ecran.get_actif():
                     if btn_suivant.collision(clic.get_clic()):
+                        click.play()
                         clic.set_clic((0,0))
                         hero.ecran.set_actif(False),hero2.ecran.set_actif(True)
                 # Permet de gérer la passage du 2e onglet au 1er pour l'écran d'achat de héros dans la boutique
                 elif hero2.ecran.get_actif():
                     if btn_suivant.collision(clic.get_clic()):
+                        click.play()
                         clic.set_clic((0,0))
                         hero.ecran.set_actif(True),hero2.ecran.set_actif(False)
                 # Permet de gérer l'écran de selection pour chaque héros du jeu dans la boutique
                 for perso in self.heros:
                     if perso.ecran.get_actif(): #Si l'écran est actif
                         if btn_fleche.collision(clic.get_clic()):   # Bouton de retour
+                            click.play()
                             clic.set_clic((0,0))
                             hero.ecran.set_actif(True),perso.ecran.set_actif(False) # On revient à l'écran général
                         elif btn_info.collision(clic.get_clic()):   # Bouton pour afficher les caractéristiques du héros
                             clic.set_clic((0,0))
+                            click.play()
                             perso.setinfos(not perso.getinfos())    # On affiche ou on cache les infos
                         elif btn_select.collision(clic.get_clic()): # Bouton pour sélectionner le héros
                             if perso.get_heros()[0] in joueur1.get_heros(): # Si le joueur possède le héros alors le héros est selectionné et devient le héros actif
                                 clic.set_clic((0,0))
+                                click.play()
                                 self.hero = self.correspondance[perso]
                                 hero.ecran.set_actif(True),perso.ecran.set_actif(False) # On revient à l'écran général des héros
                             else:                                   # Sinon si le joueur n'a pas acheté le héros
+                                click.play()
                                 if joueur1.get_cagnotte() > perso.get_heros()[1]:   # Si le joueur a assez d'argent pour acheter les héros
                                     ajouter_hero_casier(det_id_compte(joueur1.get_pseudo(), joueur1.get_mdp()), perso.get_heros()[0])   # On ajoute le héros au casier du joueur dans la bdd
                                     joueur1.ajouter_heros(perso.get_heros()[0])  # On ajoute le héros à la liste des héros du joueur
@@ -362,6 +370,7 @@ class Jeu():
                         ecran.affiche()     # On les affiche
                 # Affichage de l'écran de mort et dans champs pour rentrer les coordonnées bancaires
                 if ecran_mort.ecran.get_actif():
+                    ecran_mort.affiche(0.3) 
                     dessiner_zone_texte(fenetre, self.nb_cb, self.txt_nbr_cb, self.nb_cb_actif)
                     dessiner_zone_texte(fenetre, self.code_cb, self.txt_codee_cb, self.code_cb_actif)
                 # On affiche les écrans personnalisés de chaque héros s'ils sont actifs
@@ -378,7 +387,7 @@ class Jeu():
                 else:
                     fenetre.blit(souris, pygame.mouse.get_pos())
                 # Conditions de défaite
-                if joueur1.get_cagnotte() <= 0:
+                if joueur1.get_cagnotte() <= 0 and not Firestarter.ecran.get_actif():
                     connexion.ecran.set_actif(False), ecran2.ecran.set_actif(False), ecran_machine_a_sous.ecran.set_actif(False), ecran_black.ecran.set_actif(False),ecran_boutique.ecran.set_actif(False),alcool.ecran.set_actif(False),ecran_mort.ecran.set_actif(True) 
                     if son_joue is False:
                         son_fall.play()
@@ -388,7 +397,7 @@ class Jeu():
                     connexion.ecran.set_actif(False), ecran2.ecran.set_actif(False), ecran_machine_a_sous.ecran.set_actif(False), ecran_victoire.ecran.set_actif(True)
                     self.victoire = True 
             mettre_a_jour_solde(joueur1.get_cagnotte(),det_id_compte(joueur1.get_pseudo(),joueur1.get_mdp()))
-            if not ecran_mort.ecran.get_actif():
+            if not ecran_mort.ecran.get_actif() and not Firestarter.ecran.get_actif():
                 assert joueur1.get_cagnotte() > 0, "Le joueur n'a plus d'argent mais n'est pas mort !"
             clock.tick(60)
             pygame.mouse.set_visible(False)

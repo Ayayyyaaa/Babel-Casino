@@ -45,6 +45,7 @@ class Ecran1:
                     # On passe à l'écran suivant, en mettant a jour la musique
                     connexion.ecran.set_actif(False) , ecran2.ecran.set_actif(True)
                     clic.set_clic((0,0))
+                    rire_maurice.play()
                     # On met à jour la musique de fond
                     self.choisir_musique()
     def choisir_musique(self):
@@ -56,23 +57,8 @@ class Ecran1:
             - Si le joueur a un pseudo qui s'apparente a un RickRoll, on lance celui-ci.
             - Sinon, s'il n'y a pas de musique de fond, que le joueur change de pseudo ou que le combat a été réussi, on charge un nouvelle musique (musique_de_fond)
         '''
-        # Si le joueur s'appelle fredou
-        if joueur1.get_pseudo().lower() == 'fredou':
-            # S'il n'y a pas du musique de fond ou que le joueur a changé de pseudo (Il se connecte avec le pseudo fredou)
-            if not pygame.mixer.music.get_busy() or self.ancien_pseudo != joueur1.get_pseudo():
-                # On enelève la musique de fond
-                pygame.mixer.music.unload()
-                # On charge la musique de fredou
-                pygame.mixer.music.load(son_champignon)
-                # On met le volume à 0.1
-                pygame.mixer.music.set_volume(0.1)
-                # On la joue en boucle
-                pygame.mixer.music.play(-1)
-                # On met à jour l'ancien pseudo
-                self.ancien_pseudo = joueur1.get_pseudo()
-                self.fin_combat = True
         # Si le joueur s'appelle Rick Astley (Pour la musique du Rick Roll)
-        elif joueur1.get_pseudo().lower() in ['rick','rickroll','rick roll', 'rickastley', 'rick astley']:
+        if joueur1.get_pseudo().lower() in ['rick','rickroll','rick roll', 'rickastley', 'rick astley']:
             # S'il n'y a pas du musique de fond ou que le joueur a changé de pseudo (Il se connecte avec le pseudo Rick)
             if not pygame.mixer.music.get_busy() or self.ancien_pseudo != joueur1.get_pseudo():
                 # On passe à l'écran du Rick Roll
@@ -123,11 +109,8 @@ class Ecran2:
         Permet d'afficher l'écran principal et de gérer l'animation des boutons et mettre à jour les animations des jeux.
         '''
         # On gère les effets spécifiques à certains pseudos 
-        if joueur1.get_pseudo().lower() == 'fredou':
-            # On affiche le fond d'écran spécial de Fredou
-            self.fond = pygame.image.load('images/Fonds d\'ecran/coeurfredou.png').convert()
         # Cas du joueur Mr Morrhysse
-        elif joueur1.get_pseudo().lower() == 'mr.maurice' or joueur1.get_pseudo().lower() == 'mr maurice' or joueur1.get_pseudo().lower() == 'maurice':
+        if joueur1.get_pseudo().lower() == 'mr.maurice' or joueur1.get_pseudo().lower() == 'mr maurice' or joueur1.get_pseudo().lower() == 'maurice':
             # On change le pseudo pour gratter des tickets
             joueur1.set_pseudo('Le meilleur')  # Mettez nous des tickets et un 20/20 svp
             # On refait les vérifications de compte avec le nouveau pseudo
@@ -160,6 +143,7 @@ class Ecran2:
         # Si on clique sur le bouton pour accéder à la boutique
         if btn_boutique.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(True),ecran2.ecran.set_actif(False)
+            click.play()
             clic.set_clic((0,0))
         # Si on clique sur le bouton pour lancer la roulette russe
         elif btn_roulette.collision(clic.get_clic()):
@@ -194,7 +178,7 @@ class Ecran2:
             ecran2.ecran.set_actif(False), Amu.ecran.set_actif(True) # On définit l'ecran d'Amu (qui donne accès à l'écran de l'inventaire) actif
         # Si on ouvre le classement
         elif btn_classement.collision(clic.get_clic()):   
-            print("aled")
+            click.play()
             Archon.ecran.set_actif(True), ecran2.ecran.set_actif(False)
             classement.actualiser_classement()  
             clic.set_clic((0,0))
@@ -256,14 +240,49 @@ class Ecran2:
         fenetre.blit(charger_et_agrandir(self.btn_classement[int(self.frame)]), (376, -10))
 
 class EcranMort:
-    def __init__(self):
+    def __init__(self) -> 'EcranMort':
         self.ecran = Ecran()
-        self.fond =  pygame.image.load('images/Fonds d\'ecran/enfer2.png').convert()
-    def affiche(self):
-        '''
-        Permet d'afficher l'écran de mort.
-        '''
-        fenetre.blit(self.fond, (0, 0))
+        self.frames =  [pygame.image.load(f'images/Fonds d\'ecran/Mort/_a_frm{i},100.png').convert_alpha() for i in range(8)] # Images du gif 
+        self.num_frame = 0 # Indice de l'image actuelle
+        self.pnj = [pygame.image.load(f'images/Pnj/Firestarter/_a_{i},100.png') for i in range(12)] # Images du pnj
+        self.indice_pnj = 0 # Indice de l'image du pnj
+    def affiche(self,speed:float):
+        '''Permet d'afficher l'écran de rickroll.
+        Paramètres :
+            - speed (float) : la vitesse de l'animation.'''
+        self.num_frame += speed # Fait progresser l'animation
+        self.indice_pnj += speed/2 # Fait progresser l'animation du pnj
+        # Si toutes les images ont été jouées :
+        if int(self.num_frame) == len(self.frames)-1:
+            # On remet tout à 0
+            self.num_frame = 0
+        if int(self.indice_pnj) == len(self.pnj)-1:
+            # On remet tout à 0
+            self.indice_pnj = 0
+        if Firestarter_btn.collision(clic.get_clic()):
+            print("clic")
+            Firestarter.ecran.set_actif(True),ecran_mort.ecran.set_actif(False)
+
+        fenetre.blit(self.frames[int(self.num_frame)], (0, 0))  # Fond d'écran
+        # Image actuelle du Pnj
+        pnj_image = self.pnj[int(self.indice_pnj)]
+        # Vérification du survol du bouton
+        if Firestarter_btn.collision(pygame.mouse.get_pos()):
+            # Création du masque
+            mask = pygame.mask.from_surface(pnj_image)
+
+            # Création d'une surface blanche correspondant au masque agrandi
+            mask_surface = mask.to_surface(setcolor=(255, 255, 255, 255), unsetcolor=(0, 0, 0, 0))
+
+            # Augmenter la taille du masque (ajouter une bordure)
+            enlarged_mask = pygame.transform.scale(mask_surface, 
+                                                   (mask_surface.get_width() + 20, mask_surface.get_height() + 20))
+
+            # Afficher le masque avant d'afficher l'image du PNJ
+            fenetre.blit(enlarged_mask, (-111, 386))  # Décaler légèrement pour centrer l'effet
+
+        # Affichage des éléments
+        fenetre.blit(pnj_image, (-100, 400))  # PNJ
 
 class EcranVictoire:
     def __init__(self):
@@ -289,6 +308,7 @@ class EcranVictoire:
         if btn_retour.collision(clic.get_clic()):
             # On enlève la musique de victoire et on remet l'ancienne
             clic.set_clic((0,0))
+            click.play()
             pygame.mixer.music.unload()
             connexion.choisir_musique()
             # On remet l'écran principal en tant qu'écran actif
@@ -322,14 +342,17 @@ class EcranBoutique:
         if btn_fleche.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(False),ecran2.ecran.set_actif(True)
             clic.set_clic((0,0))
+            click.play()
         # Bouton pour la page d'achat des héros
         elif btn_hero.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(False),SunForge.ecran.set_actif(True)
             clic.set_clic((0,0))
+            click.play()
         # Bouton pour la page d'achat des alcools
         elif btn_alcool.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(False),Rook.ecran.set_actif(True)
             clic.set_clic((0,0))
+            click.play()
         # Animation du bouton des héros
         elif btn_hero.collision(pygame.mouse.get_pos()):
             self.anim(0.1)
@@ -379,7 +402,7 @@ class EcranClassement:
         btn_fleche.draw(fenetre, pygame.mouse.get_pos())  # Affichage du bouton 
         # Bouton retour
         if btn_fleche.collision(clic.get_clic()):
-            print("aled")
+            click.play()
             classement.ecran.set_actif(False)  # Passage à l'écran de la boutique
             ecran2.ecran.set_actif(True)  # Passage à un autre écran
             clic.set_clic((0, 0))  # Réinitialisation du clic
@@ -437,6 +460,7 @@ class EcranAlcool:
             self.vodka,self.biere,self.whisky,self.mojito = False,False,False,False
         # Bouton retour
         if btn_fleche.collision(clic.get_clic()):
+            click.play()
             clic.set_clic((0,0))
             alcool.ecran.set_actif(False),ecran_boutique.ecran.set_actif(True)
         # Si on clique sur un bouton d'achat de la vodka, on lance le gif de Poutine
@@ -588,6 +612,7 @@ class EcranInventaire:
                 curseur_selection.set_pos(item.get_pos())
                 curseur_selection.set_actif(True)
                 clic.set_clic((0,0))
+                click.play()
             elif btn_valider.collision(clic.get_clic()):
                 # Si l'item selectionné est présent dans l'inventaire du joueur
                 if self.selectione in joueur1.get_inventaire().keys() and joueur1.get_inventaire()[self.selectione] > 0:
@@ -597,6 +622,7 @@ class EcranInventaire:
                     self.alcools_effets[self.selectione].boire(joueur1)
                 curseur_selection.set_actif(False)
                 clic.set_clic((0,0))
+                click.play()
             # Si on clique ailleurs, on desselectionne les items
             elif clic.get_clic() != (0,0):
                 curseur_selection.set_actif(False)
@@ -620,8 +646,8 @@ class Intro:
         self.i_ecran = 0
         self.txt = ""
         self.indice = 0
-        self.texte1 = "Oyez brave héros ! Durant votre voyage, vous arrivez sur le territoire\n du Royaume. En ces périodes troublées, marquées de raids de pillards \nqui s'intensifient, de démons qui terrorisent les populations, de disparitions \ninexpliquées et de la guerre qui gronde aux frontières, le roi Harold vous \nconfie une mission : Faire chuter un mystérieux casino qui s'est implanté \ndans la région. Son nom : Le Babel Casino. \nDes nombreuses expéditions lancées, pourtant menées par la garde du roi ou \ndes aventuriers chevronnés, aucune n'est revenue...Si bien qu'on raconte \ntoutes sortes de légendes sur ce casino mystérieux, selon lesquelles le \ncasino serait géré par le diable lui même. Alors, n'attendez plus héros ! \nL'avenir du Royaume dépend de vous ! Accompagné de votre fidèle ami \nNight Hero, formé à l'art du combat, vous poussez les lourdes portes du \nBabel Casino...Le plan : mener le Babel Casino à la faillite : pour cela, il \nfaut prendre la casino à son propre jeu : soyez malins,faites preuve \nde chance et investiguez pour réussir à rassembler la somme de \n10 000 000 Babel Coins. Le roi Harold vous a fourni un bourse contenant \n200 000 Babel Coins, à vous d'en faire bon usage ! Ainsi, vous pourrez jouer \naux divers jeux proposés par le Babel Casino : votre chance sera de mise si \nvous vous laissez tenter par la Babel Roulette, le Babel Face ou encore\nle Babel Gambling. Vous préférez vous reposer sur votre habilité seule ? "
-        self.texte2 = "Soit, le Babel Invader est fait pour vous. Enfin, vous pourrez mettre à l'épreuve \nvos capacités guerrières (enfin celles de votre ami, Night Hero : c'est à peine \nsi vous savez tenir une arme.) Vous serez face aux démons et pécheurs du \nBabel Casino, ceux ayant échoué face à celui-ci...Mais prenez garde : un seul \nfaux pas et vous les rejoindrez ! Vous rencontrerez peut-être certains \nvoyageurs de passage pour vous prêter main forte contre quelque \nrémunération, en mettant leurs habilités au combat à votre service. Pour finir, \nexplorez le Babel Casino, investiguez, peut être parviendrez vous à trouver \ndes objets qui vous aideront dans votre quête, tels que les alcools du bar, ou \nmême les crampons dorés, l'arme de prédilection du légendaire guerrier \nBenyamine, surnommé la Meaurylle aux mille victoires. Alors héros, au nom de la \nsurvie du Royaume...\nBonne chance ! "
+        self.texte1 = "Oyez brave héros ! Durant votre voyage, vous arrivez sur le territoire\n du Royaume. En ces périodes troublées, marquées de raids de pillards \nqui s'intensifient, de démons qui terrorisent les populations, de disparitions \ninexpliquées et de la guerre qui gronde aux frontières, le roi Harold vous \nconfie une mission : Faire chuter un mystérieux casino qui s'est implanté \ndans la région. Son nom : Le Babel Casino. \nParmi les nombreuses expéditions lancées, pourtant menées par la garde du roi \nou des aventuriers chevronnés, aucune n'est revenue...Si bien qu'on raconte \ntoutes sortes de légendes sur ce casino mystérieux, selon lesquelles le \ncasino serait géré par le diable lui-même. Alors, n'attendez plus héros ! \nL'avenir du Royaume dépend de vous ! Accompagné de votre fidèle ami \nNight Hero, formé à l'art du combat, vous poussez les lourdes portes du \nBabel Casino...Le plan : mener le Babel Casino à la faillite : pour cela, il \nfaut prendre le casino à son propre jeu : soyez malins, faites preuve \nde chance et investiguez pour réussir à rassembler la somme de \n10 000 000 Babel Coins. Le roi Harold vous a fourni une bourse contenant \n200 000 Babel Coins, à vous d'en faire bon usage ! Ainsi, vous pourrez jouer \naux divers jeux proposés par le Babel Casino : votre chance sera de mise si \nvous vous laissez tenter par la Babel Roulette, le Babel Face ou encore\nle Babel Gambling. Vous préférez vous reposer sur votre habileté seule ? "
+        self.texte2 = "Soit, le Babel Invader est fait pour vous. Enfin, vous pourrez mettre à l'épreuve \nvos capacités guerrières (enfin celles de votre ami, Night Hero, car c'est à \npeine si vous savez tenir une arme.) Vous serez face aux démons et pécheurs \ndu Babel Casino, ceux ayant échoué face à celui-ci...Mais prenez garde : un seul \nfaux pas et vous les rejoindrez ! Vous rencontrerez peut-être certains \nvoyageurs de passage pour vous prêter main-forte contre quelque \nrémunération, en mettant leurs habilités au combat à votre service. Pour finir, \nexplorez le Babel Casino, investiguez, et peut-être parviendrez vous à \ntrouver des objets qui vous aideront dans votre quête, tels que les alcools du \nbar, ou même les crampons dorés, armes de prédilection du légendaire guerrier \nBenyamine, surnommé la Meaurylle aux mille victoires. Alors héros, au nom de la \nsurvie du Royaume...\nBonne chance ! "
         self.police = pygame.font.Font('babelcasino.ttf', 16)
         self.page = 0
         self.pages = [self.texte1,self.texte2]
@@ -638,6 +664,7 @@ class Intro:
             else:
                 lore.ecran.set_actif(False),connexion.ecran.set_actif(True)
             clic.set_clic((0,0))
+            click.play()
         if clic.get_clic() != (0,0):
             self.indice = len(self.pages[self.page]) - 1
             clic.set_clic((0,0))
@@ -746,7 +773,7 @@ cryoblade = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Cryob
 
 reeju = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Reeju.png'),
                        agrandir_liste_images([f'images/Jeu de combat/Reeju/Droite/Inaction/_a_{i},100.png' for i in range(14)]),
-                       ('Reeju', 40000), 50, 100)
+                       ('Reeju', 40000), 80, 140)
 
 windcliffe = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
                             agrandir_liste_images([f'images/Jeu de combat/Windcliffe/Droite/Inaction/_a_{i},80.png' for i in range(9)]),
@@ -820,6 +847,7 @@ class EcranHeros:
             btn.draw(fenetre,pygame.mouse.get_pos())    # On affiche le bouton
             if btn.collision(clic.get_clic()):  # Si on clique dessus
                 clic.set_clic((0,0))    # On reset le clic
+                click.play()
                 ecran.ecran.set_actif(True),self.ecran.set_actif(False)   # On affiche l'écran du héros
 
 class EcranPnj:
@@ -887,6 +915,7 @@ class EcranPnj:
             # Si le bouton est cliqué, on change le dialogue et on reset le compteur d'indice
             if bouton[0].collision(clic.get_clic()):
                 clic.set_clic((0,0))
+                click.play()
                 self.txt_a_afficher = bouton[2]
                 self.indice = 0
         # Boutons d'interaction
@@ -899,6 +928,7 @@ class EcranPnj:
             # Si le bouton est cliqué reset le compteur d'indice   
             if bouton[0].collision(clic.get_clic()):
                 clic.set_clic((0,0))
+                click.play()
                 self.txt_a_afficher = self.dialogue
                 self.indice = 0
                 # Si le joueur met fin au dialogue, on remet tout comme avant en mettant l'écran du pnj a False
@@ -1070,6 +1100,17 @@ NightWatcher = EcranPnj([pygame.image.load(f'images/Pnj/NightWatcher/_a_frm{i},8
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux y acceder"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
 (-10,80),digicode,ecran2,"Night Watcher")
+
+Firestarter = EcranPnj([pygame.image.load(f'images/Pnj/Firestarter/_a_{i},100.png') for i in range(12)], 
+"Tu as trop joué avec le feu, mortel...", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Quel est cet endroit ?", 
+  "Tu es ici au plus profond du Babel \nCasino...devant se véritable nature, au \ncoeur meme du royaume du tout \npuissant diable Maurice..."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Pourquoi suis-je ici ?", 
+  "Tu as tenté de t'emparer de ce qui \nappartient au casino, tu as tenté de le \nduper, c'est ta cupidité et ton \naddiction aux jeux d'argent qui t'a \nmené ici. On ne se mesure pas au diable \nMaurice."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Comment partir ?", 
+  "Souffrance et douleur. C'est ce qui \nt'attend ici, pour l'éternité : c'est la \nsentence à payer pour avoir pensé \npouvoir rouler le Babel Casino. Un \nchatiment éternel t'attend ici...à moins \nque tu rentres des coordonnées \nbancaires dans les 2 champs prévus à \ncet effet. Tu pourras alors repartir \nsain et sauf. C'est ton choix, mortel.")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
+(-10,80),ecran_mort,ecran_mort,"Firestarter",'images/Fonds d\'ecran/Mort/_a_frm0,100.png')
 
 hero = EcranHeros({
             btn_fleche : ecran_boutique,

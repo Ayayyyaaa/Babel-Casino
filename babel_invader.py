@@ -3,7 +3,7 @@ import random
 from objets_et_variables import *
 import sys
 import numpy as np
-
+from SQL import meilleur_score,det_id_compte
 clock = pygame.time.Clock() 
 
 class Explosion:
@@ -163,8 +163,8 @@ class Vaisseau:
             - self.dgt (int) : les dégâts infligés par le joueur
             - self.lvl (dict) : les paramètres du vaisseau par niveau
         '''
-        self.vie_max = 100
-        self.vie = 100
+        self.vie_max = 10
+        self.vie = 10
         self.x = 375
         self.y = 750
         self.vitesse_projectile = 5
@@ -530,6 +530,9 @@ class BabelInvader:
         pygame.display.flip()
         pygame.time.wait(3000)
         # On met à jour le solde du joueur 
+        id_compte = det_id_compte(joueur1.get_pseudo(),joueur1.get_mdp())
+        meilleur_score(self.vaisseau.get_score(),id_compte)
+        print("aled")
         if self.vaisseau.get_score() < 5000:
             # S'il a moins de 5000 de score, il perd 12% de son solde - 1000 pièces
             joueur1.modifier_cagnotte(-joueur1.get_cagnotte()//8 - 1000)

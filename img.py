@@ -22,7 +22,6 @@ pluie = [pygame.image.load(f'images/Jeu de combat/Fonds/Pluie/_a_frm{i},120.png'
 lave = [pygame.image.load(f'images/Jeu de combat/Fonds/Lave/_a_frm{i},100.png') for i in range(8)]
 temple = [pygame.image.load(f'images/Jeu de combat/Fonds/Temple/_a_frm{i},100.png') for i in range(8)]
 desert = [pygame.image.load(f'images/Jeu de combat/Fonds/Desert/_a_frm{i},80.png') for i in range(8)]
-fond3 = pygame.image.load('images/Fonds d\'ecran/enfer2.png').convert()
 diable = charger_et_agrandir('images/Diable.png')
 entrer = pygame.image.load('images/Boutons_autre/Entrer-1.png').convert_alpha()
 entrer2 = pygame.image.load('images/Boutons_autre/Entrer-2.png').convert_alpha()
@@ -98,6 +97,9 @@ fond_intro = pygame.image.load('images/Fonds d\'ecran/Fond_intro.png').convert_a
 fond_dialogues = pygame.image.load('images/Fonds d\'ecran/Dialogues5.png').convert_alpha()
 boutons_dialogue1 = pygame.image.load('images/cartouche_classement.png').convert_alpha()
 boutons_dialogue2 = pygame.image.load('images/cartouche_classement2.png').convert_alpha()
+
+# Ecran Mort
+Firestarter1 = pygame.image.load('images/Pnj/Firestarter/_a_0,100.png').convert_alpha()
 
 # Icones Jeux
 boutique1 = pygame.image.load('images/Icones_jeux/boutique1.png').convert_alpha()

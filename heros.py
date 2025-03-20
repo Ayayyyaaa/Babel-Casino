@@ -1776,7 +1776,7 @@ class Aether:
 
 class Twilight:
     def __init__(self):
-        self.hero = Hero(100,450,8.5,0.15,0.25,5,3,'Feu')
+        self.hero = Hero(150,450,8.5,0.15,0.25,5,3,'Feu')
         self.atk1_d = [f'images/Jeu de combat/Twilight/Droite/Attaque1/_a_{i},60.png' for i in range(22)]
         self.atk1_g = [f'images/Jeu de combat/Twilight/Gauche/Attaque1/_a_{i},60.png' for i in range(22)]
         self.images_marche_d = [f'images/Jeu de combat/Twilight/Droite/Marche/_a_{i},60.png' for i in range(8)] 
@@ -1807,7 +1807,7 @@ class Twilight:
         if self.hero.get_pv() > 0:
             if self.hero.get_collison() and 9 <= int(self.frame) <= 16 and not j2.boss.get_block():
                 aie_boss.play()
-                j2.boss.modif_pv(-0.60*multis*joueur1.get_multis_jeu_combat())
+                j2.boss.modif_pv(-0.90*multis*joueur1.get_multis_jeu_combat())
                 j2.boss.set_poison(time.time())
             if self.frame >= len(self.atk1_d)-1:
                 self.frame = 0

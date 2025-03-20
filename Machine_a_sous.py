@@ -1,7 +1,7 @@
 import pygame
 import numpy
 from fonctions import *
-from Ecrans import Ecran,ecran2
+from Ecrans import Ecran,ecran2,EcranPnj
 from objets_et_variables import joueur1
 from sons import click
 
@@ -89,3 +89,15 @@ class EcranMachineASous:
             joueur1.modifier_cagnotte(jetons_gagnes)
 
 ecran_machine_a_sous = EcranMachineASous()
+
+Moonlit = EcranPnj([pygame.image.load(f'images/Pnj/Moonlit/_a_frm{i},80.png') for i in range(14)], 
+"Ksssst...Intrus...tu es attiré ici par \nl'appat du gain...Ici se trouvent les \nMachines à sous du Babel Casino, le \nBabel Gambling. Amuse toi mais...garde \nun oeil sur ta bourse, ou elle se \nvidera avant que tu ne t'en rendes \ncomptes...ou peut-etre qu'elle se \nremplira, qui sait ?", 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
+  "Appuie sur le levier : ton solde sera \nautomatiquement débité, et tu \nobtiendras un lancer de Babel Gambling. \nSi tu as 3 fruits identiques, c'est le \njackpot ! Tu gagnes une grande somme \nd'argent, selon la rareté du fruit."),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Les sommes en jeu ?", 
+  "Intrus...ces machines mythiques \npourront t'offrir une richesse dont \ntu n'as pas idée...mais pourront aussi \ncauser ta perte. Un lancer te coutera \n100 Babel Coins + 10% de ton solde. \nPour les gains : \n- Oranges : 8 000 + 2.5% du solde  \n- Cerise : 14 000 + 4% du solde \n- Pomme : 21 000 + 6,6% du solde \n- Pastèque : 50 000 + 20% du solde \n- Babel Apple : 10 000 000 "),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Qui es-tu ?", 
+  "Je suis Moonlit, dragon du vent et des \neaux. Je pourrais te déchiqueter ton \ncorps d'une multitude de lames de vents...\nCependant, je suis le serviteur du \ndiable Maurice. Ici, je ne suis pas libre, \net je suis les ordres qu'il me donne. Je \nsupervise donc les machines de Babel \nGambling, pour éviter que des \navortons en ton genre ne trichent au vu \ndes sommes astronomiques en jeu. Va, \njoue, et meurs. Tu as de la chance \nque je ne te dévorre pas sur place, car \nle diable Maurice tient à son profit...\n")  ], 
+[(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux y acceder"),
+ (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
+(50,80),ecran_machine_a_sous,ecran2,"Moonlit")

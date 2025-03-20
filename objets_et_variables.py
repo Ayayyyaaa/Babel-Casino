@@ -61,6 +61,9 @@ whisky = Whisky()
 mojito = Mojito()
 crampons = Crampons()
 
+# Btn ecran mort
+Firestarter_btn = Button(Firestarter1, Firestarter1, -100, 400)
+
 # Boutons jeux
 btn_roulette = Button(roulette2, roulette, 640, 40)
 btn_pile_ou_face = Button(imgpof2, imgpof, 640, 180)

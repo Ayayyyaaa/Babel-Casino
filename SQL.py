@@ -3,6 +3,7 @@ import pygame
 from objets_et_variables import joueur1
 from img import chargement
 
+
 print("Chargement du SQL...")
 
 def creer_table():
@@ -20,6 +21,15 @@ def creer_table():
             "code_cb" TEXT,
             "numero_cb"	TEXT,
             PRIMARY KEY("id_compte" AUTOINCREMENT)
+        )
+    """)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Babel_Invader(
+        id_compte INTEGER,
+        meilleur_score INTEGER,
+        nb_parties INTEGER,
+        FOREIGN KEY (id_compte) REFERENCES compte(id_compte),
+        PRIMARY KEY (id_compte)
         )
     """)
     cursor.execute("""
@@ -474,6 +484,27 @@ def maj_stats(id_compte:int,victoire:int,defaite:int,boss:str):
                            (id_compte, victoire, defaite, boss))
     
     conn.commit()
+    conn.close()
+
+def det_score(id_compte):
+    conn = sqlite3.connect("base_de_donnee2.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT meilleur_score FROM Babel_Invader WHERE id_compte = ?", (id_compte,))
+    score_bdd = cursor.fetchone() if cursor.fetchone() else 0
+    conn.close()
+    return score_bdd
+
+
+def meilleur_score(score,id_compte):
+    conn = sqlite3.connect("base_de_donnee2.db")
+    cursor = conn.cursor()
+    ancien_score = det_score(id_compte)
+    if score >= ancien_score:
+        if ancien_score == 0:
+            cursor.execute("INSERT INTO Babel_Invader (id_compte, meilleur_score, nb_parties) VALUES (?, ?, 1)",(id_compte, score))
+            conn.commit()
+        else:
+            cursor.execute("UPDATE Babel_Invader SET meilleur_score = ?",(score,))
     conn.close()
 
 
