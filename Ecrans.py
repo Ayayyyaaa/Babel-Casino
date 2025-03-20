@@ -559,27 +559,6 @@ class EcranRR:
             self.num_frame = 0
         fenetre.blit(self.frame,(0,0)) # Affiche l'image
 
-class EcranChargement:
-    def __init__(self):
-        self.ecran = Ecran(True)
-        self.frames = [f'images/Fonds d\'ecran/Chargement/frm ({i}).png' for i in range(2,117)]
-        self.frame = 'images/Fonds d\'ecran/Chargement/frm (2).png'
-        self.num_frame = 0
-        self.stop = True
-    def affiche(self,speed:float):
-        '''Permet d'afficher l'animation l'écran de chargement.'''
-        if self.num_frame <= 73 or not self.stop:
-            self.num_frame += speed
-        if clic.get_clic() != (0,0) and self.num_frame >= 56:
-            self.stop = False
-        # Si toutes les images ont été jouées :
-        if int(self.num_frame) == len(self.frames)-1:
-            # On remet tout à 0
-            self.num_frame = 0
-            lore.ecran.set_actif(True),self.ecran.set_actif(False)
-        self.frame = self.frames[int(self.num_frame)]
-        fenetre.blit(pygame.image.load(self.frame),(0,0))
-
 class EcranInventaire:
     def __init__(self):
         self.ecran = Ecran()
@@ -750,9 +729,6 @@ class EcranRoulette:
         ecran2.ecran.set_actif(True),self.ecran.set_actif(False)
 
     
-
-
-ecran0 = EcranChargement()
 lore = Intro()
 connexion = Ecran1()
 ecran2 = Ecran2()

@@ -135,6 +135,7 @@ class Jeu():
                  "- Touche 0 : attaque normale \n"
                  "- Touche 1 : capacité secondaire \n(si le héros en possède une)\n"
                  "De plus, certains héros possèdent des \npassifs uniques."),0)
+        lore.ecran.set_actif(True)
         while self.run: # Condition de jeu
             clic.set_clic((0,0))
             if not self.combat.get_actif():
@@ -345,8 +346,8 @@ class Jeu():
                 if not ecran2.ecran.get_actif():
                     pileouface.set_actif(False)
                 # Permet d'afficher l'animation à la fin de l'écran de chargement
-                if ecran0.ecran.get_actif():
-                    ecran0.affiche(0.55)
+                if lore.ecran.get_actif():
+                    lore.affiche()
                 # Affichage de l'écran de connexion
                 elif connexion.ecran.get_actif():
                     connexion.affiche()     

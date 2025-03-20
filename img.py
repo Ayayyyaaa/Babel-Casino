@@ -6,8 +6,12 @@ pygame.init()
 pygame.display.set_caption("Le Babelcasino")
 largeur, hauteur = 800, 800
 fenetre = pygame.display.set_mode((largeur, hauteur))
-chargement = [pygame.image.load(f'images/Fonds d\'ecran/Chargement/c{i}.png').convert() for i in range(1,12)]
-fenetre.blit(chargement[0], (0, 0))  # Afficher le fond
+chargement = [pygame.image.load(f'images/Fonds d\'ecran/Chargement/Chargement{i}.png').convert_alpha() for i in range(1,12)]
+ecranchargement = pygame.image.load('images/Fonds d\'ecran/Chargement/Ecran_chargement.png').convert()
+icone = pygame.image.load('images/Logo.png').convert_alpha()
+fenetre.blit(ecranchargement, (0, 0))  # Afficher le fond
+fenetre.blit(chargement[0], (200, 700))  # Afficher la barre
+fenetre.blit(icone, (150, 100))
 pygame.display.flip()  # Mettre à jour l'affichage
 
 def charger_et_agrandir(image_path):
@@ -31,7 +35,6 @@ face = charger_et_agrandir('Pile_ou_face/Piece face.png')
 pile = charger_et_agrandir('Pile_ou_face/Piece pile.png')
 face2 = charger_et_agrandir('Pile_ou_face/Piece face2.png')
 pile2 = charger_et_agrandir('Pile_ou_face/Piece pile2.png')
-icone = pygame.image.load('images/Logo.png').convert_alpha()
 paradis = pygame.image.load('images/Fonds d\'ecran/paradis.png').convert_alpha()
 fleche_retour = pygame.image.load('images/Boutons_autre/Fleche_retour.png').convert_alpha()
 fleche_retour2 = pygame.image.load('images/Boutons_autre/Fleche_retour2.png').convert_alpha()

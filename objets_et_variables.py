@@ -1,7 +1,9 @@
 from classes import *
 from img import *
 
-fenetre.blit(chargement[1], (0, 0))  # Afficher le fond
+fenetre.blit(ecranchargement, (0, 0))  # Afficher le fond
+fenetre.blit(chargement[1], (200, 700))  # Afficher la barre
+fenetre.blit(icone, (150, 100))
 pygame.display.flip()  # Mettre à jour l'affichage
 print("Chargement des objets et variables...")
 

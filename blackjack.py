@@ -3,7 +3,6 @@ from random import randint
 import sys
 from fonctions import dessiner_bouton,afficher_ecran_chargement
 from objets_et_variables import *
-from img import souris
 from sons import pioche_carte, click
 from Ecrans import ecran2,ecran_black,ecran_mort
 
@@ -278,7 +277,6 @@ class Blackjack:
                 
             else:
                 fenetre.blit(bouton_play_bj, (30, 570)) 
-        fenetre.blit(souris, pygame.mouse.get_pos())
         # Mettre à jour l’affichage
         pygame.display.update()
 

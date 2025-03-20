@@ -6,6 +6,7 @@ import numpy as np
 from sons import shoot,explosion,bonus,musique_invader,musique_de_fond
 
 clock = pygame.time.Clock() 
+print("Chargement du Babel Invader...")
 
 class Explosion:
     def __init__(self, x: int, y: int, frames: list) -> 'Explosion':

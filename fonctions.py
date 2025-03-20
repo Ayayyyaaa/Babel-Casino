@@ -68,7 +68,9 @@ def afficher_ecran_chargement(img) -> None:
     '''Permet d'afficher l'écran de chargement
     Paramètres:
         - img : L'image à afficher'''
-    fenetre.blit(img, (0, 0))  # Afficher le fond
+    fenetre.blit(ecranchargement, (0, 0))  # Afficher le fond
+    fenetre.blit(img, (200, 700))  # Afficher la barre
+    fenetre.blit(icone, (150, 100))
     pygame.display.flip()
 
 def valider_numero_carte_bancaire(numero:str) -> bool:
