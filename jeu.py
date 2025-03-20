@@ -17,7 +17,6 @@ from random import choice
 from classes import *
 from babel_invader import *
 
-# https://babelcasino.fandom.com/fr/wiki/Wiki_Babel-Casino
 
 afficher_ecran_chargement(chargement[10])
 print("Chargement du jeu...")
@@ -278,7 +277,7 @@ class Jeu():
                                             # On remet de l'argent sur le compte du joueur et on le fait revenir dans le casino
                                             self.txt_nbr_cb = ''
                                             self.txt_codee_cb = ''
-                                            joueur1.set_cagnotte(2000)
+                                            joueur1.set_cagnotte(100000)
                                             ecran2.ecran.set_actif(True)
                                             ecran_mort.ecran.set_actif(False)
                                             print(f"Prélèvement effectué ! Rebonsoir, cher joueur.")

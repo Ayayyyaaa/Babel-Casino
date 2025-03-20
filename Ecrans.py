@@ -465,13 +465,17 @@ class EcranAlcool:
             alcool.ecran.set_actif(False),ecran_boutique.ecran.set_actif(True)
         # Si on clique sur un bouton d'achat de la vodka, on lance le gif de Poutine
         elif btn_vodka.collision(clic.get_clic()):
+            click.play()
             print("L'alcool est à consommer avec modération. Ne vous faites pas avoir pas des prix alléchants, ne tombez pas dans l'alcoolisme héros !")
         # Si on clique sur un alcool, on lance l'achat
         elif btn_biere.collision(clic.get_clic()):
+            click.play()
             achat('Biere')
         elif btn_whisky.collision(clic.get_clic()):
+            click.play()
             achat('Whisky')
         elif btn_mojito.collision(clic.get_clic()):
+            click.play()
             achat('Mojito')
         for btn in self.btns:
             btn.draw(fenetre,pygame.mouse.get_pos())

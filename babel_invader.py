@@ -3,7 +3,8 @@ import random
 from objets_et_variables import *
 import sys
 import numpy as np
-from SQL import meilleur_score,det_id_compte
+from sons import shoot,explosion,bonus,musique_invader,musique_de_fond
+
 clock = pygame.time.Clock() 
 
 class Explosion:
@@ -163,8 +164,8 @@ class Vaisseau:
             - self.dgt (int) : les dégâts infligés par le joueur
             - self.lvl (dict) : les paramètres du vaisseau par niveau
         '''
-        self.vie_max = 10
-        self.vie = 10
+        self.vie_max = 100
+        self.vie = 100
         self.x = 375
         self.y = 750
         self.vitesse_projectile = 5
@@ -262,6 +263,7 @@ class Vaisseau:
         temps_actuel = pygame.time.get_ticks() / 1000 # Temps en secondes (millisecondes/1000=secondes)
         if temps_actuel - self.dernier_tir >= self.cd: # Couldown
             # On ajoute un projectile à la liste, avec toutes les inofs nécessaires
+            shoot.play()
             self.projectiles.append(Projectile(self.x + (self.frames[0].get_width() - pygame.image.load(f"Babel Invader/missile{self.projectile_lvl}.png").get_width()) // 2, self.y, self.vitesse_projectile, pygame.image.load(f"Babel Invader/missile{self.projectile_lvl}.png").convert_alpha(),self.dgt))
             # On met à jour le cd
             self.dernier_tir = temps_actuel
@@ -285,6 +287,7 @@ class Vaisseau:
                         # Si l'ennemi n'a plus de vie
                         if ennemi.get_vie() <= 0:
                             # On décative l'ennemi, on gagne des pièces et du score
+                            explosion.play()
                             ennemi.set_actif(False)
                             self.score += ennemi.get_pieces()*10
                             self.pieces += ennemi.get_pieces()*self.multi
@@ -396,6 +399,10 @@ class BabelInvader:
     def jouer(self):
         '''Permet de lancer le jeu'''
         self.run = True
+        pygame.mixer.music.unload()
+        pygame.mixer.music.load(musique_invader)
+        pygame.mixer.music.set_volume(0.4)
+        pygame.mixer.music.play(-1)
         self.temps_debut = pygame.time.get_ticks() / 1000
         # Conditions pour que le jeu continue 
         while self.run and self.vaisseau.get_vie() > 0:
@@ -430,6 +437,7 @@ class BabelInvader:
                     for achat, prix in self.achats.items():
                         # Si le joueur a assez de pièces pour l'achat du bonus correspondant et clique sur celui-ci
                         if achat.collision(pygame.mouse.get_pos()) and self.vaisseau.get_pieces() >= prix:
+                            bonus.play()
                             # On enlève les pièces du joueur du montant du bonus
                             self.vaisseau.set_pieces(-prix)
                             # On lui fait profiter du bonus correspondant
@@ -529,10 +537,11 @@ class BabelInvader:
         # On attend 3 secondes avant de fermer le jeu
         pygame.display.flip()
         pygame.time.wait(3000)
+        pygame.mixer.music.unload()
+        pygame.mixer.music.load(musique_de_fond)
+        pygame.mixer.music.set_volume(0.3)
+        pygame.mixer.music.play(-1)
         # On met à jour le solde du joueur 
-        id_compte = det_id_compte(joueur1.get_pseudo(),joueur1.get_mdp())
-        meilleur_score(self.vaisseau.get_score(),id_compte)
-        print("aled")
         if self.vaisseau.get_score() < 5000:
             # S'il a moins de 5000 de score, il perd 12% de son solde - 1000 pièces
             joueur1.modifier_cagnotte(-joueur1.get_cagnotte()//8 - 1000)
