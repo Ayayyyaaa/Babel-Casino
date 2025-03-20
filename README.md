@@ -12,25 +12,18 @@ Tous les graphismes du jeu (personnages, fonds d'écrans...) ne nous appartienne
 2. Les images des boutons et des fonds d'écrans non-animés sont générés par Intelligence Artificielle
 3. Les fonds d'écrans animés du jeu de combat son issus du site [Imgur](https://imgur.com/a/fighting-gifs-GPlx4)
 4. Les images du héros Night Hero sont issues d'un asset pack gratuit de CreativeKind [Night Hero](https://creativekind.itch.io/nightborne-warrior)
-
-Le logo a été dessiné par nos soins à partir d'assets qui ne nous appartiennent pas
-1. [Logo de la Triforce](https://gamepedia.cursecdn.com/zelda_gamepedia_en/9/9c/TLoZ_Series_Triforce_Artwork.png)
-2. [Epée de légende](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/39fd3cf6-e264-4c96-a034-e9e469461bfc/db38rgq-e3293790-ad84-4222-a1ca-f525964fd607.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM5ZmQzY2Y2LWUyNjQtNGM5Ni1hMDM0LWU5ZTQ2OTQ2MWJmY1wvZGIzOHJncS1lMzI5Mzc5MC1hZDg0LTQyMjItYTFjYS1mNTI1OTY0ZmQ2MDcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ooij0tIBJzeQVsdYvNVrpu-QyHPIwIwuUVs_CeQDC5U)
-3. [Pokéball](https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258617bdog.png)
-4. [Emblème](https://gamepedia.cursecdn.com/zelda_gamepedia_en/thumb/0/0b/TLoZ_Series_Royal_Crest_Artwork.png/1200px-TLoZ_Series_Royal_Crest_Artwork.png)
-5. [Police "infected"](https://www.dafont.com/infected.font)
-6. [Police "TRIFORCE"](https://zeldauniverse.net/media/fonts/)
+   
  
 Le bon fonctionnement du projet repose sur plusieurs modules qui ne nous appartiennent pas tels que:
 1. [Pygame](https://www.pygame.org/docs/)
-2. [pytmx](https://pytmx.readthedocs.io/en/latest/contents.html)
-3. [pyscroll](https://github.com/bitcraft/pyscroll)
-4. [sqlite3](https://docs.python.org/3/library/sqlite3.html)
+2. [sqlite3](https://docs.python.org/3/library/sqlite3.html)
+   
 
 ## Protocole d'utilisation
  
  Afin de jouer il vous faut:
- 1. cloner le repository sur votre machine ou télécharger le .zip
+ 1. Cloner le repository sur votre machine ou télécharger le .zip
  2. Avoir Python 3.9 ou plus d'installé sur votre machine --> [Télécharger](https://www.python.org/downloads/)
  3. Intaller les modules présents dans le fichier requirements.txt à la main ou en ouvrant un terminal de commande et en exécutant "cd chemin/vers/projet" puis "pip install -r requirements.txt"
- 4. Exécuter le fichier intitulé "main.py" situé dans le dossier "sources". Pour ce faire, vous pouvez ouvrir le projet dans un IDE et exécuter le fichier ou bien ouvrir un terminal de commande et exécuter "cd chemin/vers/dossier/sources" puis "python main.py" sur Windows ou "python3 main.py" sur Linux.
+ 4. Exécuter le fichier intitulé "main.py". Pour ce faire, vous pouvez ouvrir le projet dans un IDE et exécuter le fichier ou bien ouvrir un terminal de commande et exécuter "cd chemin/vers/dossier/sources" puis "python main.py" sur Windows ou "python3 main.py" sur Linux.
+ 5. Si python n'arrive pas à charger les sons, exécutez la commande pip install --upgrade pygame dans le terminal de votre IDE
