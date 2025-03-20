@@ -1,9 +1,15 @@
 # *Le Babel Casino*
 
-## Une mission vous attends, héros !
+## Une mission vous attend, héros !
 
 ## Scénario
-Vous êtes le dernier espoir du Royaume ! En ces périodes troublées, le roi vous confie une mission : ruiner un mystèrieux casino qui s'est implanté dans la région, une aberration temporelle qui n'a rien de naturel. À l'aide de votre amis Night Hero, vous devrez entrer dans ce casino, contrôlé par le diable lui-même, pour attendre la somme de 10 000 000 Babel Coin. Jouez, pariez, faîtes preuve de chance et d'habilité, investiguez, résolvez des énigmes et parvenez à bout de ce casino maléfique ! Au cours de votre aventure, vous pourrez acheter différents objets qui vous aideront, vous pourrez parler au personnel et victimes du Babel Casino, pour en apprendre plus sur l'histoire de ce monde, du casino ou bien même quelques secrets...Vous pourrez également vous procurer les services de voyageurs de passage qui pourront mettre à votre disposition leurs compétences guerrières. Alors, n'attendez plus, héros ! Le sort du monde est entre vos mains !
+Vous êtes le dernier espoir du Royaume ! En ces temps troublés, le roi vous confie une mission capitale : faire tomber un mystérieux casino qui a émergé dans la région, une anomalie temporelle défiant la réalité même. Aux côtés de votre fidèle compagnon, Night Hero, vous devrez pénétrer cet établissement démoniaque, dirigé par le diable en personne, et accumuler la somme colossale de 10 000 000 Babel Coins.
+
+Jouez, pariez, testez votre chance et votre habileté. Enquêtez, résolvez des énigmes et déjouez les pièges de ce lieu maudit ! Au fil de votre aventure, vous aurez l’opportunité d’acquérir des objets précieux, d’échanger avec le personnel et les malheureuses âmes piégées au sein du Babel Casino. Chaque conversation pourra vous révéler des fragments d’histoire, des secrets enfouis ou de précieuses informations sur ce monde et son étrange casino.
+
+Vous pourrez également engager des voyageurs de passage, prêts à mettre leurs talents de combattants à votre service...contre quelque rémunération.
+
+Alors, n’attendez plus, héros ! Le destin du Royaume repose entre vos mains !
 
 
 ## Droits d'auteurs
