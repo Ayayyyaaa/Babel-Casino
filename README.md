@@ -32,5 +32,4 @@ Le bon fonctionnement du projet repose sur plusieurs modules qui ne nous apparti
  1. Cloner le repository sur votre machine ou télécharger le .zip
  2. Avoir Python 3.11 ou plus d'installé sur votre machine --> [Télécharger](https://www.python.org/downloads/)
  3. Intaller les modules présents dans le fichier requirements.txt à la main ou en ouvrant un terminal de commande et en exécutant "cd chemin/vers/projet" puis "pip install -r requirements.txt"
- 4. Exécuter le fichier intitulé "main.py". Pour ce faire, vous pouvez ouvrir le projet dans un IDE et exécuter le fichier ou bien ouvrir un terminal de commande et exécuter "cd chemin/vers/dossier/sources" puis "python main.py" sur Windows ou "python3 main.py" sur Linux.
- 5. Si python n'arrive pas à charger les sons, exécutez la commande pip install --upgrade pygame dans le terminal de votre IDE
+ 4. Exécuter le fichier intitulé "main.py". Pour ce faire, vous pouvez ouvrir le répertoire sources dans un IDE et exécuter le fichier ou bien ouvrir un terminal de commande et exécuter "cd chemin/vers/dossier/sources" puis "python main.py" sur Windows ou "python3 main.py" sur Linux.

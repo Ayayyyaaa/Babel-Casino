@@ -1,2 +1,0 @@
-- Refaire l'écran de chargement
-- Faire vidéo
