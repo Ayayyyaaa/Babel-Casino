@@ -350,6 +350,7 @@ class Jeu():
                     lore.affiche()
                 # Affichage de l'écran de connexion
                 elif connexion.ecran.get_actif():
+                    self.hero = self.nighthero
                     connexion.affiche()     
                     dessiner_zone_texte(fenetre, self.champ_joueur, self.text, self.nom_actif)
                     dessiner_zone_texte(fenetre, self.champ_mdp, self.mdp, self.mdp_actif)            

@@ -126,13 +126,13 @@ class Hero:
 class Night_Hero:
     def __init__(self) -> 'Night_Hero':
         self.hero = Hero(100,540,4,0.25,0.2,1.2,5,'Nuit')
-        self.images_coup_depee_d = [f'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque{i}.png' for i in range(1,13)]
-        self.images_coup_depee_g = [f'images/Jeu de combat/Hero/Attaque/Attaque_Gauche/Attaque{i}.png' for i in range(1,13)]
-        self.images_marche_d = [f'images/Jeu de combat/Hero/Marche/Droite/Hero_course{i}.png' for i in range(1,7)] 
-        self.images_marche_g = [f'images/Jeu de combat/Hero/Marche/Gauche/Hero_course{i}.png' for i in range(1,7)]
-        self.images_parade = [f'images/Jeu de combat/Hero/Block/Block ({i}).png' for i in range(1,19)]
-        self.images_mort = [f'images/Jeu de combat/Hero/Mort/_afrm{i},70.png' for i in range(1,23)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.images_coup_depee_d = [f'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque{i}.png' for i in range(1,13)]
+        self.images_coup_depee_g = [f'data/images/Jeu de combat/Hero/Attaque/Attaque_Gauche/Attaque{i}.png' for i in range(1,13)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Hero/Marche/Droite/Hero_course{i}.png' for i in range(1,7)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Hero/Marche/Gauche/Hero_course{i}.png' for i in range(1,7)]
+        self.images_parade = [f'data/images/Jeu de combat/Hero/Block/Block ({i}).png' for i in range(1,19)]
+        self.images_mort = [f'data/images/Jeu de combat/Hero/Mort/_afrm{i},70.png' for i in range(1,23)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -234,16 +234,16 @@ class Night_Hero:
 class Zukong:
     def __init__(self):
         self.hero = Hero(160,495,4.5,0.18,0.14,4.5,3,'Neutre')
-        self.atk1_d = [f'images/Jeu de combat/Zukong/Droite/Attaque1/_a_frm{i},60.png' for i in range(19)]
-        self.atk1_g = [f'images/Jeu de combat/Zukong/Gauche/Attaque1/_a_frm{i},60.png' for i in range(19)]
-        self.images_marche_d = [f'images/Jeu de combat/Zukong/Droite/Marche/_a_frm{i},60.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Zukong/Gauche/Marche/_a_frm{i},60.png' for i in range(8)]
-        self.cp2_d = [f'images/Jeu de combat/Zukong/Droite/Attaque2/_a_frm{i},60.png' for i in range(19,32)]
-        self.cp2_g = [f'images/Jeu de combat/Zukong/Gauche/Attaque2/_a_frm{i},60.png' for i in range(19,32)]
-        self.images_mort = [f'images/Jeu de combat/Zukong/Mort/_a_frm{i},60.png' for i in range(31)] 
-        self.inaction_g = [f'images/Jeu de combat/Zukong/Gauche/Inaction/_a_frm{i},80.png' for i in range(14)]
-        self.inaction_d = [f'images/Jeu de combat/Zukong/Droite/Inaction/_a_frm{i},80.png' for i in range(14)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Zukong/Droite/Attaque1/_a_frm{i},60.png' for i in range(19)]
+        self.atk1_g = [f'data/images/Jeu de combat/Zukong/Gauche/Attaque1/_a_frm{i},60.png' for i in range(19)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Zukong/Droite/Marche/_a_frm{i},60.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Zukong/Gauche/Marche/_a_frm{i},60.png' for i in range(8)]
+        self.cp2_d = [f'data/images/Jeu de combat/Zukong/Droite/Attaque2/_a_frm{i},60.png' for i in range(19,32)]
+        self.cp2_g = [f'data/images/Jeu de combat/Zukong/Gauche/Attaque2/_a_frm{i},60.png' for i in range(19,32)]
+        self.images_mort = [f'data/images/Jeu de combat/Zukong/Mort/_a_frm{i},60.png' for i in range(31)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Zukong/Gauche/Inaction/_a_frm{i},80.png' for i in range(14)]
+        self.inaction_d = [f'data/images/Jeu de combat/Zukong/Droite/Inaction/_a_frm{i},80.png' for i in range(14)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -356,16 +356,16 @@ class Zukong:
 class Maehv:
     def __init__(self):
         self.hero = Hero(125,440,3.2,0.18,0.14,5,1,'Feu')
-        self.atk1_d = [f'images/Jeu de combat/Maehv/Droite/Attaque1/_a_frm{i},60.png' for i in range(33)]
-        self.atk1_g = [f'images/Jeu de combat/Maehv/Gauche/Attaque1/_a_frm{i},60.png' for i in range(33)]
-        self.images_marche_d = [f'images/Jeu de combat/Maehv/Droite/Marche/_a_{i},60.png' for i in range(10)] 
-        self.images_marche_g = [f'images/Jeu de combat/Maehv/Gauche/Marche/_a_{i},60.png' for i in range(10)]
-        self.cp2_d = [f'images/Jeu de combat/Maehv/Droite/Attaque3/_a_{i},60.png' for i in range(4)]
-        self.cp2_g = [f'images/Jeu de combat/Maehv/Gauche/Attaque3/_a_{i},60.png' for i in range(4)]
-        self.images_mort = [f'images/Jeu de combat/Maehv/Mort/_a_{i},60.png' for i in range(11)] 
-        self.inaction_g = [f'images/Jeu de combat/Maehv/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
-        self.inaction_d = [f'images/Jeu de combat/Maehv/Droite/Inaction/_a_{i},80.png' for i in range(14)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Maehv/Droite/Attaque1/_a_frm{i},60.png' for i in range(33)]
+        self.atk1_g = [f'data/images/Jeu de combat/Maehv/Gauche/Attaque1/_a_frm{i},60.png' for i in range(33)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Maehv/Droite/Marche/_a_{i},60.png' for i in range(10)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Maehv/Gauche/Marche/_a_{i},60.png' for i in range(10)]
+        self.cp2_d = [f'data/images/Jeu de combat/Maehv/Droite/Attaque3/_a_{i},60.png' for i in range(4)]
+        self.cp2_g = [f'data/images/Jeu de combat/Maehv/Gauche/Attaque3/_a_{i},60.png' for i in range(4)]
+        self.images_mort = [f'data/images/Jeu de combat/Maehv/Mort/_a_{i},60.png' for i in range(11)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Maehv/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
+        self.inaction_d = [f'data/images/Jeu de combat/Maehv/Droite/Inaction/_a_{i},80.png' for i in range(14)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -406,7 +406,9 @@ class Maehv:
                 self.dgt1 = False
                 self.dgt2 = False
                 self.dgt3 = False
+                print(f'Bonus : {self.bonus}')
                 self.bonus = 0
+                print(f'Bonus : {self.bonus}')
             elif sens == 'Gauche':
                 self.hero.modif_img(self.atk1_g[int(self.frame)])
             elif sens == 'Droite':
@@ -493,14 +495,14 @@ class Maehv:
 class Zendo:
     def __init__(self):
         self.hero = Hero(130,440,5,0.18,0.14,4.5,3,'Air')
-        self.atk1_d = [f'images/Jeu de combat/Zendo/Droite/Attaque/_a_{i},60.png' for i in range(38)]
-        self.atk1_g = [f'images/Jeu de combat/Zendo/Gauche/Attaque/_a_{i},60.png' for i in range(38)]
-        self.images_marche_d = [f'images/Jeu de combat/Zendo/Droite/Marche/_a_{i},60.png' for i in range(6)] 
-        self.images_marche_g = [f'images/Jeu de combat/Zendo/Gauche/Marche/_a_{i},60.png' for i in range(6)]
-        self.images_mort = [f'images/Jeu de combat/Zendo/Mort/_a_{i},60.png' for i in range(15)] 
-        self.inaction_g = [f'images/Jeu de combat/Zendo/Gauche/Inaction/_a_frm{i},60.png' for i in range(14)]
-        self.inaction_d = [f'images/Jeu de combat/Zendo/Droite/Inaction/_a_frm{i},60.png' for i in range(14)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Zendo/Droite/Attaque/_a_{i},60.png' for i in range(38)]
+        self.atk1_g = [f'data/images/Jeu de combat/Zendo/Gauche/Attaque/_a_{i},60.png' for i in range(38)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Zendo/Droite/Marche/_a_{i},60.png' for i in range(6)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Zendo/Gauche/Marche/_a_{i},60.png' for i in range(6)]
+        self.images_mort = [f'data/images/Jeu de combat/Zendo/Mort/_a_{i},60.png' for i in range(15)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Zendo/Gauche/Inaction/_a_frm{i},60.png' for i in range(14)]
+        self.inaction_d = [f'data/images/Jeu de combat/Zendo/Droite/Inaction/_a_frm{i},60.png' for i in range(14)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -624,14 +626,14 @@ class Zendo:
 class Klaxon:
     def __init__(self):
         self.hero = Hero(120,520,4,0.18,0.14,4.5,1000,'Esprit')
-        self.atk1_d = [f'images/Jeu de combat/Klaxon/Droite/Attaque1/_a_{i},60.png' for i in range(33)]
-        self.atk1_g = [f'images/Jeu de combat/Klaxon/Gauche/Attaque1/_a_{i},60.png' for i in range(33)]
-        self.images_marche_d = [f'images/Jeu de combat/Klaxon/Droite/Marche/_a_frm{i},60.png' for i in range(7)] 
-        self.images_marche_g = [f'images/Jeu de combat/Klaxon/Gauche/Marche/_a_frm{i},60.png' for i in range(7)]
-        self.images_mort = [f'images/Jeu de combat/Klaxon/Mort/_a_{i},60.png' for i in range(20)] 
-        self.inaction_g = [f'images/Jeu de combat/Klaxon/Gauche/Inaction/_a_{i},80.png' for i in range(18)]
-        self.inaction_d = [f'images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Klaxon/Droite/Attaque1/_a_{i},60.png' for i in range(33)]
+        self.atk1_g = [f'data/images/Jeu de combat/Klaxon/Gauche/Attaque1/_a_{i},60.png' for i in range(33)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Klaxon/Droite/Marche/_a_frm{i},60.png' for i in range(7)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Klaxon/Gauche/Marche/_a_frm{i},60.png' for i in range(7)]
+        self.images_mort = [f'data/images/Jeu de combat/Klaxon/Mort/_a_{i},60.png' for i in range(20)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Klaxon/Gauche/Inaction/_a_{i},80.png' for i in range(18)]
+        self.inaction_d = [f'data/images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -732,14 +734,14 @@ class Klaxon:
 class Windcliffe:
     def __init__(self):
         self.hero = Hero(220,490,3.5,0.18,0.14,4.5,1000,'Neutre')
-        self.atk1_d = [f'images/Jeu de combat/Windcliffe/Droite/Attaque1/_a_{i},70.png' for i in range(21)]
-        self.atk1_g = [f'images/Jeu de combat/Windcliffe/Gauche/Attaque1/_a_{i},70.png' for i in range(21)]
-        self.images_marche_d = [f'images/Jeu de combat/Windcliffe/Droite/Marche/_a_{i},70.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Windcliffe/Gauche/Marche/_a_{i},70.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Windcliffe/Mort/_a_{i},70.png' for i in range(14)] 
-        self.inaction_g = [f'images/Jeu de combat/Windcliffe/Gauche/Inaction/_a_{i},80.png' for i in range(9)]
-        self.inaction_d = [f'images/Jeu de combat/Windcliffe/Droite/Inaction/_a_{i},80.png' for i in range(9)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Windcliffe/Droite/Attaque1/_a_{i},70.png' for i in range(21)]
+        self.atk1_g = [f'data/images/Jeu de combat/Windcliffe/Gauche/Attaque1/_a_{i},70.png' for i in range(21)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Windcliffe/Droite/Marche/_a_{i},70.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Windcliffe/Gauche/Marche/_a_{i},70.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Windcliffe/Mort/_a_{i},70.png' for i in range(14)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Windcliffe/Gauche/Inaction/_a_{i},80.png' for i in range(9)]
+        self.inaction_d = [f'data/images/Jeu de combat/Windcliffe/Droite/Inaction/_a_{i},80.png' for i in range(9)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -839,14 +841,14 @@ class Windcliffe:
 class Reeju:
     def __init__(self):
         self.hero = Hero(180,500,4,0.18,0.14,3.8,1000,'Esprit')
-        self.atk1_d = [f'images/Jeu de combat/Reeju/Droite/Attaque1/_a_{i},100.png' for i in range(25)]
-        self.atk1_g = [f'images/Jeu de combat/Reeju/Gauche/Attaque1/_a_{i},100.png' for i in range(25)]
-        self.images_marche_d = [f'images/Jeu de combat/Reeju/Droite/Marche/_a_{i},100.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Reeju/Gauche/Marche/_a_{i},100.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Reeju/Mort/_a_{i},100.png' for i in range(22)] 
-        self.inaction_g = [f'images/Jeu de combat/Reeju/Gauche/Inaction/_a_{i},100.png' for i in range(14)]
-        self.inaction_d = [f'images/Jeu de combat/Reeju/Droite/Inaction/_a_{i},100.png' for i in range(14)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Reeju/Droite/Attaque1/_a_{i},100.png' for i in range(25)]
+        self.atk1_g = [f'data/images/Jeu de combat/Reeju/Gauche/Attaque1/_a_{i},100.png' for i in range(25)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Reeju/Droite/Marche/_a_{i},100.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Reeju/Gauche/Marche/_a_{i},100.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Reeju/Mort/_a_{i},100.png' for i in range(22)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Reeju/Gauche/Inaction/_a_{i},100.png' for i in range(14)]
+        self.inaction_d = [f'data/images/Jeu de combat/Reeju/Droite/Inaction/_a_{i},100.png' for i in range(14)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -963,14 +965,14 @@ class Reeju:
 class Cryoblade:
     def __init__(self):
         self.hero = Hero(140,520,4,0.18,0.14,4.5,1000,'Glace')
-        self.atk1_d = [f'images/Jeu de combat/Cryoblade/Droite/Attaque1/_a_{i},60.png' for i in range(19)]
-        self.atk1_g = [f'images/Jeu de combat/Cryoblade/Gauche/Attaque1/_a_{i},60.png' for i in range(19)]
-        self.images_marche_d = [f'images/Jeu de combat/Cryoblade/Droite/Marche/_a_{i},60.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Cryoblade/Gauche/Marche/_a_{i},60.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Cryoblade/Mort/_a_{i},60.png' for i in range(20)] 
-        self.inaction_g = [f'images/Jeu de combat/Cryoblade/Gauche/Inaction/_a_{i},80.png' for i in range(16)]
-        self.inaction_d = [f'images/Jeu de combat/Cryoblade/Droite/Inaction/_a_{i},80.png' for i in range(16)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Cryoblade/Droite/Attaque1/_a_{i},60.png' for i in range(19)]
+        self.atk1_g = [f'data/images/Jeu de combat/Cryoblade/Gauche/Attaque1/_a_{i},60.png' for i in range(19)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Cryoblade/Droite/Marche/_a_{i},60.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Cryoblade/Gauche/Marche/_a_{i},60.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Cryoblade/Mort/_a_{i},60.png' for i in range(20)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Cryoblade/Gauche/Inaction/_a_{i},80.png' for i in range(16)]
+        self.inaction_d = [f'data/images/Jeu de combat/Cryoblade/Droite/Inaction/_a_{i},80.png' for i in range(16)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1070,14 +1072,14 @@ class Cryoblade:
 class Pureblade:
     def __init__(self):
         self.hero = Hero(100,440,4,0.18,0.14,5.5,1000,'Feu')
-        self.atk1_d = [f'images/Jeu de combat/Pureblade/Droite/Attaque1/_a_{i},60.png' for i in range(34)]
-        self.atk1_g = [f'images/Jeu de combat/Pureblade/Gauche/Attaque1/_a_{i},60.png' for i in range(34)]
-        self.images_marche_d = [f'images/Jeu de combat/Pureblade/Droite/Marche/_a_{i},60.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Pureblade/Gauche/Marche/_a_{i},60.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Pureblade/Mort/_a_{i},60.png' for i in range(20)] 
-        self.inaction_g = [f'images/Jeu de combat/Pureblade/Gauche/Inaction/_a_frm{i},80.png' for i in range(10)]
-        self.inaction_d = [f'images/Jeu de combat/Pureblade/Droite/Inaction/_a_frm{i},80.png' for i in range(10)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Pureblade/Droite/Attaque1/_a_{i},60.png' for i in range(34)]
+        self.atk1_g = [f'data/images/Jeu de combat/Pureblade/Gauche/Attaque1/_a_{i},60.png' for i in range(34)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Pureblade/Droite/Marche/_a_{i},60.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Pureblade/Gauche/Marche/_a_{i},60.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Pureblade/Mort/_a_{i},60.png' for i in range(20)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Pureblade/Gauche/Inaction/_a_frm{i},80.png' for i in range(10)]
+        self.inaction_d = [f'data/images/Jeu de combat/Pureblade/Droite/Inaction/_a_frm{i},80.png' for i in range(10)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1184,14 +1186,14 @@ class Pureblade:
 class Hsuku:
     def __init__(self):
         self.hero = Hero(100,450,5,0.18,0.14,3.5,3,'Neutre')
-        self.atk1_d = [f'images/Jeu de combat/Hsuku/Droite/Attaque1/_a_{i},70.png' for i in range(24)]
-        self.atk1_g = [f'images/Jeu de combat/Hsuku/Gauche/Attaque1/_a_{i},70.png' for i in range(24)]
-        self.images_marche_d = [f'images/Jeu de combat/Hsuku/Droite/Marche/_a_{i},70.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Hsuku/Gauche/Marche/_a_{i},70.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Hsuku/Mort/_a_frm{i},70.png' for i in range(20)] 
-        self.inaction_g = [f'images/Jeu de combat/Hsuku/Gauche/Inaction/_a_{i},80.png' for i in range(28)]
-        self.inaction_d = [f'images/Jeu de combat/Hsuku/Droite/Inaction/_a_{i},80.png' for i in range(28)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Hsuku/Droite/Attaque1/_a_{i},70.png' for i in range(24)]
+        self.atk1_g = [f'data/images/Jeu de combat/Hsuku/Gauche/Attaque1/_a_{i},70.png' for i in range(24)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Hsuku/Droite/Marche/_a_{i},70.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Hsuku/Gauche/Marche/_a_{i},70.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Hsuku/Mort/_a_frm{i},70.png' for i in range(20)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Hsuku/Gauche/Inaction/_a_{i},80.png' for i in range(28)]
+        self.inaction_d = [f'data/images/Jeu de combat/Hsuku/Droite/Inaction/_a_{i},80.png' for i in range(28)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1312,14 +1314,14 @@ class Hsuku:
 class Sanguinar:
     def __init__(self):
         self.hero = Hero(100,450,5,0.18,0.14,5,3,'Neutre')
-        self.atk1_d = [f'images/Jeu de combat/Sanguinar/Droite/Attaque1/_a_{i},60.png' for i in range(33)]
-        self.atk1_g = [f'images/Jeu de combat/Sanguinar/Gauche/Attaque1/_a_{i},60.png' for i in range(33)]
-        self.images_marche_d = [f'images/Jeu de combat/Sanguinar/Droite/Marche/_a_{i},60.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Sanguinar/Gauche/Marche/_a_{i},60.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Sanguinar/Mort/_a_{i},60.png' for i in range(17)] 
-        self.inaction_g = [f'images/Jeu de combat/Sanguinar/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
-        self.inaction_d = [f'images/Jeu de combat/Sanguinar/Droite/Inaction/_a_{i},80.png' for i in range(14)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Sanguinar/Droite/Attaque1/_a_{i},60.png' for i in range(33)]
+        self.atk1_g = [f'data/images/Jeu de combat/Sanguinar/Gauche/Attaque1/_a_{i},60.png' for i in range(33)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Sanguinar/Droite/Marche/_a_{i},60.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Sanguinar/Gauche/Marche/_a_{i},60.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Sanguinar/Mort/_a_{i},60.png' for i in range(17)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Sanguinar/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
+        self.inaction_d = [f'data/images/Jeu de combat/Sanguinar/Droite/Inaction/_a_{i},80.png' for i in range(14)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1436,14 +1438,14 @@ class Sanguinar:
 class Whistler:
     def __init__(self):
         self.hero = Hero(80,515,6,0.18,0.2,2.5,3,'Feu')
-        self.atk1_d = [f'images/Jeu de combat/Whistler/Droite/Attaque1/_a_{i},100.png' for i in range(31)]
-        self.atk1_g = [f'images/Jeu de combat/Whistler/Gauche/Attaque1/_a_{i},100.png' for i in range(31)]
-        self.images_marche_d = [f'images/Jeu de combat/Whistler/Droite/Marche/_a_{i},100.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Whistler/Gauche/Marche/_a_{i},100.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Whistler/Mort/_a_{i},100.png' for i in range(20)] 
-        self.inaction_g = [f'images/Jeu de combat/Whistler/Gauche/Inaction/_a_{i},100.png' for i in range(18)]
-        self.inaction_d = [f'images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Whistler/Droite/Attaque1/_a_{i},100.png' for i in range(31)]
+        self.atk1_g = [f'data/images/Jeu de combat/Whistler/Gauche/Attaque1/_a_{i},100.png' for i in range(31)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Whistler/Droite/Marche/_a_{i},100.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Whistler/Gauche/Marche/_a_{i},100.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Whistler/Mort/_a_{i},100.png' for i in range(20)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Whistler/Gauche/Inaction/_a_{i},100.png' for i in range(18)]
+        self.inaction_d = [f'data/images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1549,14 +1551,14 @@ class Whistler:
 class Tethermancer:
     def __init__(self):
         self.hero = Hero(130,410,3.5,0.18,0.14,3.5,3,'Feu')
-        self.atk1_d = [f'images/Jeu de combat/Tethermancer/Droite/Attaque1/_a_{i},100.png' for i in range(27)]
-        self.atk1_g = [f'images/Jeu de combat/Tethermancer/Gauche/Attaque1/_a_{i},100.png' for i in range(27)]
-        self.images_marche_d = [f'images/Jeu de combat/Tethermancer/Droite/Marche/_a_{i},100.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Tethermancer/Gauche/Marche/_a_{i},100.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Tethermancer/Mort/_a_{i},100.png' for i in range(18)] 
-        self.inaction_g = [f'images/Jeu de combat/Tethermancer/Gauche/Inaction/_a_{i},100.png' for i in range(17)]
-        self.inaction_d = [f'images/Jeu de combat/Tethermancer/Droite/Inaction/_a_{i},100.png' for i in range(17)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Tethermancer/Droite/Attaque1/_a_{i},100.png' for i in range(27)]
+        self.atk1_g = [f'data/images/Jeu de combat/Tethermancer/Gauche/Attaque1/_a_{i},100.png' for i in range(27)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Tethermancer/Droite/Marche/_a_{i},100.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Tethermancer/Gauche/Marche/_a_{i},100.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Tethermancer/Mort/_a_{i},100.png' for i in range(18)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Tethermancer/Gauche/Inaction/_a_{i},100.png' for i in range(17)]
+        self.inaction_d = [f'data/images/Jeu de combat/Tethermancer/Droite/Inaction/_a_{i},100.png' for i in range(17)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1663,14 +1665,14 @@ class Tethermancer:
 class Aether:
     def __init__(self):
         self.hero = Hero(125,520,4,0.18,0.14,5,1,'Air')
-        self.atk1_d = [f'images/Jeu de combat/Aether/Droite/Attaque1/_a_{i},100.png' for i in range(26)]
-        self.atk1_g = [f'images/Jeu de combat/Aether/Gauche/Attaque1/_a_{i},100.png' for i in range(33)]
-        self.images_marche_d = [f'images/Jeu de combat/Aether/Droite/Marche/_a_{i},100.png' for i in range(6)] 
-        self.images_marche_g = [f'images/Jeu de combat/Aether/Gauche/Marche/_a_{i},100.png' for i in range(6)]
-        self.images_mort = [f'images/Jeu de combat/Aether/Mort/_a_{i},100.png' for i in range(18)] 
-        self.inaction_g = [f'images/Jeu de combat/Aether/Gauche/Inaction/_a_{i},100.png' for i in range(12)]
-        self.inaction_d = [f'images/Jeu de combat/Aether/Droite/Inaction/_a_{i},100.png' for i in range(12)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Aether/Droite/Attaque1/_a_{i},100.png' for i in range(26)]
+        self.atk1_g = [f'data/images/Jeu de combat/Aether/Gauche/Attaque1/_a_{i},100.png' for i in range(33)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Aether/Droite/Marche/_a_{i},100.png' for i in range(6)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Aether/Gauche/Marche/_a_{i},100.png' for i in range(6)]
+        self.images_mort = [f'data/images/Jeu de combat/Aether/Mort/_a_{i},100.png' for i in range(18)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Aether/Gauche/Inaction/_a_{i},100.png' for i in range(12)]
+        self.inaction_d = [f'data/images/Jeu de combat/Aether/Droite/Inaction/_a_{i},100.png' for i in range(12)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1777,14 +1779,14 @@ class Aether:
 class Twilight:
     def __init__(self):
         self.hero = Hero(150,450,8.5,0.15,0.25,5,3,'Feu')
-        self.atk1_d = [f'images/Jeu de combat/Twilight/Droite/Attaque1/_a_{i},60.png' for i in range(22)]
-        self.atk1_g = [f'images/Jeu de combat/Twilight/Gauche/Attaque1/_a_{i},60.png' for i in range(22)]
-        self.images_marche_d = [f'images/Jeu de combat/Twilight/Droite/Marche/_a_{i},60.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Twilight/Gauche/Marche/_a_{i},60.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Twilight/Mort/_a_{i},60.png' for i in range(19)] 
-        self.inaction_g = [f'images/Jeu de combat/Twilight/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
-        self.inaction_d = [f'images/Jeu de combat/Twilight/Droite/Inaction/_a_{i},80.png' for i in range(14)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Twilight/Droite/Attaque1/_a_{i},60.png' for i in range(22)]
+        self.atk1_g = [f'data/images/Jeu de combat/Twilight/Gauche/Attaque1/_a_{i},60.png' for i in range(22)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Twilight/Droite/Marche/_a_{i},60.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Twilight/Gauche/Marche/_a_{i},60.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Twilight/Mort/_a_{i},60.png' for i in range(19)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Twilight/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
+        self.inaction_d = [f'data/images/Jeu de combat/Twilight/Droite/Inaction/_a_{i},80.png' for i in range(14)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1885,14 +1887,14 @@ class Twilight:
 class Yggdra:
     def __init__(self):
         self.hero = Hero(175,490,5,0.18,0.14,5.5,3,'Esprit')
-        self.atk1_d = [f'images/Jeu de combat/Yggdra/Droite/Attaque1/_a_{i},70.png' for i in range(21)]
-        self.atk1_g = [f'images/Jeu de combat/Yggdra/Gauche/Attaque1/_a_{i},70.png' for i in range(21)]
-        self.images_marche_d = [f'images/Jeu de combat/Yggdra/Droite/Marche/_a_{i},70.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Yggdra/Gauche/Marche/_a_{i},70.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Yggdra/Mort/_a_{i},70.png' for i in range(21)] 
-        self.inaction_g = [f'images/Jeu de combat/Yggdra/Gauche/Inaction/_a_{i},80.png' for i in range(7)]
-        self.inaction_d = [f'images/Jeu de combat/Yggdra/Droite/Inaction/_a_{i},80.png' for i in range(7)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Yggdra/Droite/Attaque1/_a_{i},70.png' for i in range(21)]
+        self.atk1_g = [f'data/images/Jeu de combat/Yggdra/Gauche/Attaque1/_a_{i},70.png' for i in range(21)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Yggdra/Droite/Marche/_a_{i},70.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Yggdra/Gauche/Marche/_a_{i},70.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Yggdra/Mort/_a_{i},70.png' for i in range(21)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Yggdra/Gauche/Inaction/_a_{i},80.png' for i in range(7)]
+        self.inaction_d = [f'data/images/Jeu de combat/Yggdra/Droite/Inaction/_a_{i},80.png' for i in range(7)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -1992,14 +1994,14 @@ class Yggdra:
 class Suzumebachi:
     def __init__(self):
         self.hero = Hero(150,440,4.5,0.18,0.14,4.3,1000,'Feu')
-        self.atk1_d = [f'images/Jeu de combat/Suzumebachi/Droite/Attaque1/_a_{i},60.png' for i in range(26)]
-        self.atk1_g = [f'images/Jeu de combat/Suzumebachi/Gauche/Attaque1/_a_{i},60.png' for i in range(26)]
-        self.images_marche_d = [f'images/Jeu de combat/Suzumebachi/Droite/Marche/_a_{i},60.png' for i in range(8)] 
-        self.images_marche_g = [f'images/Jeu de combat/Suzumebachi/Gauche/Marche/_a_{i},60.png' for i in range(8)]
-        self.images_mort = [f'images/Jeu de combat/Suzumebachi/Mort/_a_{i},60.png' for i in range(17)] 
-        self.inaction_g = [f'images/Jeu de combat/Suzumebachi/Gauche/Inaction/_a_{i},80.png' for i in range(32)]
-        self.inaction_d = [f'images/Jeu de combat/Suzumebachi/Droite/Inaction/_a_{i},80.png' for i in range(32)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Suzumebachi/Droite/Attaque1/_a_{i},60.png' for i in range(26)]
+        self.atk1_g = [f'data/images/Jeu de combat/Suzumebachi/Gauche/Attaque1/_a_{i},60.png' for i in range(26)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Suzumebachi/Droite/Marche/_a_{i},60.png' for i in range(8)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Suzumebachi/Gauche/Marche/_a_{i},60.png' for i in range(8)]
+        self.images_mort = [f'data/images/Jeu de combat/Suzumebachi/Mort/_a_{i},60.png' for i in range(17)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Suzumebachi/Gauche/Inaction/_a_{i},80.png' for i in range(32)]
+        self.inaction_d = [f'data/images/Jeu de combat/Suzumebachi/Droite/Inaction/_a_{i},80.png' for i in range(32)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -2111,14 +2113,14 @@ class Suzumebachi:
 class Dusk:
     def __init__(self):
         self.hero = Hero(180,440,5.5,0.18,0.14,5.3,1.5,'Foudre')
-        self.atk1_d = [f'images/Jeu de combat/Dusk/Droite/Attaque1/_a_{i},60.png' for i in range(28)]
-        self.atk1_g = [f'images/Jeu de combat/Dusk/Gauche/Attaque1/_a_{i},60.png' for i in range(28)]
-        self.images_marche_d = [f'images/Jeu de combat/Dusk/Droite/Marche/_a_{i},60.png' for i in range(6)] 
-        self.images_marche_g = [f'images/Jeu de combat/Dusk/Gauche/Marche/_a_{i},60.png' for i in range(6)]
-        self.images_mort = [f'images/Jeu de combat/Dusk/Mort/_a_{i},60.png' for i in range(11)] 
-        self.inaction_g = [f'images/Jeu de combat/Dusk/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
-        self.inaction_d = [f'images/Jeu de combat/Dusk/Droite/Inaction/_a_{i},80.png' for i in range(14)]
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/Dusk/Droite/Attaque1/_a_{i},60.png' for i in range(28)]
+        self.atk1_g = [f'data/images/Jeu de combat/Dusk/Gauche/Attaque1/_a_{i},60.png' for i in range(28)]
+        self.images_marche_d = [f'data/images/Jeu de combat/Dusk/Droite/Marche/_a_{i},60.png' for i in range(6)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/Dusk/Gauche/Marche/_a_{i},60.png' for i in range(6)]
+        self.images_mort = [f'data/images/Jeu de combat/Dusk/Mort/_a_{i},60.png' for i in range(11)] 
+        self.inaction_g = [f'data/images/Jeu de combat/Dusk/Gauche/Inaction/_a_{i},80.png' for i in range(14)]
+        self.inaction_d = [f'data/images/Jeu de combat/Dusk/Droite/Inaction/_a_{i},80.png' for i in range(14)]
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0
@@ -2233,16 +2235,16 @@ class Dusk:
 class MauriceTicket:
     def __init__(self):
         self.hero = Hero(250,480,5.75,0.18,0.1,1.8,0.5,'Neutre')
-        self.atk1_d = [f'images/Jeu de combat/MauriceTicket/Droite/Attaque1/_a_frm{i},70.png' for i in range(33,50)]
-        self.atk1_g = [f'images/Jeu de combat/MauriceTicket/Gauche/Attaque1/_a_frm{i},70.png' for i in range(33,50)]
-        self.images_marche_d = [f'images/Jeu de combat/MauriceTicket/Droite/Marche/_a_frm{i},100.png' for i in range(10,18)] 
-        self.images_marche_g = [f'images/Jeu de combat/MauriceTicket/Gauche/Marche/_a_frm{i},100.png' for i in range(10,18)]
-        self.cp2_d = [f'images/Jeu de combat/MauriceTicket/Droite/Saut/_a_frm{i},120.png' for i in range(18,21)]
-        self.cp2_g = [f'images/Jeu de combat/MauriceTicket/Gauche/Saut/_a_frm{i},120.png' for i in range(18,21)]
-        self.inaction_g = [f'images/Jeu de combat/MauriceTicket/Gauche/Inaction/_a_frm{i},130.png' for i in range(10)]
-        self.inaction_d = [f'images/Jeu de combat/MauriceTicket/Droite/Inaction/_a_frm{i},130.png' for i in range(10)]
-        self.images_mort = [f'images/Jeu de combat/Dusk/Mort/_a_{i},60.png' for i in range(11)] 
-        self.image = 'images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
+        self.atk1_d = [f'data/images/Jeu de combat/MauriceTicket/Droite/Attaque1/_a_frm{i},70.png' for i in range(33,50)]
+        self.atk1_g = [f'data/images/Jeu de combat/MauriceTicket/Gauche/Attaque1/_a_frm{i},70.png' for i in range(33,50)]
+        self.images_marche_d = [f'data/images/Jeu de combat/MauriceTicket/Droite/Marche/_a_frm{i},100.png' for i in range(10,18)] 
+        self.images_marche_g = [f'data/images/Jeu de combat/MauriceTicket/Gauche/Marche/_a_frm{i},100.png' for i in range(10,18)]
+        self.cp2_d = [f'data/images/Jeu de combat/MauriceTicket/Droite/Saut/_a_frm{i},120.png' for i in range(18,21)]
+        self.cp2_g = [f'data/images/Jeu de combat/MauriceTicket/Gauche/Saut/_a_frm{i},120.png' for i in range(18,21)]
+        self.inaction_g = [f'data/images/Jeu de combat/MauriceTicket/Gauche/Inaction/_a_frm{i},130.png' for i in range(10)]
+        self.inaction_d = [f'data/images/Jeu de combat/MauriceTicket/Droite/Inaction/_a_frm{i},130.png' for i in range(10)]
+        self.images_mort = [f'data/images/Jeu de combat/Dusk/Mort/_a_{i},60.png' for i in range(11)] 
+        self.image = 'data/images/Jeu de combat/Hero/Attaque/Attaque_Droite/Attaque1.png'
         self.frame = 0
         self.frame_mort = 0
         self.frame_parade = 0

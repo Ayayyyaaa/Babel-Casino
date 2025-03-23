@@ -4,7 +4,7 @@ from SQL import ajouter_objet_inventaire,det_id_compte
 
 print("Chargement des fonctions...")
 
-fond2 = pygame.image.load('images/Fonds d\'ecran/casino.png').convert()
+fond2 = pygame.image.load('data/images/Fonds d\'ecran/casino.png').convert()
 
 def dessiner_bouton(fenetre, message:str, x: int, y:int, largeur:int, hauteur:int, couleur_fond:tuple, couleur_texte:tuple, taille:int):
     '''
@@ -29,7 +29,7 @@ def dessiner_bouton(fenetre, message:str, x: int, y:int, largeur:int, hauteur:in
     assert type(couleur_texte) == tuple,'Erreur: couleur_texte doit etre un tuple'
     assert type(taille) == int,'Erreur: taille doit etre un entier'
     pygame.draw.rect(fenetre, couleur_fond, (x, y, largeur, hauteur))
-    police = pygame.font.Font('../data/babelcasino.ttf', taille)
+    police = pygame.font.Font('data/babelcasino.ttf', taille)
     texte = police.render(message, True, couleur_texte)
     fenetre.blit(texte, (x + 10, y + (hauteur - texte.get_height()) // 2))
 
@@ -48,7 +48,7 @@ def dessiner_zone_texte(fenetre, rect, texte:str, actif:bool):
     if actif:
         couleur = noir
     pygame.draw.rect(fenetre, couleur, rect, 4)
-    police = pygame.font.Font('../data/babelcasino.ttf', 30)
+    police = pygame.font.Font('data/babelcasino.ttf', 30)
     texte_surface = police.render(texte, True, noir)
     fenetre.blit(texte_surface, (rect.x + 10, rect.y + 10))
 
@@ -74,7 +74,7 @@ def afficher_ecran_chargement(img) -> None:
     pygame.display.flip()
 
 def valider_numero_carte_bancaire(numero:str) -> bool:
-    "Fonction qui permet de valider un numéro de carte bancaire avec la methode de Luhn (oui on est motivés)"
+    "Fonction qui permet de valider un numéro de carte bancaire avec la methode de Luhn"
     assert type(numero) == str, "Le numéro de carte bancaire doit être une chaîne de caractères"
     numero = ''.join(filter(str.isdigit, numero))
     assert len(numero) == 16, "Le numéro de carte bancaire n'est pas valide"

@@ -12,7 +12,7 @@ class Emplacement(pygame.sprite.Sprite):
 
     def __init__(self, pos_x, pos_y):
         super().__init__()
-        self.image = charger_et_agrandir('machine_a_sou/pomme_doree.png') #image par default a changer
+        self.image = charger_et_agrandir('data/machine_a_sou/pomme_doree.png') #image par default a changer
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
         self.rect.y = pos_y
@@ -23,8 +23,8 @@ class Emplacement(pygame.sprite.Sprite):
 class EcranMachineASous:
     def __init__(self):
         self.ecran = Ecran()
-        self.fond = charger_et_agrandir('machine_a_sou/slot.png')
-        self.image_test = charger_et_agrandir('machine_a_sou/orange.png')
+        self.fond = charger_et_agrandir('data/machine_a_sou/slot.png')
+        self.image_test = charger_et_agrandir('data/machine_a_sou/orange.png')
         self.hauteur_emplacement = 300
         self.emplacement_x_milieu = 800/3 + 86
         self.emplacement_x_gauche = self.emplacement_x_milieu - self.image_test.get_width() -20
@@ -59,11 +59,11 @@ class EcranMachineASous:
         Permet de lancer la machine à sous.
         '''
         fruits_dict = {
-            "cerise": charger_et_agrandir('machine_a_sou/cerise.png'),
-            "pomme": charger_et_agrandir('machine_a_sou/pomme.png'),
-            "orange": charger_et_agrandir('machine_a_sou/orange.png'),
-            "pasteque": charger_et_agrandir('machine_a_sou/pasteque.png'),
-            "pomme_dore": charger_et_agrandir('machine_a_sou/pomme_doree.png')
+            "cerise": charger_et_agrandir('data/machine_a_sou/cerise.png'),
+            "pomme": charger_et_agrandir('data/machine_a_sou/pomme.png'),
+            "orange": charger_et_agrandir('data/machine_a_sou/orange.png'),
+            "pasteque": charger_et_agrandir('data/machine_a_sou/pasteque.png'),
+            "pomme_dore": charger_et_agrandir('data/machine_a_sou/pomme_doree.png')
         }
         fruits = ["pomme", "cerise", "orange", "pasteque", "pomme_dore"]
         proba_fruits = [0.2, 0.25, 0.4, 0.12, 0.03]
@@ -90,7 +90,7 @@ class EcranMachineASous:
 
 ecran_machine_a_sous = EcranMachineASous()
 
-Moonlit = EcranPnj([pygame.image.load(f'images/Pnj/Moonlit/_a_frm{i},80.png') for i in range(14)], 
+Moonlit = EcranPnj([pygame.image.load(f'data/images/Pnj/Moonlit/_a_frm{i},80.png') for i in range(14)], 
 "Ksssst...Intrus...tu es attiré ici par \nl'appat du gain...Ici se trouvent les \nMachines à sous du Babel Casino, le \nBabel Gambling. Amuse toi mais...garde \nun oeil sur ta bourse, ou elle se \nvidera avant que tu ne t'en rendes \ncomptes...ou peut-etre qu'elle se \nremplira, qui sait ?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
   "Appuie sur le levier : ton solde sera \nautomatiquement débité, et tu \nobtiendras un lancer de Babel Gambling. \nSi tu as 3 fruits identiques, c'est le \njackpot ! Tu gagnes une grande somme \nd'argent, selon la rareté du fruit."),

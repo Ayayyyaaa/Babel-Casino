@@ -18,9 +18,9 @@ class Boss:
             - cd2 (float) : le temps de recharge du la compétence 2 du boss
             - cd3 (float) : le temps de recharge du la compétence 3 du boss
             - element (str) : l'élément du boss (sert pour les réactions élémentaires et multiplicateurs de dégâts)
-            - fond : le fond à charger pour le combat (liste d'images)
+            - fond : le fond à charger pour le combat (liste d'data/images)
             - nom_fond (str) : le nom du fond du boss (sert pour le décalage de hauteur à appliquer par rapport au sol)'''
-        self.image = self.image = pygame.image.load('images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png')
+        self.image = self.image = pygame.image.load('data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png')
         self.pv = pv
         self.pos_x = 1000
         self.pos_y = y
@@ -130,12 +130,12 @@ class Boss:
 class Michel:
     def __init__(self) -> 'Michel':
         self.boss = Boss(100,360,3,0.15,4,0,0,'Neutre',chute,'Chute')
-        self.images_attaque1 = [pygame.image.load(f'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm{i},70.png') for i in range(44,69)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/LancierBoss/Droite/Marche/_a_frm{i},70.png') for i in range(16)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/LancierBoss/Gauche/Marche/_a_frm{i},70.png') for i in range(16)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/LancierBoss/Mort/_a_frm{i},70.png') for i in range(83,100)]
-        self.images_inaction = [pygame.image.load(f'images/Jeu de combat/LancierBoss/Gauche/Inaction/_a_frm{i},70.png') for i in range(16,28)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1 = [pygame.image.load(f'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm{i},70.png') for i in range(44,69)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/LancierBoss/Droite/Marche/_a_frm{i},70.png') for i in range(16)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/LancierBoss/Gauche/Marche/_a_frm{i},70.png') for i in range(16)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/LancierBoss/Mort/_a_frm{i},70.png') for i in range(83,100)]
+        self.images_inaction = [pygame.image.load(f'data/images/Jeu de combat/LancierBoss/Gauche/Inaction/_a_frm{i},70.png') for i in range(16,28)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.frame = 0
         self.frame_mort = 0
         self.atk1 = False
@@ -254,14 +254,14 @@ class Michel:
 class TankBoss:
     def __init__(self) -> 'TankBoss':
         self.boss = Boss(230,350,4.5,0.16,5.7,10,0,'Foudre',temple,'Temple')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/ThunderBoss/Droite/Attaque1/_a_{i},60.png').convert_alpha() for i in range(19)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/ThunderBoss/Gauche/Attaque1/_a_{i},60.png').convert_alpha() for i in range(19)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/ThunderBoss/Droite/Marche/_a_{i},60.png').convert_alpha() for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/ThunderBoss/Gauche/Marche/_a_{i},60.png').convert_alpha() for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/ThunderBoss/Mort/_a_{i},60.png').convert_alpha() for i in range(15)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/ThunderBoss/Droite/Inaction/_a_{i},80.png').convert_alpha() for i in range(15)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/ThunderBoss/Gauche/Inaction/_a_{i},80.png').convert_alpha() for i in range(15)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/ThunderBoss/Droite/Attaque1/_a_{i},60.png').convert_alpha() for i in range(19)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/ThunderBoss/Gauche/Attaque1/_a_{i},60.png').convert_alpha() for i in range(19)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/ThunderBoss/Droite/Marche/_a_{i},60.png').convert_alpha() for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/ThunderBoss/Gauche/Marche/_a_{i},60.png').convert_alpha() for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/ThunderBoss/Mort/_a_{i},60.png').convert_alpha() for i in range(15)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/ThunderBoss/Droite/Inaction/_a_{i},80.png').convert_alpha() for i in range(15)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/ThunderBoss/Gauche/Inaction/_a_{i},80.png').convert_alpha() for i in range(15)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -406,12 +406,12 @@ class TankBoss:
 class Cindera:
     def __init__(self) -> 'Cindera':
         self.boss = Boss(160,400,4,0.15,4.5,0,0,'Feu',lave,'Lave')
-        self.images_attaque1 = [pygame.image.load(f'images/Jeu de combat/Cindera/Gauche/Attaque1/_a_{i},100.png') for i in range(40)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Cindera/Droite/Marche/_a_frm{i},0.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Cindera/Gauche/Marche/_a_frm{i},0.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Cindera/Mort/_a_frm{i},0.png') for i in range(26)]
-        self.images_inaction = [pygame.image.load(f'images/Jeu de combat/Cindera/Gauche/Inaction/_a_frm{i},0.png') for i in range(12)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1 = [pygame.image.load(f'data/images/Jeu de combat/Cindera/Gauche/Attaque1/_a_{i},100.png') for i in range(40)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Cindera/Droite/Marche/_a_frm{i},0.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Cindera/Gauche/Marche/_a_frm{i},0.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Cindera/Mort/_a_frm{i},0.png') for i in range(26)]
+        self.images_inaction = [pygame.image.load(f'data/images/Jeu de combat/Cindera/Gauche/Inaction/_a_frm{i},0.png') for i in range(12)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -540,14 +540,14 @@ class Cindera:
 class DarkLord:
     def __init__(self) -> 'DarkLord':
         self.boss = Boss(160,450,4,0.16,2.8,10,0,'Nuit',pluie,'Pluie')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/DarkLord/Droite/Attaque1/_a_frm{i},0.png') for i in range(23)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/DarkLord/Gauche/Attaque1/_a_frm{i},0.png') for i in range(23)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/DarkLord/Droite/Marche/_a_frm{i},0.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/DarkLord/Gauche/Marche/_a_frm{i},0.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/DarkLord/Mort/_a_frm{i},0.png') for i in range(20)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/DarkLord/Droite/Inaction/_a_frm{i},0.png') for i in range(16)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/DarkLord/Gauche/Inaction/_a_frm{i},0.png') for i in range(16)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/DarkLord/Droite/Attaque1/_a_frm{i},0.png') for i in range(23)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/DarkLord/Gauche/Attaque1/_a_frm{i},0.png') for i in range(23)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/DarkLord/Droite/Marche/_a_frm{i},0.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/DarkLord/Gauche/Marche/_a_frm{i},0.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/DarkLord/Mort/_a_frm{i},0.png') for i in range(20)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/DarkLord/Droite/Inaction/_a_frm{i},0.png') for i in range(16)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/DarkLord/Gauche/Inaction/_a_frm{i},0.png') for i in range(16)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -675,14 +675,14 @@ class DarkLord:
 class Astral:
     def __init__(self) -> 'Astral':
         self.boss = Boss(160,440,4,0.16,3.2,10,0,'Esprit',eglise,'Eglise')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Astral/Droite/Attaque1/_a_{i},100.png') for i in range(29)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Astral/Gauche/Attaque1/_a_{i},100.png') for i in range(29)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Astral/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Astral/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Astral/Mort/_a_frm{i},100.png') for i in range(12)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Astral/Droite/Inaction/_a_frm{i},100.png') for i in range(12)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Astral/Gauche/Inaction/_a_frm{i},100.png') for i in range(12)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Astral/Droite/Attaque1/_a_{i},100.png') for i in range(29)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Astral/Gauche/Attaque1/_a_{i},100.png') for i in range(29)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Astral/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Astral/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Astral/Mort/_a_frm{i},100.png') for i in range(12)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Astral/Droite/Inaction/_a_frm{i},100.png') for i in range(12)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Astral/Gauche/Inaction/_a_frm{i},100.png') for i in range(12)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -809,14 +809,14 @@ class Astral:
 class EternityPainter:
     def __init__(self) -> 'EternityPainter':
         self.boss = Boss(150,495,4,0.16,3.2,10,0,'Esprit',chute,'Chute')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Ep/Droite/Attaque1/_a_frm{i},60.png') for i in range(23)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Ep/Gauche/Attaque1/_a_frm{i},60.png') for i in range(23)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Ep/Droite/Marche/_a_frm{i},60.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Ep/Gauche/Marche/_a_frm{i},60.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Ep/Mort/_a_frm{i},60.png') for i in range(11)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Ep/Droite/Inaction/_a_frm{i},80.png') for i in range(12)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Ep/Gauche/Inaction/_a_frm{i},80.png') for i in range(12)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Ep/Droite/Attaque1/_a_frm{i},60.png') for i in range(23)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Ep/Gauche/Attaque1/_a_frm{i},60.png') for i in range(23)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Ep/Droite/Marche/_a_frm{i},60.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Ep/Gauche/Marche/_a_frm{i},60.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Ep/Mort/_a_frm{i},60.png') for i in range(11)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Ep/Droite/Inaction/_a_frm{i},80.png') for i in range(12)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Ep/Gauche/Inaction/_a_frm{i},80.png') for i in range(12)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -958,16 +958,16 @@ class EternityPainter:
 class Shidai:
     def __init__(self) -> 'Shidai':
         self.boss = Boss(180,445,4,0.16,2.8,4,0,'Air',chute,'Chute')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Shidai/Droite/Attaque1/_a_{i},60.png') for i in range(20)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Shidai/Gauche/Attaque1/_a_{i},60.png') for i in range(20)]
-        self.cp2_d = [pygame.image.load(f'images/Jeu de combat/Shidai/Droite/Attaque2/_a_{i},60.png') for i in range(6)]
-        self.cp2_g = [pygame.image.load(f'images/Jeu de combat/Shidai/Gauche/Attaque2/_a_{i},60.png') for i in range(6)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Shidai/Droite/Marche/_a_frm{i},60.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Shidai/Gauche/Marche/_a_frm{i},60.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Shidai/Mort/_a_{i},60.png') for i in range(18)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Shidai/Droite/Inaction/_a_{i},80.png') for i in range(14)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Shidai/Gauche/Inaction/_a_{i},80.png') for i in range(14)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Droite/Attaque1/_a_{i},60.png') for i in range(20)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Gauche/Attaque1/_a_{i},60.png') for i in range(20)]
+        self.cp2_d = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Droite/Attaque2/_a_{i},60.png') for i in range(6)]
+        self.cp2_g = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Gauche/Attaque2/_a_{i},60.png') for i in range(6)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Droite/Marche/_a_frm{i},60.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Gauche/Marche/_a_frm{i},60.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Mort/_a_{i},60.png') for i in range(18)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Droite/Inaction/_a_{i},80.png') for i in range(14)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Shidai/Gauche/Inaction/_a_{i},80.png') for i in range(14)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -1147,18 +1147,18 @@ class Shidai:
 class Lilithe:
     def __init__(self) -> 'Lilithe':
         self.boss = Boss(200,455,4,0.16,3.8,5,2.7,'Feu',lave,'Lave')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Lilithe/Droite/Attaque1/_a_{i},100.png') for i in range(12)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Lilithe/Gauche/Attaque1/_a_{i},100.png') for i in range(12)]
-        self.images_attaque2_d = [pygame.image.load(f'images/Jeu de combat/Lilithe/Droite/Attaque2/_a_{i},70.png') for i in range(25)]
-        self.images_attaque2_g = [pygame.image.load(f'images/Jeu de combat/Lilithe/Gauche/Attaque2/_a_{i},70.png') for i in range(25)]
-        self.cp2_d = [pygame.image.load(f'images/Jeu de combat/Lilithe/Droite/Attaque3/_a_{i},70.png') for i in range(14)]
-        self.cp2_g = [pygame.image.load(f'images/Jeu de combat/Lilithe/Gauche/Attaque3/_a_{i},70.png') for i in range(14)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Lilithe/Droite/Marche/_a_frm{i},70.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Lilithe/Gauche/Marche/_a_frm{i},70.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Lilithe/Mort/_a_{i},70.png') for i in range(20)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Lilithe/Droite/Inaction/_a_{i},80.png') for i in range(20)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Lilithe/Gauche/Inaction/_a_{i},80.png') for i in range(20)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Droite/Attaque1/_a_{i},100.png') for i in range(12)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Gauche/Attaque1/_a_{i},100.png') for i in range(12)]
+        self.images_attaque2_d = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Droite/Attaque2/_a_{i},70.png') for i in range(25)]
+        self.images_attaque2_g = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Gauche/Attaque2/_a_{i},70.png') for i in range(25)]
+        self.cp2_d = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Droite/Attaque3/_a_{i},70.png') for i in range(14)]
+        self.cp2_g = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Gauche/Attaque3/_a_{i},70.png') for i in range(14)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Droite/Marche/_a_frm{i},70.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Gauche/Marche/_a_frm{i},70.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Mort/_a_{i},70.png') for i in range(20)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Droite/Inaction/_a_{i},80.png') for i in range(20)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Lilithe/Gauche/Inaction/_a_{i},80.png') for i in range(20)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -1379,14 +1379,14 @@ class Lilithe:
 class Solfist:
     def __init__(self) -> 'Solfist':
         self.boss = Boss(260,450,4,0.16,4.5,10,0,'FeuImmune',lave,'Lave')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Solfist/Droite/Attaque1/_a_{i},100.png') for i in range(41)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Solfist/Gauche/Attaque1/_a_{i},100.png') for i in range(41)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Solfist/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Solfist/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Solfist/Mort/_a_{i},100.png') for i in range(25)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Solfist/Droite/Inaction/_a_{i},100.png') for i in range(12)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Solfist/Gauche/Inaction/_a_{i},100.png') for i in range(12)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Solfist/Droite/Attaque1/_a_{i},100.png') for i in range(41)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Solfist/Gauche/Attaque1/_a_{i},100.png') for i in range(41)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Solfist/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Solfist/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Solfist/Mort/_a_{i},100.png') for i in range(25)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Solfist/Droite/Inaction/_a_{i},100.png') for i in range(12)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Solfist/Gauche/Inaction/_a_{i},100.png') for i in range(12)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -1518,14 +1518,14 @@ class Solfist:
 class Elyx:
     def __init__(self) -> 'Elyx':
         self.boss = Boss(240,470,3.5,0.16,5,10,0,'Neutre',chute,'Chute')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Elyx/Droite/Attaque1/_a_{i},100.png') for i in range(12)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Elyx/Gauche/Attaque1/_a_{i},100.png') for i in range(12)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Elyx/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Elyx/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Elyx/Mort/_a_{i},100.png') for i in range(11)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Elyx/Droite/Inaction/_a_{i},100.png') for i in range(11)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Elyx/Gauche/Inaction/_a_{i},100.png') for i in range(11)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Elyx/Droite/Attaque1/_a_{i},100.png') for i in range(12)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Elyx/Gauche/Attaque1/_a_{i},100.png') for i in range(12)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Elyx/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Elyx/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Elyx/Mort/_a_{i},100.png') for i in range(11)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Elyx/Droite/Inaction/_a_{i},100.png') for i in range(11)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Elyx/Gauche/Inaction/_a_{i},100.png') for i in range(11)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -1669,14 +1669,14 @@ class Elyx:
 class Embla:
     def __init__(self) -> 'Embla':
         self.boss = Boss(150,440,4,0.16,2.8,4,0,'Glace',temple,'Temple')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Embla/Droite/Attaque1/_a_{i},60.png') for i in range(38)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Embla/Gauche/Attaque1/_a_{i},60.png') for i in range(38)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Embla/Droite/Marche/_a_{i},60.png') for i in range(10)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Embla/Gauche/Marche/_a_{i},60.png') for i in range(10)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Embla/Mort/_a_frm{i},60.png') for i in range(12)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Embla/Droite/Inaction/_a_{i},80.png') for i in range(18)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Embla/Gauche/Inaction/_a_{i},80.png') for i in range(18)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Embla/Droite/Attaque1/_a_{i},60.png') for i in range(38)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Embla/Gauche/Attaque1/_a_{i},60.png') for i in range(38)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Embla/Droite/Marche/_a_{i},60.png') for i in range(10)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Embla/Gauche/Marche/_a_{i},60.png') for i in range(10)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Embla/Mort/_a_frm{i},60.png') for i in range(12)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Embla/Droite/Inaction/_a_{i},80.png') for i in range(18)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Embla/Gauche/Inaction/_a_{i},80.png') for i in range(18)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -1819,14 +1819,14 @@ class Embla:
 class Sun:
     def __init__(self) -> 'Sun':
         self.boss = Boss(260,450,4,0.16,5,10,0,'FeuImmune',lave,'Lave')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Sun/Droite/Attaque1/_a_{i},100.png') for i in range(33)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Sun/Gauche/Attaque1/_a_{i},100.png') for i in range(33)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Sun/Droite/Marche/_a_{i},100.png') for i in range(5)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Sun/Gauche/Marche/_a_{i},100.png') for i in range(5)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Sun/Mort/_a_{i},100.png') for i in range(17)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Sun/Droite/Inaction/_a_{i},100.png') for i in range(26)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Sun/Gauche/Inaction/_a_{i},100.png') for i in range(26)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Sun/Droite/Attaque1/_a_{i},100.png') for i in range(33)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Sun/Gauche/Attaque1/_a_{i},100.png') for i in range(33)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Sun/Droite/Marche/_a_{i},100.png') for i in range(5)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Sun/Gauche/Marche/_a_{i},100.png') for i in range(5)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Sun/Mort/_a_{i},100.png') for i in range(17)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Sun/Droite/Inaction/_a_{i},100.png') for i in range(26)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Sun/Gauche/Inaction/_a_{i},100.png') for i in range(26)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -1963,14 +1963,14 @@ class Sun:
 class Skurge:
     def __init__(self) -> 'Skurge':
         self.boss = Boss(140,510,5,0.16,6.5,10,0,'Nature',chute,'Chute')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Skurge/Droite/Attaque1/_a_{i},100.png') for i in range(14)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Skurge/Gauche/Attaque1/_a_{i},100.png') for i in range(14)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Skurge/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Skurge/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Skurge/Mort/_a_{i},100.png') for i in range(9)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Skurge/Droite/Inaction/_a_{i},100.png') for i in range(11)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Skurge/Gauche/Inaction/_a_{i},100.png') for i in range(11)]
-        self.image = pygame.image.load('images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png')
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Skurge/Droite/Attaque1/_a_{i},100.png') for i in range(14)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Skurge/Gauche/Attaque1/_a_{i},100.png') for i in range(14)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Skurge/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Skurge/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Skurge/Mort/_a_{i},100.png') for i in range(9)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Skurge/Droite/Inaction/_a_{i},100.png') for i in range(11)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Skurge/Gauche/Inaction/_a_{i},100.png') for i in range(11)]
+        self.image = pygame.image.load('data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png')
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -2118,14 +2118,14 @@ class Skurge:
 class NoshRak:
     def __init__(self) -> 'NoshRak':
         self.boss = Boss(150,470,4,0.16,2.8,4,0,'Foudre',desert,'Desert')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Nosh-Rak/Droite/Attaque1/_a_{i},60.png') for i in range(35)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Nosh-Rak/Gauche/Attaque1/_a_{i},60.png') for i in range(35)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Nosh-Rak/Droite/Marche/_a_{i},60.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Nosh-Rak/Gauche/Marche/_a_{i},60.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Nosh-Rak/Mort/_a_{i},60.png') for i in range(24)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Nosh-Rak/Droite/Inaction/_a_{i},80.png') for i in range(20)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Nosh-Rak/Gauche/Inaction/_a_{i},80.png') for i in range(20)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Nosh-Rak/Droite/Attaque1/_a_{i},60.png') for i in range(35)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Nosh-Rak/Gauche/Attaque1/_a_{i},60.png') for i in range(35)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Nosh-Rak/Droite/Marche/_a_{i},60.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Nosh-Rak/Gauche/Marche/_a_{i},60.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Nosh-Rak/Mort/_a_{i},60.png') for i in range(24)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Nosh-Rak/Droite/Inaction/_a_{i},80.png') for i in range(20)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Nosh-Rak/Gauche/Inaction/_a_{i},80.png') for i in range(20)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -2271,14 +2271,14 @@ class NoshRak:
 class Purgatos:
     def __init__(self) -> 'Purgatos':
         self.boss = Boss(150,420,4,0.16,2.0,0,0,'Esprit',eglise,'Desert')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Purgatos/Droite/Attaque1/_a_{i},100.png') for i in range(23)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Purgatos/Gauche/Attaque1/_a_{i},100.png') for i in range(23)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Purgatos/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Purgatos/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Purgatos/Mort/_a_{i},100.png') for i in range(17)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Purgatos/Droite/Inaction/_a_{i},100.png') for i in range(14)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Purgatos/Gauche/Inaction/_a_{i},100.png') for i in range(14)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Purgatos/Droite/Attaque1/_a_{i},100.png') for i in range(23)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Purgatos/Gauche/Attaque1/_a_{i},100.png') for i in range(23)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Purgatos/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Purgatos/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Purgatos/Mort/_a_{i},100.png') for i in range(17)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Purgatos/Droite/Inaction/_a_{i},100.png') for i in range(14)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Purgatos/Gauche/Inaction/_a_{i},100.png') for i in range(14)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -2412,14 +2412,14 @@ class Purgatos:
 class Ciphyron:
     def __init__(self) -> 'Ciphyron':
         self.boss = Boss(150,420,4,0.16,2.0,0,0,'Foudre',desert,'Desert')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Ciphyron/Droite/Attaque1/_a_{i},60.png') for i in range(22)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Ciphyron/Gauche/Attaque1/_a_{i},60.png') for i in range(22)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Ciphyron/Droite/Marche/_a_{i},60.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Ciphyron/Gauche/Marche/_a_{i},60.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Ciphyron/Mort/_a_{i},60.png') for i in range(17)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Ciphyron/Droite/Inaction/_a_{i},80.png') for i in range(16)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Ciphyron/Gauche/Inaction/_a_{i},80.png') for i in range(16)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Ciphyron/Droite/Attaque1/_a_{i},60.png') for i in range(22)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Ciphyron/Gauche/Attaque1/_a_{i},60.png') for i in range(22)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Ciphyron/Droite/Marche/_a_{i},60.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Ciphyron/Gauche/Marche/_a_{i},60.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Ciphyron/Mort/_a_{i},60.png') for i in range(17)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Ciphyron/Droite/Inaction/_a_{i},80.png') for i in range(16)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Ciphyron/Gauche/Inaction/_a_{i},80.png') for i in range(16)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -2572,14 +2572,14 @@ class Ciphyron:
 class Golem:
     def __init__(self) -> 'Golem':
         self.boss = Boss(350,357,2.8,0.16,6.8,4,0,'Foudre',temple,'Temple')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Golem/Droite/Attaque1/_a_{i},70.png') for i in range(28)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Golem/Gauche/Attaque1/_a_{i},70.png') for i in range(28)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Golem/Droite/Marche/_a_{i},70.png') for i in range(12)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Golem/Gauche/Marche/_a_{i},70.png') for i in range(12)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Golem/Mort/_a_{i},70.png') for i in range(20)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Golem/Droite/Inaction/_a_{i},80.png') for i in range(16)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Golem/Gauche/Inaction/_a_{i},80.png') for i in range(16)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Golem/Droite/Attaque1/_a_{i},70.png') for i in range(28)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Golem/Gauche/Attaque1/_a_{i},70.png') for i in range(28)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Golem/Droite/Marche/_a_{i},70.png') for i in range(12)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Golem/Gauche/Marche/_a_{i},70.png') for i in range(12)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Golem/Mort/_a_{i},70.png') for i in range(20)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Golem/Droite/Inaction/_a_{i},80.png') for i in range(16)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Golem/Gauche/Inaction/_a_{i},80.png') for i in range(16)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -2730,18 +2730,18 @@ class Golem:
 class Soji:
     def __init__(self):
         self.boss = Boss(210,480,4,0.16,5,7,4.5,'Foudre',desert,'Desert')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Soji/Droite/Attaque1/_a_{i},100.png') for i in range(22)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Soji/Gauche/Attaque1/_a_{i},100.png') for i in range(22)]
-        self.images_attaque2_d = [pygame.image.load(f'images/Jeu de combat/Soji/Droite/Attaque2/_a_{i},70.png') for i in range(25)]
-        self.images_attaque2_g = [pygame.image.load(f'images/Jeu de combat/Soji/Gauche/Attaque2/_a_{i},70.png') for i in range(25)]
-        self.cp2_d = [pygame.image.load(f'images/Jeu de combat/Soji/Droite/Attaque3/_a_{i},70.png') for i in range(12)]
-        self.cp2_g = [pygame.image.load(f'images/Jeu de combat/Soji/Gauche/Attaque3/_a_{i},70.png') for i in range(12)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Soji/Droite/Marche/_a_{i},70.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Soji/Gauche/Marche/_a_{i},70.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Soji/Mort/_a_{i},70.png') for i in range(19)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Soji/Droite/Inaction/_a_{i},80.png') for i in range(14)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Soji/Gauche/Inaction/_a_{i},80.png') for i in range(14)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Soji/Droite/Attaque1/_a_{i},100.png') for i in range(22)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Soji/Gauche/Attaque1/_a_{i},100.png') for i in range(22)]
+        self.images_attaque2_d = [pygame.image.load(f'data/images/Jeu de combat/Soji/Droite/Attaque2/_a_{i},70.png') for i in range(25)]
+        self.images_attaque2_g = [pygame.image.load(f'data/images/Jeu de combat/Soji/Gauche/Attaque2/_a_{i},70.png') for i in range(25)]
+        self.cp2_d = [pygame.image.load(f'data/images/Jeu de combat/Soji/Droite/Attaque3/_a_{i},70.png') for i in range(12)]
+        self.cp2_g = [pygame.image.load(f'data/images/Jeu de combat/Soji/Gauche/Attaque3/_a_{i},70.png') for i in range(12)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Soji/Droite/Marche/_a_{i},70.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Soji/Gauche/Marche/_a_{i},70.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Soji/Mort/_a_{i},70.png') for i in range(19)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Soji/Droite/Inaction/_a_{i},80.png') for i in range(14)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Soji/Gauche/Inaction/_a_{i},80.png') for i in range(14)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -2974,14 +2974,14 @@ class Soji:
 class Prophet:
     def __init__(self) -> 'Prophet':
         self.boss = Boss(200,500,2.8,0.16,5.5,4,0,'Foudre',temple,'Temple')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Prophet/Droite/Attaque1/_a_{i},100.png') for i in range(34)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Prophet/Gauche/Attaque1/_a_{i},100.png') for i in range(34)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Prophet/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Prophet/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Prophet/Mort/_a_{i},100.png') for i in range(19)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Prophet/Droite/Inaction/_a_{i},100.png') for i in range(18)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Prophet/Gauche/Inaction/_a_{i},100.png') for i in range(18)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Prophet/Droite/Attaque1/_a_{i},100.png') for i in range(34)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Prophet/Gauche/Attaque1/_a_{i},100.png') for i in range(34)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Prophet/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Prophet/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Prophet/Mort/_a_{i},100.png') for i in range(19)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Prophet/Droite/Inaction/_a_{i},100.png') for i in range(18)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Prophet/Gauche/Inaction/_a_{i},100.png') for i in range(18)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -3117,13 +3117,13 @@ class Prophet:
 """class Minion:
     def __init__(self,nom):
         self.boss = Boss(80,480,4,0.16,2.1,10,0,'Nuit',pluie,'Pluie')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Pandora/{nom}/Droite/Attaque1/_a_{i},100.png') for i in range(20)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Pandora/{nom}/Gauche/Attaque1/_a_{i},100.png') for i in range(20)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Pandora/{nom}/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Pandora/{nom}/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Pandora/{nom}/Droite/Inaction/_a_{i},100.png') for i in range(12)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Pandora/{nom}/Gauche/Inaction/_a_{i},100.png') for i in range(12)]
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Pandora/{nom}/Droite/Attaque1/_a_{i},100.png') for i in range(20)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Pandora/{nom}/Gauche/Attaque1/_a_{i},100.png') for i in range(20)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Pandora/{nom}/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Pandora/{nom}/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Pandora/{nom}/Droite/Inaction/_a_{i},100.png') for i in range(12)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Pandora/{nom}/Gauche/Inaction/_a_{i},100.png') for i in range(12)]
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0
@@ -3228,16 +3228,16 @@ class Prophet:
 class Pandora:
     def __init__(self):
         self.boss = Boss(160,480,4,0.16,6,10,0,'Nuit',pluie,'Pluie')
-        self.images_attaque1_d = [pygame.image.load(f'images/Jeu de combat/Pandora/Droite/Attaque1/_a_{i},100.png') for i in range(23)]
-        self.images_attaque1_g = [pygame.image.load(f'images/Jeu de combat/Pandora/Gauche/Attaque1/_a_{i},100.png') for i in range(23)]
-        self.images_marche_d = [pygame.image.load(f'images/Jeu de combat/Pandora/Droite/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_marche_g = [pygame.image.load(f'images/Jeu de combat/Pandora/Gauche/Marche/_a_{i},100.png') for i in range(8)]
-        self.images_mort = [pygame.image.load(f'images/Jeu de combat/Pandora/Mort/_a_{i},100.png') for i in range(13)]
-        self.images_inaction_d = [pygame.image.load(f'images/Jeu de combat/Pandora/Droite/Inaction/_a_frm{i},100.png') for i in range(10)]
-        self.images_inaction_g = [pygame.image.load(f'images/Jeu de combat/Pandora/Gauche/Inaction/_a_frm{i},100.png') for i in range(10)]
+        self.images_attaque1_d = [pygame.image.load(f'data/images/Jeu de combat/Pandora/Droite/Attaque1/_a_{i},100.png') for i in range(23)]
+        self.images_attaque1_g = [pygame.image.load(f'data/images/Jeu de combat/Pandora/Gauche/Attaque1/_a_{i},100.png') for i in range(23)]
+        self.images_marche_d = [pygame.image.load(f'data/images/Jeu de combat/Pandora/Droite/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_marche_g = [pygame.image.load(f'data/images/Jeu de combat/Pandora/Gauche/Marche/_a_{i},100.png') for i in range(8)]
+        self.images_mort = [pygame.image.load(f'data/images/Jeu de combat/Pandora/Mort/_a_{i},100.png') for i in range(13)]
+        self.images_inaction_d = [pygame.image.load(f'data/images/Jeu de combat/Pandora/Droite/Inaction/_a_frm{i},100.png') for i in range(10)]
+        self.images_inaction_g = [pygame.image.load(f'data/images/Jeu de combat/Pandora/Gauche/Inaction/_a_frm{i},100.png') for i in range(10)]
         self.dgt10 = pygame.image.load("images/Jeu de combat/-10.png")
         self.dgt20 = pygame.image.load("images/Jeu de combat/-20.png")
-        self.image = 'images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
+        self.image = 'data/images/Jeu de combat/LancierBoss/Gauche/Attaque1/_a_frm44,70.png'
         self.cd_dgt10 = 0
         self.cd_dgt20 = 0
         self.frame = 0

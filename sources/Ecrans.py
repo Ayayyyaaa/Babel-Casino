@@ -94,11 +94,11 @@ class Ecran1:
 class Ecran2:
     def __init__(self) -> 'Ecran2':
         self.ecran = Ecran()
-        self.fond = pygame.image.load('images/Fonds d\'ecran/casino.png').convert()
+        self.fond = pygame.image.load('data/images/Fonds d\'ecran/casino.png').convert()
         self.musique = False
         self.btns = [btn_boutique, btn_retour, btn_roulette, btn_pile_ou_face, btn_machine_a_sous, btn_blackjack, btn_jeu_combat, btn_inventaire, btn_babel_invader]  # Boutons à afficher
         self.choix_fait = False     # Pour le Babel Face
-        self.btn_classement = [f'images/Bouton Classement/_a_frm{i},40.png' for i in range(18)]  # Animatin de bouton
+        self.btn_classement = [f'data/images/Bouton Classement/_a_frm{i},40.png' for i in range(18)]  # Animatin de bouton
         self.btn = pygame.image.load(self.btn_classement[0]).convert_alpha()     # Image du bouton
         self.anim = False
         self.frame = 0
@@ -124,15 +124,15 @@ class Ecran2:
         # Cas de joueur Mr Mhorrhyce quand le changement de pseudo a été effectué
         elif joueur1.get_pseudo() == 'Le meilleur':
             # On charge le fond d'écran spécifique de toute beauté
-            self.fond = pygame.image.load('images/Fonds d\'ecran/Metteznous20sur20svp.jpg').convert()
+            self.fond = pygame.image.load('data/images/Fonds d\'ecran/Metteznous20sur20svp.jpg').convert()
         # Si le joueur est un démon (un arbre dégénéré)
         elif joueur1.get_pseudo().lower() == 'abel':
             # On affiche le fond d'écran spécifique de l'arbre dégénéré Abel
-            self.fond = pygame.image.load('images/Fonds d\'ecran/FondAbel.png').convert()
+            self.fond = pygame.image.load('data/images/Fonds d\'ecran/FondAbel.png').convert()
         # Sinon
         else:
             # On charge le fond d'écran normal
-            self.fond = pygame.image.load('images/Fonds d\'ecran/casino.png').convert()
+            self.fond = pygame.image.load('data/images/Fonds d\'ecran/casino.png').convert()
         # On affiche le fond d'écran
         fenetre.blit(self.fond, (0, 0))
         # On fait progresser l'animation de la toute pitite piece à côté du solde du joueur (Elle est trop chou)
@@ -228,7 +228,7 @@ class Ecran2:
             joueur1.ajouter_hero(self.benji)
     def btn_classement_anim(self,speed:float):
         '''
-        Permet d'animer le bouton des héros. On dait progresser l'indice de l'image, si on arrive à la fin on le remet à 0.
+        Permet d'animer le bouton des héros. On dait progresser l'indice de l'data/image, si on arrive à la fin on le remet à 0.
         Paramètres :
             - speed (float) : Vitesse de l'animation
         '''
@@ -242,10 +242,10 @@ class Ecran2:
 class EcranMort:
     def __init__(self) -> 'EcranMort':
         self.ecran = Ecran()
-        self.frames =  [pygame.image.load(f'images/Fonds d\'ecran/Mort/_a_frm{i},100.png').convert_alpha() for i in range(8)] # Images du gif 
-        self.num_frame = 0 # Indice de l'image actuelle
-        self.pnj = [pygame.image.load(f'images/Pnj/Firestarter/_a_{i},100.png') for i in range(12)] # Images du pnj
-        self.indice_pnj = 0 # Indice de l'image du pnj
+        self.frames =  [pygame.image.load(f'data/images/Fonds d\'ecran/Mort/_a_frm{i},100.png').convert_alpha() for i in range(8)] # Images du gif 
+        self.num_frame = 0 # Indice de l'data/image actuelle
+        self.pnj = [pygame.image.load(f'data/images/Pnj/Firestarter/_a_{i},100.png') for i in range(12)] # Images du pnj
+        self.indice_pnj = 0 # Indice de l'data/image du pnj
     def affiche(self,speed:float):
         '''Permet d'afficher l'écran de rickroll.
         Paramètres :
@@ -278,7 +278,7 @@ class EcranMort:
             enlarged_mask = pygame.transform.scale(mask_surface, 
                                                    (mask_surface.get_width() + 20, mask_surface.get_height() + 20))
 
-            # Afficher le masque avant d'afficher l'image du PNJ
+            # Afficher le masque avant d'afficher l'data/image du PNJ
             fenetre.blit(enlarged_mask, (-111, 386))  # Décaler légèrement pour centrer l'effet
 
         # Affichage des éléments
@@ -287,8 +287,8 @@ class EcranMort:
 class EcranVictoire:
     def __init__(self):
         self.ecran = Ecran()
-        self.retour1 = pygame.image.load('images/Boutons_autre/Retour-1.png').convert_alpha()
-        self.retour2 = pygame.image.load('images/Boutons_autre/Retour-2.png').convert_alpha()
+        self.retour1 = pygame.image.load('data/images/Boutons_autre/Retour-1.png').convert_alpha()
+        self.retour2 = pygame.image.load('data/images/Boutons_autre/Retour-2.png').convert_alpha()
     def affiche(self):
         '''
         Permet d'afficher l'écran de victoire.
@@ -325,8 +325,8 @@ class EcranBlack:
 class EcranBoutique:
     def __init__(self):
         self.ecran = Ecran()
-        self.fond = pygame.image.load('images/Fonds d\'ecran/Boutique.png').convert_alpha()
-        self.btn_heros = [f'images/Btn_heros/_a_frm{i},70.png' for i in range(13)]
+        self.fond = pygame.image.load('data/images/Fonds d\'ecran/Boutique.png').convert_alpha()
+        self.btn_heros = [f'data/images/Btn_heros/_a_frm{i},70.png' for i in range(13)]
         self.btn = pygame.image.load(self.btn_heros[0]).convert_alpha()
         self.frame = 0
 
@@ -372,10 +372,10 @@ class EcranBoutique:
 class EcranClassement:
     def __init__(self):
         self.ecran = Ecran()  # Assure-toi que cette classe est définie ailleurs dans ton code
-        self.fond = pygame.image.load('images/Fonds d\'ecran/fond_classement5.png').convert_alpha()
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 30)
+        self.fond = pygame.image.load('data/images/Fonds d\'ecran/fond_classement5.png').convert_alpha()
+        self.police = pygame.font.Font('data/babelcasino.ttf', 30)
         self.frame = 0
-        self.sprites = agrandir_liste_images([f'images/Fonds d\'ecran/Demon_classement/_a_{i},80.png' for i in range(14)])
+        self.sprites = agrandir_liste_images([f'data/images/Fonds d\'ecran/Demon_classement/_a_{i},80.png' for i in range(14)])
         self.gens = []
         self.cartouche0 = Button(cartouche_classement2, (cartouche_classement), 20, 150)
         self.cartouche1 = Button(cartouche_classement2, cartouche_classement, 20, 230)
@@ -429,13 +429,13 @@ class EcranClassement:
         # Si on arrive au bout de l'animation on recommence
         if self.frame >= len(self.sprites)-1:
             self.frame = 0
-        # On affiche l'image actuelle
+        # On affiche l'data/image actuelle
         fenetre.blit(self.sprites[int(self.frame)].convert_alpha(), (200, 460))
 
 class EcranAlcool:
     def __init__(self):
         self.ecran = Ecran()
-        self.fond = pygame.image.load('images/Fonds d\'ecran/Boutique.png').convert_alpha()
+        self.fond = pygame.image.load('data/images/Fonds d\'ecran/Boutique.png').convert_alpha()
         self.vodka = False
         self.biere = False
         self.whisky = False
@@ -494,9 +494,9 @@ class EcranAlcool:
 
 class EcranSelection:
     def __init__(self, caracteristiques_hero:'pygame.Surface', liste:list, hero:tuple, y:int, x:int = 100):
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 15)
+        self.police = pygame.font.Font('data/babelcasino.ttf', 15)
         self.ecran = Ecran()
-        self.fond = pygame.image.load('images/Fonds d\'ecran/arene.png').convert_alpha()
+        self.fond = pygame.image.load('data/images/Fonds d\'ecran/arene.png').convert_alpha()
         self.anim = liste
         self.frame = 0
         self.valider = self.police.render(("Val ider"), True, noir)
@@ -544,30 +544,30 @@ class EcranSelection:
 class EcranRR:
     def __init__(self) -> 'EcranRR':
         self.ecran = Ecran()
-        self.frames =  agrandir_liste_images([f'RR/rickroll ({i}).png' for i in range(1,148)]) # Images du gif 
+        self.frames =  agrandir_liste_images([f'data/RR/rickroll ({i}).png' for i in range(1,148)]) # Images du gif 
         self.frame = self.frames[0] # Image actuelle
-        self.num_frame = 0 # Indice de l'image actuelle
+        self.num_frame = 0 # Indice de l'data/image actuelle
     def affiche(self,speed:float):
         '''Permet d'afficher l'écran de rickroll.
         Paramètres :
             - speed (float) : la vitesse de l'animation.'''
         self.num_frame += speed # Fait progresser l'animation
-        self.frame = self.frames[int(self.num_frame)] # Met à jour l'image actuelle
+        self.frame = self.frames[int(self.num_frame)] # Met à jour l'data/image actuelle
         # Si toutes les images ont été jouées :
         if int(self.num_frame) == len(self.frames)-1:
             # On remet tout à 0
             self.num_frame = 0
-        fenetre.blit(self.frame,(0,0)) # Affiche l'image
+        fenetre.blit(self.frame,(0,0)) # Affiche l'data/image
 
 class EcranInventaire:
     def __init__(self):
         self.ecran = Ecran()
-        self.fond = pygame.image.load("images/Fonds d'ecran/inventaire.png").convert()
+        self.fond = pygame.image.load("data/images/Fonds d'ecran/inventaire.png").convert()
         self.items = [item_biere, item_whisky, item_mojito, item_crampons]
         self.alcools = {item_biere : 'Biere', item_whisky : 'Whisky', item_mojito : 'Mojito', item_crampons : 'Crampons'}
         self.alcools_effets = {'Biere' : biere, 'Whisky' : whisky, 'Mojito' : mojito, 'Crampons' : crampons}
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 30)
-        self.police2 = pygame.font.Font('../data/babelcasino.ttf', 24)
+        self.police = pygame.font.Font('data/babelcasino.ttf', 30)
+        self.police2 = pygame.font.Font('data/babelcasino.ttf', 24)
         self.selectione = None
     def affiche(self):
         '''Permet d'afficher l'écran de l'inventaire du joueur.
@@ -631,7 +631,7 @@ class Intro:
         self.indice = 0
         self.texte1 = "Oyez brave héros ! Durant votre voyage, vous arrivez sur le territoire\n du Royaume. En ces périodes troublées, marquées de raids de pillards \nqui s'intensifient, de démons qui terrorisent les populations, de disparitions \ninexpliquées et de la guerre qui gronde aux frontières, le roi Harold vous \nconfie une mission : Faire chuter un mystérieux casino qui s'est implanté \ndans la région. Son nom : Le Babel Casino. \nParmi les nombreuses expéditions lancées, pourtant menées par la garde du roi \nou des aventuriers chevronnés, aucune n'est revenue...Si bien qu'on raconte \ntoutes sortes de légendes sur ce casino mystérieux, selon lesquelles le \ncasino serait géré par le diable lui-même. Alors, n'attendez plus héros ! \nL'avenir du Royaume dépend de vous ! Accompagné de votre fidèle ami \nNight Hero, formé à l'art du combat, vous poussez les lourdes portes du \nBabel Casino...Le plan : mener le Babel Casino à la faillite : pour cela, il \nfaut prendre le casino à son propre jeu : soyez malins, faites preuve \nde chance et investiguez pour réussir à rassembler la somme de \n10 000 000 Babel Coins. Le roi Harold vous a fourni une bourse contenant \n200 000 Babel Coins, à vous d'en faire bon usage ! Ainsi, vous pourrez jouer \naux divers jeux proposés par le Babel Casino : votre chance sera de mise si \nvous vous laissez tenter par la Babel Roulette, le Babel Face ou encore\nle Babel Gambling. Vous préférez vous reposer sur votre habileté seule ? "
         self.texte2 = "Soit, le Babel Invader est fait pour vous. Enfin, vous pourrez mettre à l'épreuve \nvos capacités guerrières (enfin celles de votre ami, Night Hero, car c'est à \npeine si vous savez tenir une arme.) Vous serez face aux démons et pécheurs \ndu Babel Casino, ceux ayant échoué face à celui-ci...Mais prenez garde : un seul \nfaux pas et vous les rejoindrez ! Vous rencontrerez peut-être certains \nvoyageurs de passage pour vous prêter main-forte contre quelque \nrémunération, en mettant leurs habilités au combat à votre service. Pour finir, \nexplorez le Babel Casino, investiguez, et peut-être parviendrez vous à \ntrouver des objets qui vous aideront dans votre quête, tels que les alcools du \nbar, ou même les crampons dorés, armes de prédilection du légendaire guerrier \nBenyamine, surnommé la Meaurylle aux mille victoires. Alors héros, au nom de la \nsurvie du Royaume...\nBonne chance ! "
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 16)
+        self.police = pygame.font.Font('data/babelcasino.ttf', 16)
         self.page = 0
         self.pages = [self.texte1,self.texte2]
         self.fond = fond_intro
@@ -665,7 +665,7 @@ class Intro:
 class CoffreFort:
     def __init__(self):
         self.ecran = Ecran()
-        self.fond = charger_et_agrandir('images/Digicode/fond.png')
+        self.fond = charger_et_agrandir('data/images/Digicode/fond.png')
         self.combinaison = ""
         self.code_a_trouver = self.definir_code()
         self.trouve = False
@@ -743,81 +743,81 @@ digicode = CoffreFort()
 alcool = EcranAlcool()
 PileOuFace = EcranPileOuFace()
 babelRoulette = EcranRoulette()
-klaxon = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Cryoblade.png'),
-                        agrandir_liste_images([f'images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]),
+klaxon = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Cryoblade.png'),
+                        agrandir_liste_images([f'data/images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]),
                         ('Klaxon', 35000), 180, 224)
 
-cryoblade = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Cryoblade.png'),
-                           agrandir_liste_images([f'images/Jeu de combat/Cryoblade/Droite/Inaction/_a_{i},80.png' for i in range(16)]),
+cryoblade = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Cryoblade.png'),
+                           agrandir_liste_images([f'data/images/Jeu de combat/Cryoblade/Droite/Inaction/_a_{i},80.png' for i in range(16)]),
                            ('Cryoblade', 35000), 160, 210)
 
-reeju = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Reeju.png'),
-                       agrandir_liste_images([f'images/Jeu de combat/Reeju/Droite/Inaction/_a_{i},100.png' for i in range(14)]),
+reeju = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Reeju.png'),
+                       agrandir_liste_images([f'data/images/Jeu de combat/Reeju/Droite/Inaction/_a_{i},100.png' for i in range(14)]),
                        ('Reeju', 40000), 80, 140)
 
-windcliffe = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
-                            agrandir_liste_images([f'images/Jeu de combat/Windcliffe/Droite/Inaction/_a_{i},80.png' for i in range(9)]),
+windcliffe = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Maehv.png'),
+                            agrandir_liste_images([f'data/images/Jeu de combat/Windcliffe/Droite/Inaction/_a_{i},80.png' for i in range(9)]),
                             ('Windcliffe', 70000), 110, 150)
 
-maehv = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Maehv.png'),
-                       agrandir_liste_images([f'images/Jeu de combat/Maehv/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
+maehv = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Maehv.png'),
+                       agrandir_liste_images([f'data/images/Jeu de combat/Maehv/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
                        ('Maehv', 350000), 10)
 
-zendo = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Zendo.png'),
-                       agrandir_liste_images([f'images/Jeu de combat/Zendo/Droite/Inaction/_a_frm{i},60.png' for i in range(14)]),
+zendo = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Zendo.png'),
+                       agrandir_liste_images([f'data/images/Jeu de combat/Zendo/Droite/Inaction/_a_frm{i},60.png' for i in range(14)]),
                        ('Zendo', 200000), 10)
 
-zukong = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Zukong.png'),
-                        agrandir_liste_images([f'images/Jeu de combat/Zukong/Droite/Inaction/_a_frm{i},80.png' for i in range(14)]),
+zukong = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Zukong.png'),
+                        agrandir_liste_images([f'data/images/Jeu de combat/Zukong/Droite/Inaction/_a_frm{i},80.png' for i in range(14)]),
                         ('Zukong', 45000), 112, 150)
 
-nighthero = EcranSelection(pygame.image.load('images/Jeu de Combat/Infos/NightHero.png').convert_alpha(),
-                           agrandir_liste_images([f'images/Jeu de combat/Hero/Block/Block ({i}).png' for i in range(1,19)]),
+nighthero = EcranSelection(pygame.image.load('data/images/Jeu de Combat/Infos/NightHero.png').convert_alpha(),
+                           agrandir_liste_images([f'data/images/Jeu de combat/Hero/Block/Block ({i}).png' for i in range(1,19)]),
                            ('Night Hero', 0), 200, 200)
 
-hsuku = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Hsuku.png'),
-                       agrandir_liste_images([f'images/Jeu de combat/Hsuku/Droite/Inaction/_a_{i},80.png' for i in range(28)]),
+hsuku = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Hsuku.png'),
+                       agrandir_liste_images([f'data/images/Jeu de combat/Hsuku/Droite/Inaction/_a_{i},80.png' for i in range(28)]),
                        ('Hsuku', 300000), 20)
 
-sanguinar = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Sanguinar.png'),
-                           agrandir_liste_images([f'images/Jeu de combat/Sanguinar/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
+sanguinar = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Sanguinar.png'),
+                           agrandir_liste_images([f'data/images/Jeu de combat/Sanguinar/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
                            ('Sanguinar', 400000), 20)
 
-whistler = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Whistler.png'),
-                          agrandir_liste_images([f'images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]),
+whistler = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Whistler.png'),
+                          agrandir_liste_images([f'data/images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]),
                           ('Whistler', 400000), 160, 190)
 
-tethermancer = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Whistler.png'),
-                              agrandir_liste_images([f'images/Jeu de combat/Tethermancer/Droite/Inaction/_a_{i},100.png' for i in range(17)]),
+tethermancer = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Whistler.png'),
+                              agrandir_liste_images([f'data/images/Jeu de combat/Tethermancer/Droite/Inaction/_a_{i},100.png' for i in range(17)]),
                               ('Tethermancer', 250000), 40)
 
-aether = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Aether.png'),
-                        agrandir_liste_images([f'images/Jeu de combat/Aether/Droite/Inaction/_a_{i},100.png' for i in range(12)]),
+aether = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Aether.png'),
+                        agrandir_liste_images([f'data/images/Jeu de combat/Aether/Droite/Inaction/_a_{i},100.png' for i in range(12)]),
                         ('Aether', 175000), 194, 186)
 
-pureblade = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Pureblade.png'),
-                           agrandir_liste_images([f'images/Jeu de combat/Pureblade/Droite/Inaction/_a_frm{i},80.png' for i in range(10)]),
+pureblade = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Pureblade.png'),
+                           agrandir_liste_images([f'data/images/Jeu de combat/Pureblade/Droite/Inaction/_a_frm{i},80.png' for i in range(10)]),
                            ('Pureblade', 275000), 20)
 
-twilight = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Twilight.png'),
-                          agrandir_liste_images([f'images/Jeu de combat/Twilight/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
+twilight = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Twilight.png'),
+                          agrandir_liste_images([f'data/images/Jeu de combat/Twilight/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
                           ('Twilight', 180000), 40)
 
-suzumebachi = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Suzumebachi.png'),
-                             agrandir_liste_images([f'images/Jeu de combat/Suzumebachi/Droite/Inaction/_a_{i},80.png' for i in range(32)]),
+suzumebachi = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Suzumebachi.png'),
+                             agrandir_liste_images([f'data/images/Jeu de combat/Suzumebachi/Droite/Inaction/_a_{i},80.png' for i in range(32)]),
                              ('Suzumebachi', 150000), 40)
 
-dusk = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Dusk.png'),
-                      agrandir_liste_images([f'images/Jeu de combat/Dusk/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
+dusk = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Dusk.png'),
+                      agrandir_liste_images([f'data/images/Jeu de combat/Dusk/Droite/Inaction/_a_{i},80.png' for i in range(14)]),
                       ('Dusk', 200000), 40)
 
-yggdra = EcranSelection(charger_et_agrandir('images/Jeu de Combat/Infos/Yggdra.png'),
-                        agrandir_liste_images([f'images/Jeu de combat/Yggdra/Droite/Inaction/_a_{i},80.png' for i in range(7)]),
+yggdra = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Yggdra.png'),
+                        agrandir_liste_images([f'data/images/Jeu de combat/Yggdra/Droite/Inaction/_a_{i},80.png' for i in range(7)]),
                         ('Yggdra', 450000), 140, 140)
 class EcranHeros:
     def __init__(self,btns:dict):
         self.ecran = Ecran()
-        self.fond = pygame.image.load('images/Fonds d\'ecran/Boutique.png').convert_alpha()
+        self.fond = pygame.image.load('data/images/Fonds d\'ecran/Boutique.png').convert_alpha()
         self.btns = btns
     def affiche(self):
         '''Permet d'afficher l'écran de la boutique des héros, et de passer de chaque bouton de hero et l'écran du heros corrsepondant'''
@@ -831,7 +831,7 @@ class EcranHeros:
                 ecran.ecran.set_actif(True),self.ecran.set_actif(False)   # On affiche l'écran du héros
 
 class EcranPnj:
-    def __init__(self, img_pnj:list, dialogue:str, boutons_dialogue:list, boutons:list, pos:tuple, jeu, salle, nom:str, fond='images/Fonds d\'ecran/casino.png'):
+    def __init__(self, img_pnj:list, dialogue:str, boutons_dialogue:list, boutons:list, pos:tuple, jeu, salle, nom:str, fond='data/images/Fonds d\'ecran/casino.png'):
         '''Paramètres :
             - img_pnj : une liste de pygame.images du pnj à afficher
             - dialogue : le texte de base du personnage non joueur
@@ -841,7 +841,7 @@ class EcranPnj:
             - jeu : l'ecran à lancer si le joueur veut y acceder
             - salle : La salle dans laquelle se trouve le pnj (pour la remettre quand le joueur met fin au dialogue)
             - nom : Le nom du pnj
-            - fond : L'image du fond de salle à utiliser'''
+            - fond : L'data/image du fond de salle à utiliser'''
         self.ecran = Ecran()
         self.fond = pygame.image.load(fond).convert()
         self.img_pnj = img_pnj # Les images du png à afficher
@@ -850,8 +850,8 @@ class EcranPnj:
         self.boutons = boutons # Une liste de boutons contenant les boutons d'action à afficher : bouton retour, etc...
         self.pos = pos # La position du personnage non joueur sur l'écran
         self.frame = 0
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 16)
-        self.police2 = pygame.font.Font('../data/babelcasino.ttf', 24)
+        self.police = pygame.font.Font('data/babelcasino.ttf', 16)
+        self.police2 = pygame.font.Font('data/babelcasino.ttf', 24)
         self.txt = ""
         self.indice = 0
         self.txt_a_afficher = self.dialogue
@@ -929,7 +929,7 @@ class EcranPnj:
         self.salle = salle
 
 
-Chakkram = EcranPnj([pygame.image.load(f'images/Pnj/DeathKnell/_a_{i},80.png') for i in range(14)], 
+Chakkram = EcranPnj([pygame.image.load(f'data/images/Pnj/DeathKnell/_a_{i},80.png') for i in range(14)], 
 "Bonsoir bonsoir cher joueur ! \nUne petite partie de Babel Jack ?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), 'Comment jouer ?', 'Ici vous jouerez au légendaire Babel \nJack ! Affrontez le croupier du Babel \nCasino et ne dépassez pas le score \nde 21.'), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 530), 'J\'ai entendu un cri...', 'Oh, ne vous en souciez pas, ce doit juste \nêtre quelque joueur qui a cru pouvoir \nduper le casino. Quelle erreur. \nUne partie ?'), 
@@ -937,14 +937,14 @@ Chakkram = EcranPnj([pygame.image.load(f'images/Pnj/DeathKnell/_a_{i},80.png') f
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), 'Je veux jouer'),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (0,50),ecran_black,ecran2,"Death Knell")
 
-Archon = EcranPnj([pygame.image.load(f'images/Pnj/Archon/_a_frm{i},100.png') for i in range(11)], 
+Archon = EcranPnj([pygame.image.load(f'data/images/Pnj/Archon/_a_frm{i},100.png') for i in range(11)], 
 "Bonjour voyageur ! Comment puis-je \nt'aider ? Ici, tu retrouveras le \nclassement des joueurs du Babel \nCasino, qui possèdent le plus de Babel \nCoins.", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Quelque chose à partager ?', 'Vous savez voyageur, je vois passer \nnombre de joueurs ici...j\'entends \nhistoires, mystères et rumeurs...Nombre\nsont ceux qui sont à la recherche\nd\'une salle secrète qui serait cachée\ndans le casino...On raconte qu\'il faudrait\n murmurer le nom du casino suivi d\'une\n formule magique...Je n\'en sais pas plus.'), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 530), 'Parle de la Meaurylle', 'Haha, vous vous interessez à lui à ce \nque je vois...C\'était un grand et puissant \nguerrier, craint et respecté de tous. \nNul ne sait ce qu\'il est devenu, mais \non raconte que ses légendaires \ncrampons seraient encore cachés \ndans le casino...')], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), 'Je veux y acceder'),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,60),classement,ecran2,"Archon")
 
-Excelsious = EcranPnj([pygame.image.load(f'images/Pnj/Excelsious/_a_{i},80.png') for i in range(13)], 
+Excelsious = EcranPnj([pygame.image.load(f'data/images/Pnj/Excelsious/_a_{i},80.png') for i in range(13)], 
 "Bonjour héros...Préparez-vous... \nIci, vous combattrez au péril de votre \nvie de redoutables démons...\nne faillissez pas...\nBonne chance, combattant.", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), 'Comment jouer ?', 'Chaque héros possède des \ncaractéristiques uniques :\n- Flèche droite/gauche : déplacements \n-Touche 0 : attaque normale \n-Touche 1 : capacité secondaire \n(si le héros en possède une)\nDe plus, certains héros possèdent des \npassifs uniques.'), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 480), 'Quelle est votre plus grande peur ?', 'Pff. Quelle question. Un guerrier ne \ncraint pas la peur. Il ne la connait pas.\nIl ne la cotoie jamais. Cependant...\nméfiez-vous du diable Maurice...'),
@@ -952,23 +952,23 @@ Excelsious = EcranPnj([pygame.image.load(f'images/Pnj/Excelsious/_a_{i},80.png')
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), 'Je veux jouer'),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),ecran2,ecran2,"Excelsious")
 
-SunForge = EcranPnj([pygame.image.load(f'images/Pnj/SunForge/_a_frm{i},100.png') for i in range(14)], 
+SunForge = EcranPnj([pygame.image.load(f'data/images/Pnj/SunForge/_a_frm{i},100.png') for i in range(14)], 
 "Un grand combattant sait en reconnaitre \nun autre quand il en voit un ! Que venez\nvous faire ici héros ?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Je veux engager des héros", "Bien sur ! Ici vous pourrez engager \ncombattants et voyageurs, en échange\n d\'une somme d\'argent. \nChoisissez bien !"), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 480), "Je cherche des informations", "Oh, vous savez, je ne sors pas \nbeaucoup d\'ici moi...je crains de n\'avoir \npas grand chose à vous raconter...en \nrevanche, si un problème peut être\n résolu par la force,\n n\'hésitez pas !"),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 530), "La salle secrète ?", f"Vous la cherchez ? Cela me rappelle \nma jeunesse...c\'est peine perdue : pour \nma part, j\'ai abandonné...Si cela vous \ntient à coeur, j\'avais entendu dire que \nle second chiffre serait {digicode.get_code()[1]}")], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je veux y acceder"),
-(Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),hero,ecran_boutique,"Sun Forge",'images/Fonds d\'ecran/Boutique.png')
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),hero,ecran_boutique,"Sun Forge",'data/images/Fonds d\'ecran/Boutique.png')
 
-Rook = EcranPnj([pygame.image.load(f'images/Pnj/Rook/_a_frm{i},100.png') for i in range(14)], 
+Rook = EcranPnj([pygame.image.load(f'data/images/Pnj/Rook/_a_frm{i},100.png') for i in range(14)], 
 "Hahaha ! Qu'est-ce qui vous amène, l'ami ? \nAllons, venez prendre un verre !", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Que vend-on ici ?", "Bienvenue au bar du Babel Casino l'ami !\nVenez donc vous reposer et vous \ndésaltérer ici. Allons nous raconter \nquelques histoires haha ! N'hésite pas à \npasser !"), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 480), "Je cherche des informations", f"Je ne sais pas grand chose, à part\nles dires de quelques ivrognes...\nQuoique,je crois me souvenir d'avoir \nentendu que le premier chiffre était {digicode.get_code()[0]}. \nCependant, aucune idée de ce que ça \nvoulait dire."),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 530), "Qui êtes-vous ?", "Comment, vous ne me connaissez pas ?\nVoyons, je suis Rook, le célèbre \nvainqueur incontesté de la Babel Arena ! \nJ'ai même battu le terrible démon \nNoshRak...Un conseil : si vous devez le \ncombattre dans l'arene, fuyez.")], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je veux y acceder"),
-(Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),alcool,ecran_boutique,"Rook",'images/Fonds d\'ecran/Boutique.png')
+(Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),alcool,ecran_boutique,"Rook",'data/images/Fonds d\'ecran/Boutique.png')
 
-TheScientist = EcranPnj([pygame.image.load(f'images/Pnj/TheScientist/_a_{i},100.png') for i in range(16)], 
+TheScientist = EcranPnj([pygame.image.load(f'data/images/Pnj/TheScientist/_a_{i},100.png') for i in range(16)], 
 "Ah... un voyageur égaré dans le flot du \ntemps. Peu osent s'aventurer si près de \nl'inconnu...Je perçois en toi une \nlueur vacillante, une étincelle \nprête à être consumée...ou transcendée. \nDis-moi, mortel... cherches-tu des \nréponses, ou préfères-tu ignorer \nl'appel du destin ?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Comment jouer ?", "Les ténèbres de l'espace ne pardonnent \npas. Les envahisseurs sont là, \nimplacables, prêts à détruire tout sur \nleur passage. Ton vaisseau est ta seule \narme. Tu devras les affronter, \nsurvivre, et évoluer. Tu pourras \naméliorer ton vaisseau. Plus de \npuissance, plus de vitesse, plus de \nrésistance. Alors, que feras-tu ? \nLutteras-tu pour devenir plus fort...\nou te perdras-tu dans l'oubli du vide ?"), 
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 480), "L'espace temps ?", f"L'espace-temps, un tissu complexe tissé \nd'instants et d'échos... chaque \nseconde perdue peut changer le cours \nd'un destin. Mais toi, voyageur, tu \nsembles prêt à percer ses mystères. \nL'espace, une pulsation en {digicode.get_code()[2]} temps...\nCe doit être l'élément manquant \npour tout compléter, le 3ème..."),
@@ -976,16 +976,16 @@ TheScientist = EcranPnj([pygame.image.load(f'images/Pnj/TheScientist/_a_{i},100.
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je veux jouer"),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], (10,80),ecran2,ecran2,"The Scientist")
 
-PnjWhistler = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]),  
+PnjWhistler = EcranPnj(agrandir_liste_images([f'data/images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]),  
 "Bonjour, mortel. Que viens-tu chercher \nauprès des flammes ?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 430), "Qui êtes-vous ?", "Je suis Whistler, fille de la Déesse du Feu.\nCe titre seul devrait suffire à écraser \ntoute question insignifiante, mais je vois \nque certains ont besoin d'une leçon.\nLes flammes que je manie ne sont pas\nsimples braises, mais le feu primordial\nlui-même. Rien ne lui survit. Quant à mon \narc...Disons qu'aucune cible n'a jamais \neu l'occasion de raconter son \nexpérience."),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 480), "Une malédiction ?", "Que sais-tu des fardeaux du pouvoir,\nmortel ? On chuchote que 'La Fille du Feu'\nfinit toujours par dévorer ce qu'elle \nchérit.Des prophéties creuses qui ne \nconcernent que ceux qui s'y accrochent.\nJ'avance sans faillir, et je n'ai pas de\ntemps à perdre avec ces enfantillages.\nSi tu es venu pour des lamentations,\ntrouve-toi une âme plus tendre."),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 530), "Des ennemis ?", "Quelle audace de penser que l'on puisse\nêtre mon ennemi. Il n'y a que des fous\nen quête d'un destin tragique.\nLe feu consume tout, sans distinction.\nSi tu tiens à ton existence éphémère,\nreste hors de mon chemin et contente-\ntoi de ne pas attirer mon courroux.")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 380), "Je veux te recruter"),
 (Button(boutons_dialogue2, boutons_dialogue1, 350, 580), 'Au revoir')], 
-(10,80),whistler,hero,"Whistler",'images/Fonds d\'ecran/Boutique.png')
+(10,80),whistler,hero,"Whistler",'data/images/Fonds d\'ecran/Boutique.png')
 
-PnjAether = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Aether/Droite/Inaction/_a_{i},100.png' for i in range(12)]),  
+PnjAether = EcranPnj(agrandir_liste_images([f'data/images/Jeu de combat/Aether/Droite/Inaction/_a_{i},100.png' for i in range(12)]),  
 "Ah, te voilà ! Dis-moi, ressens-tu ce \nfrisson dans l'air ? La magie t'observe... \nelle attend. Approche, écoute-la. \nMais attention, elle ne se livre \nqu'à ceux qui osent l'inviter. \nAlors, que vas-tu lui offrir en \néchange ?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Qui es-tu ?", 
   "Un simple voyageur prisonnier du temps... \nOu peut-être juste une ombre qui \nerre là où le vent la porte. Les noms \nn'ont d'importance que pour ceux \nqui craignent d'être oubliés."),
@@ -995,9 +995,9 @@ PnjAether = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Aether/Droite
   "Un frisson magique parcourut l'air \ntandis qu'il sortit un jeu de cartes \nd'une bourse élimée. \"Que diriez-vous \nd'un tour de magie, cher ami ? Regardez\nbien cette carte...\"Avant même que vous \nne réagissiez, un bruit sec fendit l'air.\n\"VLAN !\"La carte vint heurter votre \nvisage à une vitesse bien trop élevée \nà votre gout. Aether éclata d'un rire \ncristallin.\"Oh l'ami, détendez-vous. Il \nfaut bien rire un peu pour passer le \ntemps. On sous-estime trop souvent \nla durée de l'éternité...\"")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux te recruter"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
-(10,80),aether,hero2,"Aether",'images/Fonds d\'ecran/Boutique.png')
+(10,80),aether,hero2,"Aether",'data/images/Fonds d\'ecran/Boutique.png')
 
-PnjPureblade = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Pureblade/Droite/Inaction/_a_frm{i},80.png' for i in range(10)]),  
+PnjPureblade = EcranPnj(agrandir_liste_images([f'data/images/Jeu de combat/Pureblade/Droite/Inaction/_a_frm{i},80.png' for i in range(10)]),  
 "Tiens donc, un voyageur ? Enfin un peu \nde nouveauté ! Que diriez-vous d'un \nduel ? Je promets d'y aller \ndoucement...Enfin, peut-être. Allez, il \nfaut bien se dérouiller un peu !", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Qui es-tu ?", 
   "Pureblade, commandante de la garde \nroyale. Mon épée veille sur le royaume, \net mon regard ne quitte jamais le roi. \nMais ne vous méprenez pas...Servir ne \nsignifie pas obéir aveuglément. Il faut \nparfois savoir où frapper pour mieux \nprotéger."),
@@ -1007,9 +1007,9 @@ PnjPureblade = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Pureblade/
   "Ne foncez pas tête baissée. L'impatience \nest l'alliée de la défaite. Observez, \nattendez...Puis frappez là où \nl'adversaire s'y attend le moins. Une \nbonne lame ne sert pas qu'à trancher, \nelle sert aussi à faire douter.")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux te recruter"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
-(-80,-60),pureblade,hero2,"Pureblade",'images/Fonds d\'ecran/Boutique.png')
+(-80,-60),pureblade,hero2,"Pureblade",'data/images/Fonds d\'ecran/Boutique.png')
 
-PnjMaehv = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Maehv/Droite/Inaction/_a_{i},80.png' for i in range(14)]),  
+PnjMaehv = EcranPnj(agrandir_liste_images([f'data/images/Jeu de combat/Maehv/Droite/Inaction/_a_{i},80.png' for i in range(14)]),  
 "Hors de mon chemin, mortel. Cessez de \nm'importuner... Très bien. Vous l'aurez \nvoulu. Préparez-vous à mourir.", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Qui es-tu ?", 
   "Tu n'as jamais entendu mon nom ? Tsss...\nSoit tu es trop jeune, soit tu as eu la \nchance de vivre loin des cris et \ndes flammes. Je suis Maehv, l'ombre des \nbatailles passées, le brasier qui ne \ns'éteint jamais. Jadis, mon nom suffisait à \nfaire trembler les royaumes. Maintenant, \nhors de mon chemin, si tu tiens à la vie."),
@@ -1019,9 +1019,9 @@ PnjMaehv = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Maehv/Droite/I
   "Le 0...Retiens mortel, tout commence par \nlui, et tout finit en lui. Quand une \nchose ne fonctionne plus, quand elle \ns'effondre sous son propre poids, il n'y \na qu'une seule issue : tout réduire en \ncendres. Effacer chaque trace, briser \nchaque chaine, détruire chaque \nparcelle de ce qui a été fait... Le néant \nn'est pas une fin...c'est la seule \nmanière de renaitre. Tout recommencer. \nTout reconstruire. Mais d'abord...tout \ndétruire.")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 390), "Je veux te recruter"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
-(-70,-50),maehv,hero,"Maehv",'images/Fonds d\'ecran/Boutique.png')
+(-70,-50),maehv,hero,"Maehv",'data/images/Fonds d\'ecran/Boutique.png')
 
-PnjTwilight = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Twilight/Droite/Inaction/_a_{i},80.png' for i in range(14)]),  
+PnjTwilight = EcranPnj(agrandir_liste_images([f'data/images/Jeu de combat/Twilight/Droite/Inaction/_a_{i},80.png' for i in range(14)]),  
 "Voyageurs de la forêt...êtes-vous des \namis de ces lieux, ou bien de nouveaux \nennemis à occire de mes flammes...?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 475), "Qui es-tu ?", 
   "Je suis Twilight, divinité du feu. Je suis\nla flamme qui subsiste dans l'obscurité, \nl'ame de la foret...Jadis, on murmurait \nmon nom avec respect...aujourd'hui, \nil ne reste que l'écho d'un temps \noublié. Mais qu'importe que les hommes \noublient...la forêt, elle, se souvient."),
@@ -1031,9 +1031,9 @@ PnjTwilight = EcranPnj(agrandir_liste_images([f'images/Jeu de combat/Twilight/Dr
   "Nous étions sept. Chacun lié à une force \nprimordiale, chacun portant le poids \nd'un monde qui n'existe plus. Mais les \nhommes n'ont plus besoin de nous...ou \npeut-être pensent-ils ne plus avoir \nbesoin. L'oubli est une prison dont il est \ndifficile de s'échapper. Pourtant, nous \nveillons...et quand le vent portera \nde nouveau nos noms, nous \nrépondrons.")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 435), "Je veux te recruter"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 595), 'Au revoir')], 
-(-70,-50),twilight,hero2,"Twilight",'images/Fonds d\'ecran/Boutique.png')
+(-70,-50),twilight,hero2,"Twilight",'data/images/Fonds d\'ecran/Boutique.png')
 
-Seer = EcranPnj([pygame.image.load(f'images/Pnj/Seer/_a_frm{i},100.png') for i in range(12)], 
+Seer = EcranPnj([pygame.image.load(f'data/images/Pnj/Seer/_a_frm{i},100.png') for i in range(12)], 
 "Ohoho ! Un petit jeu, ça te tente ? \nPile ou face ? Gagne, et tu repars avec \nun cadeau...Perds, et hihihi...on verra \nbien ce que je prends en échange !", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
   "Rien de plus simple ! Je lance la \npièce, tu choisis : clique sur le bouton \npile ou dur le bouton face. Si t'as raison, \nbravo ! Sinon...eh bien, c'est moi qui \ndécide de ton sort, hihihi !"),
@@ -1045,7 +1045,7 @@ Seer = EcranPnj([pygame.image.load(f'images/Pnj/Seer/_a_frm{i},100.png') for i i
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
 (10,80),PileOuFace,ecran2,"Seer")
 
-Hideatsu = EcranPnj([pygame.image.load(f'images/Pnj/Hideatsu/_a_{i},80.png') for i in range(8)], # Ki jsp quoi
+Hideatsu = EcranPnj([pygame.image.load(f'data/images/Pnj/Hideatsu/_a_{i},80.png') for i in range(8)], # Ki jsp quoi
 "Ah, un intrépide aventurier se présente. \nQue dirais-tu de tester ta bravoure \navec un jeu des plus audacieux ? \nLa Babel Roulette. Tourne le barillet, \nprends un souffle profond, et appuie \nsur la détente. Le frisson de la mort,\nou l'extase de la survie...\nQue choisiras-tu ? Oses-tu défier le \ndestin ?", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
   "Ah, cher aventurier...dans les sombres \nméandres du Babel Casino, chaque \npièce d'or que tu accumules attire \nl'attention du diable Maurice. Plus ta \nbourse se remplit, plus le barillet \nse remplit de balles. Chaque gain, un pas \nvers la fortune...mais aussi vers le \ndanger. La Babel Roulette, un jeu où la \nfortune et la fatalité dansent ensemble. \nSeras-tu audacieux ? Le choix, o noble \nâme, est entre tes mains."),
@@ -1057,10 +1057,10 @@ Hideatsu = EcranPnj([pygame.image.load(f'images/Pnj/Hideatsu/_a_{i},80.png') for
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
 (10,80),babelRoulette,ecran2,"Hideatsu")
 
-Amu = EcranPnj([pygame.image.load(f'images/Pnj/Amu/_a_{i},100.png') for i in range(14)], 
+Amu = EcranPnj([pygame.image.load(f'data/images/Pnj/Amu/_a_{i},100.png') for i in range(14)], 
 "Attends, attends, tu veux voir ton \ninventaire ? Laisse-moi faire, je \nvais t'aider ! Pouf Et voilà, tout ce \nque tu as sur toi s'affiche ici ! Pas mal, \nhein ? J'suis peut-être qu'un petit \nfantome, mais je sais être utile, \nhihihi !", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Comment jouer ?", 
-  "Pour utiliser un objet, c'est super \nsimple ! Tous tes trésors sont listés \nici avec leur quantité. Il te suffit \nde cliquer sur l'image de l'objet qui \nt'intéresse, puis d'appuyer sur \n'Utiliser'...et hop, son effet s'active ! \nFacile, non ? Fais juste attention à \nne pas gaspiller tes précieuses \nressources, hihihi !"),
+  "Pour utiliser un objet, c'est super \nsimple ! Tous tes trésors sont listés \nici avec leur quantité. Il te suffit \nde cliquer sur l'data/image de l'objet qui \nt'intéresse, puis d'appuyer sur \n'Utiliser'...et hop, son effet s'active ! \nFacile, non ? Fais juste attention à \nne pas gaspiller tes précieuses \nressources, hihihi !"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 490), "Comment obtenir des objets ?", 
   "Tu veux des objets ? Hé hé, y'a deux \nfaçons d'en obtenir ! D'abord, tu peux \nles acheter dans la boutique du Babel \nCasino...mais attention, tout a un \nprix, et ici, rien n'est jamais \nvraiment gratuit, hihihi...Sinon, si t'as \nl'esprit affuté, tu peux aussi en \ngagner en résolvant des énigmes ! \nRéfléchis bien, et qui sait, une belle \nrécompense t'attend peut-être !"),
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Un conseil ?", 
@@ -1069,7 +1069,7 @@ Amu = EcranPnj([pygame.image.load(f'images/Pnj/Amu/_a_{i},100.png') for i in ran
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
 (10,80),inventaire,ecran2,"Amu")
 
-NightWatcher = EcranPnj([pygame.image.load(f'images/Pnj/NightWatcher/_a_frm{i},80.png') for i in range(11)], 
+NightWatcher = EcranPnj([pygame.image.load(f'data/images/Pnj/NightWatcher/_a_frm{i},80.png') for i in range(11)], 
 "Intrus...Tu n'as rien à faire ici. Tu \nmarches sur un territoire interdit, un \npas de plus et tu froles l'oubli. Si \nje le pouvais, je t'arracherais de \ncet endroit sur-le-champ. Mais les \nrègles m'en empêchent...Alors, profite de \ncette liberté éphémère...mais sache \nque le Babel Casino reprend \ntoujours ce qui lui appartient. Tot \nou tard, tu paieras le prix de \nton audace.", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Quel est cet endroit ?", 
   "Tu es devant le coffre du Babel Casino...\nLà où reposent les richesses que \npeu ont osé convoiter, et encore moins \nont pu emporter. Ces armes ne sont pas \nfaites pour des mains comme les tiennes. \nElles consument, elles corrompent...\net elles réclament un tribut que tu n'es \npas prêt à payer. Tu crois pouvoir \nt'en emparer ? Pauvre fou...Elles te \nbriseront avant même que tu ne \ncomprennes ton erreur. Et moi, je \nsavourerai le spectacle quand elles te \nconsumeront jusqu'au dernier soupir."),
@@ -1081,7 +1081,7 @@ NightWatcher = EcranPnj([pygame.image.load(f'images/Pnj/NightWatcher/_a_frm{i},8
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
 (-10,80),digicode,ecran2,"Night Watcher")
 
-Firestarter = EcranPnj([pygame.image.load(f'images/Pnj/Firestarter/_a_{i},100.png') for i in range(12)], 
+Firestarter = EcranPnj([pygame.image.load(f'data/images/Pnj/Firestarter/_a_{i},100.png') for i in range(12)], 
 "Tu as trop joué avec le feu, mortel...", 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 440), "Quel est cet endroit ?", 
   "Tu es ici au plus profond du Babel \nCasino...devant se véritable nature, au \ncoeur meme du royaume du tout \npuissant diable Maurice..."),
@@ -1090,7 +1090,7 @@ Firestarter = EcranPnj([pygame.image.load(f'images/Pnj/Firestarter/_a_{i},100.pn
  (Button(boutons_dialogue2, boutons_dialogue1, 350, 540), "Comment partir ?", 
   "Souffrance et douleur. C'est ce qui \nt'attend ici, pour l'éternité : c'est la \nsentence à payer pour avoir pensé \npouvoir rouler le Babel Casino. Un \nchatiment éternel t'attend ici...à moins \nque tu rentres des coordonnées \nbancaires dans les 2 champs prévus à \ncet effet. Tu pourras alors repartir \nsain et sauf. C'est ton choix, mortel.")  ], 
 [(Button(boutons_dialogue2, boutons_dialogue1, 350, 590), 'Au revoir')], 
-(-10,80),ecran_mort,ecran_mort,"Firestarter",'images/Fonds d\'ecran/Mort/_a_frm0,100.png')
+(-10,80),ecran_mort,ecran_mort,"Firestarter",'data/images/Fonds d\'ecran/Mort/_a_frm0,100.png')
 
 hero = EcranHeros({
             btn_fleche : ecran_boutique,

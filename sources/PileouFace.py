@@ -9,7 +9,7 @@ print("Chargement du Babel Face...")
 class Pile_ou_face:
     def __init__(self):
         self.animation = False
-        self.sprites = [charger_et_agrandir('pistolet_blanc/vide.png')] + [charger_et_agrandir(f'Pile_ou_face/Piece animation ({i}).png') for i in range(1,17)]
+        self.sprites = [charger_et_agrandir('data/pistolet_blanc/vide.png')] + [charger_et_agrandir(f'data/Pile_ou_face/Piece animation ({i}).png') for i in range(1,17)]
         self.actuel_sprite = 0
         self.image = self.sprites[self.actuel_sprite]
         self.cote = None

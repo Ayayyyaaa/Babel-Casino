@@ -31,13 +31,13 @@ class Blackjack:
         self.score = pygame.Rect(14, 686, 250, 90)
         self.croupier = pygame.Rect(516, 686, 270, 90)
         self.actif = False
-        self.img_joker = charger_et_agrandir("cartes/joker.png")
-        self.img = [[f"cartes/{couleur}/carte-{i}.png" for i in range(2, 11)] for couleur in ['Carreau', 'Coeur', 'Pique', 'Trefle']] 
-        self.dos_de_carte = charger_et_agrandir("cartes/dos_de_carte.png")
-        self.solde = charger_et_agrandir("images/Jeu de combat/valider.png")
-        self.police = pygame.font.Font('../data/babelcasino.ttf',30)
+        self.img_joker = charger_et_agrandir("data/cartes/joker.png")
+        self.img = [[f"data/cartes/{couleur}/carte-{i}.png" for i in range(2, 11)] for couleur in ['Carreau', 'Coeur', 'Pique', 'Trefle']] 
+        self.dos_de_carte = charger_et_agrandir("data/cartes/dos_de_carte.png")
+        self.solde = charger_et_agrandir("data/images/Jeu de combat/valider.png")
+        self.police = pygame.font.Font('data/babelcasino.ttf',30)
         self.retour = False # Booléen qui determine si la souris est sur la fleche
-        self.img_carte = charger_et_agrandir("images/None.png")
+        self.img_carte = charger_et_agrandir("data/images/None.png")
         self.fin = False
         self.choix = False
 

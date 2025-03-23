@@ -4,6 +4,7 @@ from objets_et_variables import *
 import sys
 import numpy as np
 from sons import shoot,explosion,bonus,musique_invader,musique_de_fond
+from SQL import det_id_compte, meilleur_score
 
 clock = pygame.time.Clock() 
 print("Chargement du Babel Invader...")
@@ -172,11 +173,11 @@ class Vaisseau:
         self.vitesse_projectile = 5
         self.cd = 0.5
         self.vitesse = 3
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 16)
-        self.frames = [pygame.image.load("Babel Invader/vaisseau1.png").convert_alpha(),
-                      pygame.image.load("Babel Invader/vaisseau2.png").convert_alpha(),
-                      pygame.image.load("Babel Invader/vaisseau3.png").convert_alpha(),
-                      pygame.image.load("Babel Invader/vaisseau4.png").convert_alpha()]
+        self.police = pygame.font.Font('data/babelcasino.ttf', 16)
+        self.frames = [pygame.image.load("data/Babel Invader/vaisseau1.png").convert_alpha(),
+                      pygame.image.load("data/Babel Invader/vaisseau2.png").convert_alpha(),
+                      pygame.image.load("data/Babel Invader/vaisseau3.png").convert_alpha(),
+                      pygame.image.load("data/Babel Invader/vaisseau4.png").convert_alpha()]
         self.frame = self.frames[0]
         self.projectiles = []
         self.dernier_tir = 0
@@ -265,7 +266,7 @@ class Vaisseau:
         if temps_actuel - self.dernier_tir >= self.cd: # Couldown
             # On ajoute un projectile à la liste, avec toutes les inofs nécessaires
             shoot.play()
-            self.projectiles.append(Projectile(self.x + (self.frames[0].get_width() - pygame.image.load(f"Babel Invader/missile{self.projectile_lvl}.png").get_width()) // 2, self.y, self.vitesse_projectile, pygame.image.load(f"Babel Invader/missile{self.projectile_lvl}.png").convert_alpha(),self.dgt))
+            self.projectiles.append(Projectile(self.x + (self.frames[0].get_width() - pygame.image.load(f"data/Babel Invader/missile{self.projectile_lvl}.png").get_width()) // 2, self.y, self.vitesse_projectile, pygame.image.load(f"data/Babel Invader/missile{self.projectile_lvl}.png").convert_alpha(),self.dgt))
             # On met à jour le cd
             self.dernier_tir = temps_actuel
             
@@ -330,40 +331,40 @@ class BabelInvader:
         self.temps_dernier_ennemi = 0
         self.intervalle_spawn = 2.0
         self.temps_debut = 0
-        self.boutique = pygame.image.load('Babel Invader/boutique2.png').convert_alpha()
-        self.explosion_frames = [pygame.image.load('Babel Invader/explosion0.png').convert_alpha(),pygame.image.load('Babel Invader/explosion1.png').convert_alpha(), pygame.image.load('Babel Invader/explosion2.png').convert_alpha(),pygame.image.load('Babel Invader/explosion1.png').convert_alpha()]
+        self.boutique = pygame.image.load('data/Babel Invader/boutique2.png').convert_alpha()
+        self.explosion_frames = [pygame.image.load('data/Babel Invader/explosion0.png').convert_alpha(),pygame.image.load('data/Babel Invader/explosion1.png').convert_alpha(), pygame.image.load('data/Babel Invader/explosion2.png').convert_alpha(),pygame.image.load('data/Babel Invader/explosion1.png').convert_alpha()]
         self.achats = {}
         self.achat_tir = tir2
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 16)
-        self.police2 = pygame.font.Font('../data/babelcasino.ttf', 32)
-        self.ennemi_faible = lambda x: Ennemi(x, 3, [pygame.image.load("Babel Invader/ennemi.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/ennemi2.png").convert_alpha()], 1, -5, 10)
-        self.ennemi_moyen = lambda x: Ennemi(x, 2.5, [pygame.image.load("Babel Invader/ennemi3.png").convert_alpha(), 
-                                                     pygame.image.load("Babel Invader/ennemi4.png").convert_alpha()], 3, -10, 20)
-        self.ennemi_rapide = lambda x: Ennemi(x, 4, [pygame.image.load("Babel Invader/ennemi5.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/ennemi6.png").convert_alpha()], 1, -2.5, 15)
-        self.ennemi_tank = lambda x: Ennemi(x, 2, [pygame.image.load("Babel Invader/ennemi7.png").convert_alpha(), 
-                                                     pygame.image.load("Babel Invader/ennemi8.png").convert_alpha()], 7, -18, 25)
-        self.ennemi_attaquant = lambda x: Ennemi(x, 3.5, [pygame.image.load("Babel Invader/ennemi9.png").convert_alpha(), 
-                                                     pygame.image.load("Babel Invader/ennemi10.png").convert_alpha()], 6, -20, 30)
-        self.ennemi_boss = lambda x: Ennemi(x, 1, [pygame.image.load("Babel Invader/ennemi11.png").convert_alpha(), 
-                                                     pygame.image.load("Babel Invader/ennemi11.png").convert_alpha()], 40, -50, 100)
-        self.ennemi_moyen2 = lambda x: Ennemi(x, 2.8, [pygame.image.load("Babel Invader/ennemi12.png").convert_alpha(), 
-                                                     pygame.image.load("Babel Invader/ennemi13.png").convert_alpha()], 4, -8, 20)
-        self.ennemi_tank2 = lambda x: Ennemi(x, 1.5, [pygame.image.load("Babel Invader/ennemi14.png").convert_alpha(), 
-                                                     pygame.image.load("Babel Invader/ennemi15.png").convert_alpha()], 10, -25, 30)
-        self.ennemi_faible2 = lambda x: Ennemi(x, 3, [pygame.image.load("Babel Invader/ennemi16.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/ennemi17.png").convert_alpha()], 2, -6, 12)
-        self.ennemi_kamikaze = lambda x: Ennemi(x, 3.5, [pygame.image.load("Babel Invader/ennemi18.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/ennemi19.png").convert_alpha()], 4, -18, 25)
-        self.caillou1 = lambda x: Ennemi(x, 3.5, [pygame.image.load("Babel Invader/caillou4.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/caillou4.png").convert_alpha()], 2, -6, 0)
-        self.caillou2 = lambda x: Ennemi(x, 3.5, [pygame.image.load("Babel Invader/caillou3.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/caillou3.png").convert_alpha()], 4, -10, 0)
-        self.caillou3 = lambda x: Ennemi(x, 3.5, [pygame.image.load("Babel Invader/caillou2.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/caillou2.png").convert_alpha()], 8, -14, 0)
-        self.caillou4 = lambda x: Ennemi(x, 3.5, [pygame.image.load("Babel Invader/caillou1.png").convert_alpha(), 
-                                                    pygame.image.load("Babel Invader/caillou1.png").convert_alpha()], 16, -18, 0)
+        self.police = pygame.font.Font('data/babelcasino.ttf', 16)
+        self.police2 = pygame.font.Font('data/babelcasino.ttf', 32)
+        self.ennemi_faible = lambda x: Ennemi(x, 3, [pygame.image.load("data/Babel Invader/ennemi.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/ennemi2.png").convert_alpha()], 1, -5, 10)
+        self.ennemi_moyen = lambda x: Ennemi(x, 2.5, [pygame.image.load("data/Babel Invader/ennemi3.png").convert_alpha(), 
+                                                     pygame.image.load("data/Babel Invader/ennemi4.png").convert_alpha()], 3, -10, 20)
+        self.ennemi_rapide = lambda x: Ennemi(x, 4, [pygame.image.load("data/Babel Invader/ennemi5.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/ennemi6.png").convert_alpha()], 1, -2.5, 15)
+        self.ennemi_tank = lambda x: Ennemi(x, 2, [pygame.image.load("data/Babel Invader/ennemi7.png").convert_alpha(), 
+                                                     pygame.image.load("data/Babel Invader/ennemi8.png").convert_alpha()], 7, -18, 25)
+        self.ennemi_attaquant = lambda x: Ennemi(x, 3.5, [pygame.image.load("data/Babel Invader/ennemi9.png").convert_alpha(), 
+                                                     pygame.image.load("data/Babel Invader/ennemi10.png").convert_alpha()], 6, -20, 30)
+        self.ennemi_boss = lambda x: Ennemi(x, 1, [pygame.image.load("data/Babel Invader/ennemi11.png").convert_alpha(), 
+                                                     pygame.image.load("data/Babel Invader/ennemi11.png").convert_alpha()], 40, -50, 100)
+        self.ennemi_moyen2 = lambda x: Ennemi(x, 2.8, [pygame.image.load("data/Babel Invader/ennemi12.png").convert_alpha(), 
+                                                     pygame.image.load("data/Babel Invader/ennemi13.png").convert_alpha()], 4, -8, 20)
+        self.ennemi_tank2 = lambda x: Ennemi(x, 1.5, [pygame.image.load("data/Babel Invader/ennemi14.png").convert_alpha(), 
+                                                     pygame.image.load("data/Babel Invader/ennemi15.png").convert_alpha()], 10, -25, 30)
+        self.ennemi_faible2 = lambda x: Ennemi(x, 3, [pygame.image.load("data/Babel Invader/ennemi16.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/ennemi17.png").convert_alpha()], 2, -6, 12)
+        self.ennemi_kamikaze = lambda x: Ennemi(x, 3.5, [pygame.image.load("data/Babel Invader/ennemi18.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/ennemi19.png").convert_alpha()], 4, -18, 25)
+        self.caillou1 = lambda x: Ennemi(x, 3.5, [pygame.image.load("data/Babel Invader/caillou4.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/caillou4.png").convert_alpha()], 2, -6, 0)
+        self.caillou2 = lambda x: Ennemi(x, 3.5, [pygame.image.load("data/Babel Invader/caillou3.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/caillou3.png").convert_alpha()], 4, -10, 0)
+        self.caillou3 = lambda x: Ennemi(x, 3.5, [pygame.image.load("data/Babel Invader/caillou2.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/caillou2.png").convert_alpha()], 8, -14, 0)
+        self.caillou4 = lambda x: Ennemi(x, 3.5, [pygame.image.load("data/Babel Invader/caillou1.png").convert_alpha(), 
+                                                    pygame.image.load("data/Babel Invader/caillou1.png").convert_alpha()], 16, -18, 0)
         # Définition des phases sous forme de dictionnaire
         self.phases = {
             (0, 15):    {self.ennemi_faible: 60, self.ennemi_moyen: 20, self.caillou1: 20},
@@ -542,6 +543,8 @@ class BabelInvader:
         pygame.mixer.music.load(musique_de_fond)
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
+        id_compte = det_id_compte(joueur1.get_pseudo(), joueur1.get_mdp())
+        meilleur_score(self.vaisseau.get_score(),id_compte)
         # On met à jour le solde du joueur 
         if self.vaisseau.get_score() < 5000:
             # S'il a moins de 5000 de score, il perd 12% de son solde - 1000 pièces

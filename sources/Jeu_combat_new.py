@@ -35,9 +35,9 @@ class JeuCombat:
         self.fond = j2.boss.get_fond()
         self.fonds = {'Temple':0,'Desert':50,'Eglise':15,'Chute':10,'Lave':50,'Pluie':25,'Dojo':20}
         self.run = False
-        self.vie_hero = pygame.image.load("images/Jeu de combat/compteur.png")
-        self.vie_boss = pygame.image.load("images/Jeu de combat/compteur.png")
-        self.police = pygame.font.Font('../data/babelcasino.ttf', 15)
+        self.vie_hero = pygame.image.load("data/images/Jeu de combat/compteur.png")
+        self.vie_boss = pygame.image.load("data/images/Jeu de combat/compteur.png")
+        self.police = pygame.font.Font('data/babelcasino.ttf', 15)
         self.dmg = False
         self.j1 = j1
         self.j2 = j2

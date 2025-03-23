@@ -16,30 +16,30 @@ class RouletteRusse:
         self.frame = 0
         self.son = son
         self.son_blanc = son_blanc
-        self.sprites_vict.append(charger_et_agrandir('pistolet_blanc/vide.png'))
-        self.sprites_def.append(charger_et_agrandir('pistolet_blanc/vide.png'))
+        self.sprites_vict.append(charger_et_agrandir('data/pistolet_blanc/vide.png'))
+        self.sprites_def.append(charger_et_agrandir('data/pistolet_blanc/vide.png'))
         self.tir_joue = False
         self.tir_blanc_joue = False
         self.actif = False
         i = 0
         for i in range(3):
-            self.sprites_vict.append(charger_et_agrandir('pistolet/pf-1.png.png'))
-            self.sprites_vict.append(charger_et_agrandir('pistolet/pf-2.png.png'))
-            self.sprites_vict.append(charger_et_agrandir('pistolet/pf-3.png.png'))
-            self.sprites_vict.append(charger_et_agrandir('pistolet/pf-13.png.png'))
-            self.sprites_vict.append(charger_et_agrandir('pistolet/pf-4.png.png'))
-            self.sprites_vict.append(charger_et_agrandir('pistolet/pf-5.png.png'))
+            self.sprites_vict.append(charger_et_agrandir('data/pistolet/pf-1.png.png'))
+            self.sprites_vict.append(charger_et_agrandir('data/pistolet/pf-2.png.png'))
+            self.sprites_vict.append(charger_et_agrandir('data/pistolet/pf-3.png.png'))
+            self.sprites_vict.append(charger_et_agrandir('data/pistolet/pf-13.png.png'))
+            self.sprites_vict.append(charger_et_agrandir('data/pistolet/pf-4.png.png'))
+            self.sprites_vict.append(charger_et_agrandir('data/pistolet/pf-5.png.png'))
         for j in range(1,10):
-            self.sprites_vict.append(charger_et_agrandir(f'pistolet_blanc/pbf-{j}.png'))
+            self.sprites_vict.append(charger_et_agrandir(f'data/pistolet_blanc/pbf-{j}.png'))
         for i in range(3):
-            self.sprites_def.append(charger_et_agrandir('pistolet/pf-1.png.png'))
-            self.sprites_def.append(charger_et_agrandir('pistolet/pf-2.png.png'))
-            self.sprites_def.append(charger_et_agrandir('pistolet/pf-3.png.png'))
-            self.sprites_def.append(charger_et_agrandir('pistolet/pf-13.png.png'))
-            self.sprites_def.append(charger_et_agrandir('pistolet/pf-4.png.png'))
-            self.sprites_def.append(charger_et_agrandir('pistolet/pf-5.png.png'))
+            self.sprites_def.append(charger_et_agrandir('data/pistolet/pf-1.png.png'))
+            self.sprites_def.append(charger_et_agrandir('data/pistolet/pf-2.png.png'))
+            self.sprites_def.append(charger_et_agrandir('data/pistolet/pf-3.png.png'))
+            self.sprites_def.append(charger_et_agrandir('data/pistolet/pf-13.png.png'))
+            self.sprites_def.append(charger_et_agrandir('data/pistolet/pf-4.png.png'))
+            self.sprites_def.append(charger_et_agrandir('data/pistolet/pf-5.png.png'))
         for j in range(6,14):
-            self.sprites_def.append(charger_et_agrandir(f'pistolet/pf-{j}.png.png'))
+            self.sprites_def.append(charger_et_agrandir(f'data/pistolet/pf-{j}.png.png'))
 
         self.actuel_sprite = 0
         self.image = self.sprites_def[self.actuel_sprite]

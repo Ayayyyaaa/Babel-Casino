@@ -85,7 +85,7 @@ class Joueur:
 class Coin:
     def __init__(self, pos_x:int, pos_y:int) -> 'Coin':
         self.tourne_animation = False
-        self.sprites = [charger_et_agrandir(f'pieces/coin-{i}.png.png') for i in range(1,5)]
+        self.sprites = [charger_et_agrandir(f'data/pieces/coin-{i}.png.png') for i in range(1,5)]
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.actuel_sprite = 0
@@ -184,7 +184,7 @@ class Curseur:
     def __init__(self) -> 'Curseur':
         '''Class pour la croix de selection dans l'inventaire'''
         self.actif = False
-        self.frames = [pygame.image.load(f'images/Inventaire/_a_UI_Flat_Select01a_{i}.png') for i in range(1,5)]    # Images de l'animation de la croix de selection
+        self.frames = [pygame.image.load(f'data/images/Inventaire/_a_UI_Flat_Select01a_{i}.png') for i in range(1,5)]    # Images de l'animation de la croix de selection
         self.x = 0
         self.y = 0
         self.frame = 0

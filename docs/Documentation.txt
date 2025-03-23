@@ -1,0 +1,55 @@
+Fonctionnement général :
+	- Le jeu fonctionne à partir d'une boucle principale qui gère les événements et d'un système d'écrans. Chaque écran est géré par un booléen True/False qui permet de déterminer lequel afficher et quelles actions exécuter. Les mini-jeux sont eux aussi géré par des écrans, donc indépendamment. Lorsqu'ils sont actifs, on lance les mini-jeux qui possèdent eux-même leur propre boucle d'événements.
+
+Fichier main :
+	- Permet de lancer le jeu
+
+Fichier jeu :
+	- Boucle principale du jeu, permet de gérer le booléen des écrans et les événements principaux (clics, touches pressées) 
+
+Fichier Ecrans :
+	- Contient tous les écrans du jeu, avec leurs boucle d'actions associées
+
+Fichier classes :
+	- Contient des classes de base du jeu : Joueur (le joueur), Button et Boutons (les boutons cliquables), Coin (animation de la pièce), classes des alcools du bar…
+
+Fichier sons :
+	- Contient tous les sons du jeu
+
+Fichier images :
+	- Contient toutes les images
+
+Fichier fonctions :
+	- Contient les fonctions générales du jeu : dessiner bouton/zones de texte pour les afficher sur l'écran, la fonction achat pour les achats de la boutique, la fonction pour vérifier le code de carte bancaire…
+
+Fichier objets_et_variables :
+	- Contient les objets utilisés partout dans le jeu
+
+Fichier SQL :
+	- Contient toutes les fonctions pour utiliser le SQL afin d'interagir avec la base de données
+
+Fichier héros :
+	- Contient toutes les classes des héros du jeu de combat
+
+Fichier boss :
+	- Contient toutes les classes des boss du jeu de combat
+
+Fichier Jeu_combat_new :
+	- Contient la boucle d'action du jeu de combat
+
+Fichier Machine_a_sous :
+	- Contient la boucle d'action de la machine à sous
+
+Fichier PileouFace :
+	- Contient le code pour le pile ou face
+
+Fichier Roulette_Russe :
+	- Contient le code pour la roulette russe
+
+Fichier blackjack :
+	- Contient la boucle d'actions pour le black jack
+
+Fichier babel_invader :
+	- Contient la boucle d'actions pour le space invader
+
+
