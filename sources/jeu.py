@@ -12,7 +12,6 @@ from heros import *
 from blackjack import *
 from SQL import *
 import time
-import os
 from random import choice
 from classes import *
 from babel_invader import *
