@@ -26,6 +26,10 @@ Le bon fonctionnement du projet repose sur plusieurs modules qui ne nous apparti
 1. [Pygame](https://www.pygame.org/docs/)
 2. [sqlite3](https://docs.python.org/3/library/sqlite3.html)
 3. [Random](https://docs.python.org/3/library/random.html#module-random)
+4. [time](https://docs.python.org/3/library/time.html#module-time)
+5. [sqlite3](https://docs.python.org/3/library/dbm.html#module-dbm.sqlite3)
+6. [sys](https://docs.python.org/3/library/sys.html#module-sys)
+   
    
 
 ## Protocole d'utilisation
