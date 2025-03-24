@@ -19,7 +19,7 @@ Tous les graphismes du jeu (personnages, fonds d'écrans...) ne nous appartienne
 2. Les images des boutons et des fonds d'écrans non-animés sont générés par Intelligence Artificielle
 3. Les fonds d'écrans animés du jeu de combat son issus du site [Imgur](https://imgur.com/a/fighting-gifs-GPlx4)
 4. Les sprites du héros Night Hero sont issues d'un asset pack gratuit de CreativeKind [Night Hero](https://creativekind.itch.io/nightborne-warrior)
-5. Les graphismes du Space Invader son issus d'un asset pack gratuit réalisé par [Cluly] (https://cluly.itch.io/space-eaters)
+5. Les graphismes du Space Invader son issus d'un asset pack gratuit réalisé par [Cluly](https://cluly.itch.io/space-eaters)
    
  
 Le bon fonctionnement du projet repose sur plusieurs modules qui ne nous appartiennent pas tels que:
@@ -31,6 +31,6 @@ Le bon fonctionnement du projet repose sur plusieurs modules qui ne nous apparti
  
  Afin de jouer il vous faut:
  1. Cloner le repository sur votre machine ou télécharger le .zip
- 2. Avoir Python 3.11 ou plus d'installé sur votre machine --> [Télécharger](https://www.python.org/downloads/)
+ 2. Avoir Python 3.13 d'installé sur votre machine --> [Télécharger](https://www.python.org/downloads/)
  3. Intaller les modules présents dans le fichier requirements.txt à la main ou en ouvrant un terminal de commande et en exécutant "cd chemin/vers/projet" puis "pip install -r requirements.txt"
- 4. Exécuter le fichier intitulé "main.py". Pour ce faire, vous pouvez ouvrir le projet dans un IDE et exécuter le fichier ou bien ouvrir un terminal de commande et exécuter "cd chemin/vers/dossier/sources" puis "python main.py" sur Windows ou "python3 main.py" sur Linux.
+ 4. Exécuter le fichier intitulé "main.py". Pour ce faire, vous pouvez ouvrir le projet dans un IDE et exécuter le fichier ou bien ouvrir un terminal de commande et exécuter "cd chemin/vers/dossier" puis "python sources/main.py" sur Windows ou "python3 sources/main.py" sur Linux.
