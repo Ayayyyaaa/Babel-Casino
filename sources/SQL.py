@@ -492,12 +492,24 @@ def det_score(id_compte:int)->int:
         - id_compte (int) : L'identifiant du compte duquel on veut récupérer le score
     Returns :
         - score_bdd (int) : Le meilleur score du joueur dans la base de données"""
+    print(id_compte)
     conn = sqlite3.connect("data/base_de_donnee2.db")
     cursor = conn.cursor()
     cursor.execute("SELECT meilleur_score FROM Babel_Invader WHERE id_compte = ?", (id_compte,))
-    score_bdd = cursor.fetchone() if cursor.fetchone() else 0
+    score_bdd = cursor.fetchone()  # Récupère le résultat une seule fois
+    score_bdd = score_bdd[0] if score_bdd else 0  # Si aucun résultat, retourne 0
+    print("test :", score_bdd)
     conn.close()
     return score_bdd
+
+def det_parties(id_compte: int) -> int:
+    """Permet de récupérer le nombre de parties de Space Invader qu'a joué le joueur."""
+    conn = sqlite3.connect("data/base_de_donnee2.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT nb_parties FROM Babel_Invader WHERE id_compte = ?", (id_compte,))
+    parties = cursor.fetchone()  # Récupère le résultat
+    conn.close()
+    return parties[0] if parties else 0  # Retourne l'entier, ou 0 si aucun résultat
 
 
 def meilleur_score(score:int,id_compte:int):
@@ -509,12 +521,17 @@ def meilleur_score(score:int,id_compte:int):
     conn = sqlite3.connect("data/base_de_donnee2.db")
     cursor = conn.cursor()
     ancien_score = det_score(id_compte)
+    print(score,ancien_score)
     if score >= ancien_score:
         if ancien_score == 0:
             cursor.execute("INSERT INTO Babel_Invader (id_compte, meilleur_score, nb_parties) VALUES (?, ?, 1)",(id_compte, score))
             conn.commit()
         else:
-            cursor.execute("UPDATE Babel_Invader SET meilleur_score = ?",(score,))
+            cursor.execute("UPDATE Babel_Invader SET meilleur_score = ? WHERE id_compte = ?",(score,id_compte))
+            conn.commit()
+    print(det_parties(id_compte)+1)
+    cursor.execute("UPDATE Babel_Invader SET nb_parties = ? WHERE id_compte = ?",(det_parties(id_compte)+1,id_compte))
+    conn.commit()
     conn.close()
 
 
