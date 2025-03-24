@@ -25,6 +25,7 @@ Tous les graphismes du jeu (personnages, fonds d'écrans...) ne nous appartienne
 Le bon fonctionnement du projet repose sur plusieurs modules qui ne nous appartiennent pas tels que:
 1. [Pygame](https://www.pygame.org/docs/)
 2. [sqlite3](https://docs.python.org/3/library/sqlite3.html)
+3. [Random](https://docs.python.org/3/library/random.html#module-random)
    
 
 ## Protocole d'utilisation
