@@ -401,9 +401,7 @@ def supprimer_table():
     cursor.execute("DROP TABLE stats")
     cursor.execute("DROP TABLE compte")
     cursor.execute("DROP TABLE casier")
-    cursor.execute("DROP TABLE boss")
-    cursor.execute("DROP TABLE heros")
-    cursor.execute("DROP TABLE objets")
+    cursor.execute("DROP TABLE Babel_Invader")
     conn.commit()
     conn.close()
 
@@ -524,7 +522,7 @@ def meilleur_score(score:int,id_compte:int):
     print(score,ancien_score)
     if score >= ancien_score:
         if ancien_score == 0:
-            cursor.execute("INSERT INTO Babel_Invader (id_compte, meilleur_score, nb_parties) VALUES (?, ?, 1)",(id_compte, score))
+            cursor.execute("INSERT INTO Babel_Invader (id_compte, meilleur_score, nb_parties) VALUES (?, ?, 0)",(id_compte, score))
             conn.commit()
         else:
             cursor.execute("UPDATE Babel_Invader SET meilleur_score = ? WHERE id_compte = ?",(score,id_compte))

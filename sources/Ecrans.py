@@ -630,7 +630,7 @@ class Intro:
         self.txt = ""
         self.indice = 0
         self.texte1 = "Oyez brave héros ! Durant votre voyage, vous arrivez sur le territoire\n du Royaume. En ces périodes troublées, marquées de raids de pillards \nqui s'intensifient, de démons qui terrorisent les populations, de disparitions \ninexpliquées et de la guerre qui gronde aux frontières, le roi Harold vous \nconfie une mission : Faire chuter un mystérieux casino qui s'est implanté \ndans la région. Son nom : Le Babel Casino. \nParmi les nombreuses expéditions lancées, pourtant menées par la garde du roi \nou des aventuriers chevronnés, aucune n'est revenue...Si bien qu'on raconte \ntoutes sortes de légendes sur ce casino mystérieux, selon lesquelles le \ncasino serait géré par le diable lui-même. Alors, n'attendez plus héros ! \nL'avenir du Royaume dépend de vous ! Accompagné de votre fidèle ami \nNight Hero, formé à l'art du combat, vous poussez les lourdes portes du \nBabel Casino...Le plan : mener le Babel Casino à la faillite : pour cela, il \nfaut prendre le casino à son propre jeu : soyez malins, faites preuve \nde chance et investiguez pour réussir à rassembler la somme de \n10 000 000 Babel Coins. Le roi Harold vous a fourni une bourse contenant \n200 000 Babel Coins, à vous d'en faire bon usage ! Ainsi, vous pourrez jouer \naux divers jeux proposés par le Babel Casino : votre chance sera de mise si \nvous vous laissez tenter par la Babel Roulette, le Babel Face ou encore\nle Babel Gambling. Vous préférez vous reposer sur votre habileté seule ? "
-        self.texte2 = "Soit, le Babel Invader est fait pour vous. Enfin, vous pourrez mettre à l'épreuve \nvos capacités guerrières (enfin celles de votre ami, Night Hero, car c'est à \npeine si vous savez tenir une arme.) Vous serez face aux démons et pécheurs \ndu Babel Casino, ceux ayant échoué face à celui-ci...Mais prenez garde : un seul \nfaux pas et vous les rejoindrez ! Vous rencontrerez peut-être certains \nvoyageurs de passage pour vous prêter main-forte contre quelque \nrémunération, en mettant leurs habilités au combat à votre service. Pour finir, \nexplorez le Babel Casino, investiguez, et peut-être parviendrez vous à \ntrouver des objets qui vous aideront dans votre quête, tels que les alcools du \nbar, ou même les crampons dorés, armes de prédilection du légendaire guerrier \nBenyamine, surnommé la Meaurylle aux mille victoires. Alors héros, au nom de la \nsurvie du Royaume...\nBonne chance ! "
+        self.texte2 = "Soit, le Babel Invader est fait pour vous. Enfin, vous pourrez mettre à l'épreuve \nvos capacités guerrières (enfin celles de votre ami, Night Hero, car c'est à \npeine si vous savez tenir une arme.) Vous serez face aux démons et pécheurs \ndu Babel Casino, ceux ayant échoué face à celui-ci...Mais prenez garde : un seul \nfaux pas et vous les rejoindrez ! Vous rencontrerez peut-être certains \nvoyageurs de passage pour vous prêter main-forte contre quelque \nrémunération, en mettant leur habileté au combat à votre service. Pour finir, \nexplorez le Babel Casino, investiguez, et peut-être parviendrez vous à \ntrouver des objets qui vous aideront dans votre quête, tels que les alcools du \nbar, ou même les crampons dorés, armes de prédilection du légendaire guerrier \nBenyamine, surnommé la Meaurylle aux mille victoires. Alors héros, au nom de la \nsurvie du Royaume...\nBonne chance ! "
         self.police = pygame.font.Font('data/babelcasino.ttf', 16)
         self.page = 0
         self.pages = [self.texte1,self.texte2]
@@ -743,7 +743,7 @@ digicode = CoffreFort()
 alcool = EcranAlcool()
 PileOuFace = EcranPileOuFace()
 babelRoulette = EcranRoulette()
-klaxon = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Cryoblade.png'),
+klaxon = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Klaxon.png'),
                         agrandir_liste_images([f'data/images/Jeu de combat/Klaxon/Droite/Inaction/_a_{i},80.png' for i in range(18)]),
                         ('Klaxon', 35000), 180, 224)
 
@@ -755,7 +755,7 @@ reeju = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Reej
                        agrandir_liste_images([f'data/images/Jeu de combat/Reeju/Droite/Inaction/_a_{i},100.png' for i in range(14)]),
                        ('Reeju', 40000), 80, 140)
 
-windcliffe = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Maehv.png'),
+windcliffe = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Windcliffe.png'),
                             agrandir_liste_images([f'data/images/Jeu de combat/Windcliffe/Droite/Inaction/_a_{i},80.png' for i in range(9)]),
                             ('Windcliffe', 70000), 110, 150)
 
@@ -787,7 +787,7 @@ whistler = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/W
                           agrandir_liste_images([f'data/images/Jeu de combat/Whistler/Droite/Inaction/_a_{i},100.png' for i in range(18)]),
                           ('Whistler', 400000), 160, 190)
 
-tethermancer = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/Whistler.png'),
+tethermancer = EcranSelection(charger_et_agrandir('data/images/Jeu de Combat/Infos/tethermancer.png'),
                               agrandir_liste_images([f'data/images/Jeu de combat/Tethermancer/Droite/Inaction/_a_{i},100.png' for i in range(17)]),
                               ('Tethermancer', 250000), 40)
 
