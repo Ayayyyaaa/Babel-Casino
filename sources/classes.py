@@ -146,13 +146,14 @@ class Button:
     def collision(self, souris_pos:tuple) -> tuple:
         '''Permet de vérifier si le clic est dans la zone du bouton'''
         # Convertir la position du clic dans le référentiel de l'image du bouton
-        x = souris_pos[0] - self.rect.x
-        y = souris_pos[1] - self.rect.y
+        if souris_pos:
+            x = souris_pos[0] - self.rect.x
+            y = souris_pos[1] - self.rect.y
 
-        # Vérifier si le clic est dans le rectangle et dans le masque
-        if 0 <= x < self.rect.width and 0 <= y < self.rect.height:
-            return self.mask.get_at((x, y))
-        return False
+            # Vérifier si le clic est dans le rectangle et dans le masque
+            if 0 <= x < self.rect.width and 0 <= y < self.rect.height:
+                return self.mask.get_at((x, y))
+            return False
 
     def draw(self, surface, mouse_pos:tuple):
         '''Permet de dessiner le bouton et de gérer le changement d'image en fonction du survol de la souris'''
@@ -173,12 +174,26 @@ class Clic:
     def __init__(self) -> 'Clic':
         '''Permet de récupérer la position du dernier clic entre les différents fichiers du code.'''
         self.clic = (0,0)
+        self.pendant = False
+        self.fin = False
     def get_clic(self):
         '''On récupère la position du dernier clic enregistré'''
         return self.clic
     def set_clic(self,clic:tuple):
         '''On met à jour le clic'''
         self.clic = clic
+    def get_pendant(self) -> bool:
+        '''On récupère la valeur de si le clic en appuyé'''
+        return self.pendant
+    def set_pendant(self,pendant:bool):
+        '''On met à jour la valeur le clic appuyé'''
+        self.pendant = pendant
+    def get_fin(self) -> bool:
+        '''On récupère la valeur de si le clic est relaché'''
+        return self.fin
+    def set_fin(self,fin:bool):
+        '''On met à jour la valeur de si le clic est relaché'''
+        self.fin = fin
 
 class Curseur:
     def __init__(self) -> 'Curseur':

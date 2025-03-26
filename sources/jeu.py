@@ -41,7 +41,7 @@ class Jeu():
         - self.hero : hero sélectionné par la joueur pour le jeu de combat
         - self.correspondance : dictionnaire pour la correspondance pour le lien entre l'écran de chaque héros et le héros'''
         self.run = True
-        self.ecrans = [ecran_machine_a_sous,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,Chakkram,Archon,Excelsious,
+        self.ecrans = [ecran_machine_a_sous,ecran_victoire,ecran_boutique,alcool,hero,hero2,inventaire,classement,lore,digicode,carte,Chakkram,Archon,Excelsious,
                        SunForge,Rook,PnjWhistler,PnjAether,PnjPureblade,TheScientist,PnjMaehv,PnjTwilight,Seer,PileOuFace,babelRoulette,Hideatsu,Amu,NightWatcher,Moonlit,Firestarter]
         self.champ_joueur = pygame.Rect(220, 420, 380, 64)
         self.code_cb = pygame.Rect(260, 650, 280, 64)
@@ -136,7 +136,7 @@ class Jeu():
                  "De plus, certains héros possèdent des \npassifs uniques."),0)
         lore.ecran.set_actif(True)
         while self.run: # Condition de jeu
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             if not self.combat.get_actif():
                 # Fermer la fenêtre
                 for event in pygame.event.get():
@@ -145,6 +145,8 @@ class Jeu():
                     # Clic de souris
                     elif event.type == pygame.MOUSEBUTTONDOWN:
                         clic.set_clic(event.pos)
+                        clic.set_pendant(True)
+                        clic.set_fin(False)
                         if self.champ_joueur.collidepoint(event.pos):
                             self.nom_actif = not self.nom_actif
                         else:
@@ -191,7 +193,7 @@ class Jeu():
                         elif ecran2.ecran.get_actif():
                             if btn_machine_a_sous.collision(clic.get_clic()):
                                 click.play()
-                                clic.set_clic((0,0))
+                                clic.set_clic(None)
                                 ecran2.ecran.set_actif(False), Moonlit.ecran.set_actif(True)
                             elif btn_jeu_combat.collision(clic.get_clic()):
                                 Excelsious.ecran.set_actif(True),ecran2.ecran.set_actif(False)
@@ -202,7 +204,7 @@ class Jeu():
                                 # On met à jour les ecrans actifs
                                 Excelsious.ecran.set_actif(False),ecran2.ecran.set_actif(True)
                                 click.play()
-                                clic.set_clic((0,0))
+                                clic.set_clic(None)
                                 # Changer la musique pour la musique du jeu de combat
                                 pygame.mixer.music.unload()
                                 pygame.mixer.music.load(musique_combat)
@@ -220,7 +222,7 @@ class Jeu():
                                 TheScientist.ecran.set_actif(False)
                                 ecran2.ecran.set_actif(True)
                                 click.play()
-                                clic.set_clic((0,0))
+                                clic.set_clic(None)
                                 self.babelinvader = BabelInvader() 
                                 self.babelinvader.jouer()
                         elif ecran_machine_a_sous.ecran.get_actif():
@@ -231,6 +233,13 @@ class Jeu():
                                     dernier_son = time.time()
                                 ecran_machine_a_sous.lancement()
                                 joueur1.modifier_cagnotte(-100 - joueur1.get_cagnotte()//100)
+
+
+                    elif event.type == pygame.MOUSEMOTION:
+                        clic.set_pendant(True)
+
+                    elif event.type == pygame.MOUSEBUTTONUP:
+                        clic.set_fin(True)
                         
 
                     elif event.type == pygame.KEYDOWN:
@@ -303,28 +312,28 @@ class Jeu():
                 if hero.ecran.get_actif():
                     if btn_suivant.collision(clic.get_clic()):
                         click.play()
-                        clic.set_clic((0,0))
+                        clic.set_clic(None)
                         hero.ecran.set_actif(False),hero2.ecran.set_actif(True)
                 # Permet de gérer la passage du 2e onglet au 1er pour l'écran d'achat de héros dans la boutique
                 elif hero2.ecran.get_actif():
                     if btn_suivant.collision(clic.get_clic()):
                         click.play()
-                        clic.set_clic((0,0))
+                        clic.set_clic(None)
                         hero.ecran.set_actif(True),hero2.ecran.set_actif(False)
                 # Permet de gérer l'écran de selection pour chaque héros du jeu dans la boutique
                 for perso in self.heros:
                     if perso.ecran.get_actif(): #Si l'écran est actif
                         if btn_fleche.collision(clic.get_clic()):   # Bouton de retour
                             click.play()
-                            clic.set_clic((0,0))
+                            clic.set_clic(None)
                             hero.ecran.set_actif(True),perso.ecran.set_actif(False) # On revient à l'écran général
                         elif btn_info.collision(clic.get_clic()):   # Bouton pour afficher les caractéristiques du héros
-                            clic.set_clic((0,0))
+                            clic.set_clic(None)
                             click.play()
                             perso.setinfos(not perso.getinfos())    # On affiche ou on cache les infos
                         elif btn_select.collision(clic.get_clic()): # Bouton pour sélectionner le héros
                             if perso.get_heros()[0] in joueur1.get_heros(): # Si le joueur possède le héros alors le héros est selectionné et devient le héros actif
-                                clic.set_clic((0,0))
+                                clic.set_clic(None)
                                 click.play()
                                 self.hero = self.correspondance[perso]
                                 hero.ecran.set_actif(True),perso.ecran.set_actif(False) # On revient à l'écran général des héros

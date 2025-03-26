@@ -101,6 +101,12 @@ fond_dialogues = pygame.image.load('data/images/Fonds d\'ecran/Dialogues5.png').
 boutons_dialogue1 = pygame.image.load('data/images/cartouche_classement.png').convert_alpha()
 boutons_dialogue2 = pygame.image.load('data/images/cartouche_classement2.png').convert_alpha()
 
+# Icones Lieux
+lieu_casino = pygame.image.load('data/images/Boutons_autre/Icone_casino.png').convert_alpha()
+lieu_casino2 = pygame.image.load('data/images/Boutons_autre/Icone_casino2.png').convert_alpha()
+lieu_indefini = pygame.image.load('data/images/Boutons_autre/icone_a_venir1.png').convert_alpha()
+lieu_indefini2 = pygame.image.load('data/images/Boutons_autre/icone_a_venir2.png').convert_alpha()
+
 # Ecran Mort
 Firestarter1 = pygame.image.load('data/images/Pnj/Firestarter/_a_0,100.png').convert_alpha()
 

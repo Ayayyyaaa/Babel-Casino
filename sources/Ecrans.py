@@ -37,6 +37,7 @@ class Ecran1:
             # On dessine tous les éléments      
             fenetre.blit(fond, (0, 0))          
             btn_entrer.draw(fenetre,pygame.mouse.get_pos())
+            btn_fleche.draw(fenetre,pygame.mouse.get_pos())
             # Si on clique sur le bouton entrer
             if btn_entrer.collision(clic.get_clic()):           
                 click.play()
@@ -44,10 +45,15 @@ class Ecran1:
                 if joueur1.get_pseudo() != '':          
                     # On passe à l'écran suivant, en mettant a jour la musique
                     connexion.ecran.set_actif(False) , ecran2.ecran.set_actif(True)
-                    clic.set_clic((0,0))
+                    clic.set_clic(None)
                     rire_maurice.play()
                     # On met à jour la musique de fond
                     self.choisir_musique()
+            elif btn_fleche.collision(clic.get_clic()):
+                click.play()
+                connexion.ecran.set_actif(False)
+                carte.ecran.set_actif(True)
+                clic.set_clic(None)
     def choisir_musique(self):
         '''Permet de chosir la musique de fond
         Paramètres : 
@@ -89,6 +95,8 @@ class Ecran1:
                 # On met à jour l'ancien pseudo
                 self.ancien_pseudo = joueur1.get_pseudo()
                 self.fin_combat = True
+
+connexion = Ecran1()
 
 
 class Ecran2:
@@ -144,44 +152,44 @@ class Ecran2:
         if btn_boutique.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(True),ecran2.ecran.set_actif(False)
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
         # Si on clique sur le bouton pour lancer la roulette russe
         elif btn_roulette.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             self.ecran.set_actif(False), Hideatsu.ecran.set_actif(True)
         # Si on clique sur le bouton pour lancer la pile ou face
         elif btn_pile_ou_face.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             Seer.ecran.set_actif(True),self.ecran.set_actif(False)
             pileouface.set_actif(False)
         # Si on clique sur le bouton pour lancer le blackjack 
         elif btn_blackjack.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             Chakkram.ecran.set_actif(True),ecran2.ecran.set_actif(False)
         elif btn_babel_invader.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             TheScientist.ecran.set_actif(True), ecran2.ecran.set_actif(False)
         # Si on clique sur le bouton pour retourner à l'écran de connexion
         elif btn_retour.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             connexion.ecran.set_actif(True)
             ecran2.ecran.set_actif(False)
         # Si on ouvre l'inventaire
         elif btn_inventaire.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             ecran2.ecran.set_actif(False), Amu.ecran.set_actif(True) # On définit l'ecran d'Amu (qui donne accès à l'écran de l'inventaire) actif
         # Si on ouvre le classement
         elif btn_classement.collision(clic.get_clic()):   
             click.play()
             Archon.ecran.set_actif(True), ecran2.ecran.set_actif(False)
             classement.actualiser_classement()  
-            clic.set_clic((0,0))
+            clic.set_clic(None)
         elif pileouface.get_actif():
             # Pari sur le côté Face de la piece
             if btn_face.collision(clic.get_clic()):
@@ -307,7 +315,7 @@ class EcranVictoire:
         # Si on clique sur le bouton retour
         if btn_retour.collision(clic.get_clic()):
             # On enlève la musique de victoire et on remet l'ancienne
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             click.play()
             pygame.mixer.music.unload()
             connexion.choisir_musique()
@@ -341,17 +349,17 @@ class EcranBoutique:
         # Bouton retour
         if btn_fleche.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(False),ecran2.ecran.set_actif(True)
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             click.play()
         # Bouton pour la page d'achat des héros
         elif btn_hero.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(False),SunForge.ecran.set_actif(True)
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             click.play()
         # Bouton pour la page d'achat des alcools
         elif btn_alcool.collision(clic.get_clic()):
             ecran_boutique.ecran.set_actif(False),Rook.ecran.set_actif(True)
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             click.play()
         # Animation du bouton des héros
         elif btn_hero.collision(pygame.mouse.get_pos()):
@@ -461,7 +469,7 @@ class EcranAlcool:
         # Bouton retour
         if btn_fleche.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             alcool.ecran.set_actif(False),ecran_boutique.ecran.set_actif(True)
         # Si on clique sur un bouton d'achat de la vodka, on lance le gif de Poutine
         elif btn_vodka.collision(clic.get_clic()):
@@ -594,7 +602,7 @@ class EcranInventaire:
                 self.selectione = self.alcools[item]
                 curseur_selection.set_pos(item.get_pos())
                 curseur_selection.set_actif(True)
-                clic.set_clic((0,0))
+                clic.set_clic(None)
                 click.play()
             elif btn_valider.collision(clic.get_clic()):
                 # Si l'item selectionné est présent dans l'inventaire du joueur
@@ -604,10 +612,10 @@ class EcranInventaire:
                     ajouter_objet_inventaire(-1, det_id_compte(joueur1.get_pseudo(),joueur1.get_mdp()), self.selectione)
                     self.alcools_effets[self.selectione].boire(joueur1)
                 curseur_selection.set_actif(False)
-                clic.set_clic((0,0))
+                clic.set_clic(None)
                 click.play()
             # Si on clique ailleurs, on desselectionne les items
-            elif clic.get_clic() != (0,0):
+            elif clic.get_clic():
                 curseur_selection.set_actif(False)
                 self.selectione = None
             # On affiche le nom de l'alcool selectionné
@@ -617,11 +625,73 @@ class EcranInventaire:
         # Bouton de retour
         if btn_flecheretour.collision(clic.get_clic()):
             click.play()
-            clic.set_clic((0,0))
+            clic.set_clic(None)
             ecran2.ecran.set_actif(True), inventaire.ecran.set_actif(False)
         # On joue l'animation de la croix de selection
         if curseur_selection.get_actif():
             curseur_selection.update(0.2)
+
+class Carte:
+    def __init__(self):
+        self.ecran = Ecran()
+        self.fond = pygame.image.load('data/images/Fonds d\'ecran/map.jpg').convert_alpha()
+        self.pos_map = [0, 0]  # Position of the map
+        self.deplacement = False
+        self.depl_x = 0
+        self.depl_y = 0
+        
+        # Création des boutons avec des positions absolues sur la carte
+        self.btns = [
+            {"btn": Button(lieu_casino, lieu_casino2, 470, 270), "original_x": 470, "original_y": 270, "ecran": connexion},
+            {"btn": Button(lieu_indefini, lieu_indefini2, 620, 510), "original_x": 620, "original_y": 510, "ecran": None},
+            {"btn": Button(lieu_indefini, lieu_indefini2, 1205, 200), "original_x": 1205, "original_y": 200, "ecran": None},
+            {"btn": Button(lieu_indefini, lieu_indefini2, 1140, 550), "original_x": 1140, "original_y": 550, "ecran": None}
+        ]
+    
+    def affiche(self):
+        fenetre.blit(self.fond, self.pos_map)  # on affiche la map à position
+        
+        # position btns
+        for btns in self.btns:
+            btn = btns["btn"]
+            # ajuster position du bouton
+            new_x = self.pos_map[0] + btns["original_x"]
+            new_y = self.pos_map[1] + btns["original_y"]
+            
+            # mise a jour position bouton
+            btn.rect.topleft = (new_x, new_y)
+            btn.draw(fenetre, pygame.mouse.get_pos())
+            if btn.collision(clic.get_clic()):
+                clic.set_clic((0, 0))
+                if btns["ecran"] == connexion:
+                    connexion.ecran.set_actif(True)
+                    carte.ecran.set_actif(False)
+        
+        fenetre.blit(souris, pygame.mouse.get_pos())
+        pygame.display.flip()
+        
+        # Mvmt map 
+        if clic.get_clic():
+            print(clic.get_clic())
+            x, y = clic.get_clic()
+            clic.set_clic(None)
+            if (self.pos_map[0] <= x <= self.pos_map[0] + self.fond.get_width() and
+                self.pos_map[1] <= y <= self.pos_map[1] + self.fond.get_height()):
+                self.deplacement = True
+                self.depl_x = x - self.pos_map[0]
+                self.depl_y = y - self.pos_map[1]
+
+        elif clic.get_fin():
+            self.deplacement = False
+        
+        if clic.get_pendant() and self.deplacement:
+            x, y = pygame.mouse.get_pos()
+            # Limites de la map
+            self.pos_map[0] = max(-1200, min(0, x - self.depl_x))
+            self.pos_map[1] = max(-325, min(0, y - self.depl_y))
+
+
+
 
 class Intro:
     def __init__(self):
@@ -640,17 +710,17 @@ class Intro:
         fenetre.blit(self.fond,(0,0))
         if self.indice < len(self.pages[self.page]) - 1:  # Si le texte n'est pas entièrement affiché
             self.indice += 0.48  # On incrémente l'index du texte affiché
-        elif clic.get_clic() != (0,0):
+        elif clic.get_clic():
             if self.page == 0:
                 self.page += 1
                 self.indice = 0  # Réinitialiser l'index pour afficher le texte entier à nouveau
             else:
-                lore.ecran.set_actif(False),connexion.ecran.set_actif(True)
-            clic.set_clic((0,0))
+                lore.ecran.set_actif(False),carte.ecran.set_actif(True)
+            clic.set_clic(None)
             click.play()
-        if clic.get_clic() != (0,0):
+        if clic.get_clic():
             self.indice = len(self.pages[self.page]) - 1
-            clic.set_clic((0,0))
+            clic.set_clic(None)
         self.txt = self.pages[self.page][:int(self.indice)]  # Affichage lettre par lettre
 
         # Utilisation de textwrap pour gérer les retours à la ligne
@@ -689,7 +759,7 @@ class CoffreFort:
             bouton.draw(fenetre,pygame.mouse.get_pos())
             if bouton.collision(clic.get_clic()):
                 click.play()
-                clic.set_clic((0,0))
+                clic.set_clic(None)
                 if bouton == btnvalider:
                     if self.combinaison == self.code_a_trouver:
                         print("code trouvé")
@@ -730,7 +800,7 @@ class EcranRoulette:
 
     
 lore = Intro()
-connexion = Ecran1()
+carte = Carte()
 ecran2 = Ecran2()
 inventaire = EcranInventaire()
 classement = EcranClassement()
@@ -826,7 +896,7 @@ class EcranHeros:
         for btn,ecran in self.btns.items():    # Pour chaque bouton de héros
             btn.draw(fenetre,pygame.mouse.get_pos())    # On affiche le bouton
             if btn.collision(clic.get_clic()):  # Si on clique dessus
-                clic.set_clic((0,0))    # On reset le clic
+                clic.set_clic(None)    # On reset le clic
                 click.play()
                 ecran.ecran.set_actif(True),self.ecran.set_actif(False)   # On affiche l'écran du héros
 
@@ -894,7 +964,7 @@ class EcranPnj:
             fenetre.blit(texte_surface, texte_rect)
             # Si le bouton est cliqué, on change le dialogue et on reset le compteur d'indice
             if bouton[0].collision(clic.get_clic()):
-                clic.set_clic((0,0))
+                clic.set_clic(None)
                 click.play()
                 self.txt_a_afficher = bouton[2]
                 self.indice = 0
@@ -907,7 +977,7 @@ class EcranPnj:
             fenetre.blit(texte_surface, texte_rect)
             # Si le bouton est cliqué reset le compteur d'indice   
             if bouton[0].collision(clic.get_clic()):
-                clic.set_clic((0,0))
+                clic.set_clic(None)
                 click.play()
                 self.txt_a_afficher = self.dialogue
                 self.indice = 0
